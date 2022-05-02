@@ -1,8 +1,3 @@
----
-puppeteer:
-  width: 4cm
----
-
 # 安装
 
 1. 安装 [VS Code](https://code.visualstudio.com/Download)
@@ -34,6 +29,10 @@ puppeteer:
 </div>
 
 > ⚠️请注意：本主题并未针对 图片 的导出做任何优化。
+
+## 更新
+
+2022.05.02 调整了**代码**的字体显示不正常的问题。将代码的中文字体更改为**楷体**。
 
 ## 字体
 
@@ -90,6 +89,7 @@ puppeteer:
         vertical-align: top;
     }
     ```
+
 ### 调整图片样式
 
 + ![shadow](图片地址，添加 shadow 可以增加阴影)

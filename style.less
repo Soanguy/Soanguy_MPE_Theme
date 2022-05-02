@@ -418,6 +418,17 @@ html body {
     font-weight: var(--font-weight);
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    em {
+      font: var(--font-title-jp);
+    }
+  }
+
   blockquote,
   pre,
   table {
@@ -481,14 +492,7 @@ html body {
 
   // latex
   .katex {
-    font: normal 1em KaTeX_Main,
-      "Latin Modern Math",
-      "Latin Modern Roman",
-      "方正新书宋_GBK",
-      "FZNewShusong-Z10",
-      "FZLanTingKanSongK",
-      "Noto Serif CJK SC",
-      serif
+    font: normal 1em KaTeX_Main, "Latin Modern Math", "Latin Modern Roman", "方正新书宋_GBK", "FZNewShusong-Z10", "FZLanTingKanSongK", "Noto Serif CJK SC", serif
   }
 
   /* list setting */
@@ -1156,6 +1160,7 @@ html body {
 
     size: A4;
     bleed: 3mm;
+    counter-reset: footnote;
 
     @prince-overlay {
       color: rgba(0, 0, 0, 0.015);
@@ -1164,12 +1169,16 @@ html body {
       font-family: var(--font-hei-cn);
       vertical-align: top;
     }
+
+    @footnotes {
+      padding-top: 8pt;
+      border-top: 0.6pt solid black;
+    }
   }
 
-  @page: right {
+  @page:right {
     margin: 20mm 25mm 15mm 30mm;
     font-family: var(--font-fangsong);
-    counter-reset: footnote;
 
     @top-right {
       margin: 12pt 0;
@@ -1187,16 +1196,10 @@ html body {
       font-family: optima, "Latin Modern Mono", serif;
       font-size: 9pt;
     }
-
-    @footnotes {
-      padding-top: 8pt;
-      border-top: 0.6pt solid black;
-    }
   }
 
-  @page: left {
+  @page:left {
     margin: 20mm 30mm 15mm 25mm;
-    counter-reset: footnote;
     font-family: var(--font-fangsong);
 
     @top-left {
@@ -1213,11 +1216,6 @@ html body {
       content: "· "counter(page) " / "counter(pages) " ·";
       font-family: optima;
       font-size: 9pt;
-    }
-
-    @footnotes {
-      padding-top: 8pt;
-      border-top: 0.6pt solid black;
     }
   }
 
@@ -1271,6 +1269,27 @@ html body {
   h2+p,
   h3+p {
     page-break-before: avoid;
+  }
+
+  h1,
+  h2 {
+    em {
+      font-family: var(--font-song-jp) !important;
+    }
+  }
+
+  h3 {
+    em {
+      font-family: var(--font-hei-jp) !important;
+    }
+  }
+
+  h4,
+  h5,
+  h6 {
+    em {
+      font-family: var(--font-kai-jp) !important;
+    }
   }
 
   p {
@@ -1345,7 +1364,6 @@ html body {
       border-right: var(--border-color-1) !important;
     }
   }
-
 }
 
 

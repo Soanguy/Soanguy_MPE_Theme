@@ -99,18 +99,18 @@
 
   --font-hei-cn: "Avenir Next", "Source Han Sans SC", "Noto Sans CJK SC", "HiraginoSansGB", sans-serif;
   --font-hei-jp: "Avenir Next", "Kozuka Gothic Pr6N", "Source Han Sans", "Noto Sans CJK JP", "Hiragino Sans", sans-serif;
-  --font-song-cn: "Latin Modern Roman", "STSongti", "Source Han Serif SC", "Noto Serif CJK SC", serif;
+  --font-song-cn: "Latin Modern Roman", "STSongti", "Songti TC", "Source Han Serif SC", "Noto Serif CJK SC", serif;
   --font-song-jp: "Latin Modern Roman", "Kozuka Mincho Pr6N", "Source Han Serif", "Noto Serif CJK SC", "Hiragino Mincho ProN", serif;
-  --fong-song-cn-print: "Latin Modern Roman", "方正新书宋_GBK", "FZNewShusong-Z10", "Source Han Serif SC", "Noto Serif CJK SC", serif;
+  --fong-song-cn-print: "Latin Modern Roman", "STSongti", "Songti TC", "方正新书宋_GBK", "FZNewShusong-Z10", "Source Han Serif SC", "Noto Serif CJK SC", serif;
   --fong-song-jp-print: "Latin Modern Roman", "Kozuka Mincho Pr6N", "A-OTF Ryumin Pr5", "YuMincho", "Source Han Serif", "Noto Serif CJK JP", serif;
   --fong-title-cn-print: "Latin Modern Roman Dunhill", "Latin Modern Roman", "Source Han Serif SC", "Noto Serif CJK SC", serif;
   --fong-title-jp-print: "Latin Modern Roman Dunhill", "Latin Modern Roman", "Kozuka Mincho Pr6N", "Source Han Serif", "Noto Serif CJK JP", serif;
-  --font-kai-cn: "Avenir Next", "TH-Khaai-PP0", "STKaiti", serif;
+  --font-kai-cn: "Avenir Next", "STKaiti", "Kaiti TC", "TH-Khaai-PP0", serif;
   --font-kai-jp: "Avenir Next", "A-OTF Kyoukasho ICA Pro", "TH-Khaai-PPO", "TW-Kai", "STKaiti", serif;
   --font-mono: "Latin Modern Mono", "TH-Khaai-PP0", "JiangChengYuanTi", "Source Han Sans SC", "Noto Sans CJK SC", "HiraginoSansGB", sans-serif;
-  --font-fangsong: "Latin Modern Mono", "HYFangSongS", serif;
+  --font-fangsong: "Latin Modern Mono", "HYFangSongS", "FZFangsong-Z02", serif;
   --font-fangsong-jp: "Latin Modern Mono", "A-OTF Jomin Std", "HYFangSongS", serif;
-  --font-lishu: "FZLiBian-S02", LiSu, STLiti, serif;
+  --font-lishu: "Libian TC", "FZLiBian-S02", LiSu, STLiti, serif;
   --font-lishu-jp: "A-OTF Likurei Std", "FZLiBian-S02", serif;
   --font-pearl-cn: "JiangChengYuanTi", "台湾圆体", sans-serif;
   --font-pearl-jp: "JiangChengYuanTi", "台湾圆体", sans-serif;
@@ -129,8 +129,8 @@
   --font-table-jp: var(--font-lishu-jp);
   --font-footnote: var(--font-fangsong);
   --font-footnote-jp: var(--font-fangsong-jp);
-  --font-em-cn: var(--font-song-cn);
-  --font-em-jp: var(--font-song-jp);
+  --font-em-cn: var(--font-title-cn);
+  --font-em-jp: var(--font-title-jp);
 
   --font-title1: 400 2.5rem/3.75rem var(--font-title-cn);
   --font-title2: 400 2.2rem/3.3rem var(--font-title-cn);
@@ -147,6 +147,12 @@
 * {
   -webkit-font-smoothing: "auto";
   -webkit-text-stroke-width: calc(calc(40px - 1em) / 170);
+  clear: both;
+}
+
+// 清楚图片后的元素浮动
+p+p {
+  clear: none;
 }
 
 html,
@@ -201,6 +207,11 @@ html body {
     font-weight: var(--font-weight-bold);
   }
 
+  strong em,
+  em strong {
+    font-family: var(--font-em-jp);
+  }
+
   code,
   kbd {
     background-color: var(--bg-code);
@@ -234,10 +245,19 @@ html body {
   ruby {
     font-family: var(--font-kai-cn);
     font-size: var(--kai-size);
+    ruby-position: under;
 
     rt {
       font-family: var(--font-kai-cn);
       font-size: 50% !important;
+    }
+  }
+
+  em {
+
+    ruby,
+    rt {
+      font-family: var(--font-kai-jp);
     }
   }
 
@@ -429,6 +449,55 @@ html body {
     }
   }
 
+  //*************************************************//
+  //************* 为标题添加自动编号。 *************//
+  //***********************************************//
+
+  h1 {
+    counter-reset: cnt_h2 0 cnt_h3 0 cnt_h4 0 cnt_h5 0;
+  }
+
+  h2 {
+    counter-reset: cnt_h3 0 cnt_h4 0 cnt_h5 0;
+    counter-increment: cnt_h2;
+
+    &::before {
+      content: counter(cnt_h2)" ";
+    }
+  }
+
+  h3 {
+    counter-reset: cnt_h4 0 cnt_h5 0;
+    counter-increment: cnt_h3;
+
+    &::before {
+      content: counter(cnt_h2) "-"counter(cnt_h3) " ";
+    }
+  }
+
+  h4 {
+    counter-reset: cnt_h5;
+    counter-increment: cnt_h4;
+
+    &::before {
+      content: counter(cnt_h4, upper-roman);
+    }
+  }
+
+  h2::before,
+  h3::before,
+  h4::before {
+    padding-right: .5rem;
+    font-family: var(--font-title-cn);
+    font-size: larger;
+    font-style: italic;
+    color: var(--theme-color);
+  }
+
+  //*************************************************//
+  //************************************************//
+  //***********************************************//
+
   blockquote,
   pre,
   table {
@@ -453,6 +522,10 @@ html body {
       margin-left: -2rem;
     }
   }
+
+  //*************************************************//
+  //****************** 代码块样式 ********************//
+  //***********************************************//
 
   pre {
     background: var(--bg-codeblock);
@@ -589,6 +662,23 @@ html body {
       flex-direction: column;
       flex-wrap: wrap;
       margin: auto;
+    }
+
+    &[alt~="left"] {
+      float: left;
+      margin: 1rem;
+      margin-right: 1.5rem;
+    }
+
+    &[alt~="right"] {
+      float: right;
+      margin: 1rem;
+      margin-left: 1.5rem;
+    }
+
+    &[alt~="15%"] {
+      height: 15%;
+      width: 15%;
     }
 
     &[alt~="25%"] {
@@ -1142,8 +1232,8 @@ html body {
     --font-table-jp: var(--font-text-jp);
     --font-footnote: var(--font-fangsong);
     --font-footnote-jp: var(--font-fangsong-jp);
-    --font-em-cn: var(--font-song-cn);
-    --font-em-jp: var(--font-song-jp);
+    --font-em-cn: var(--font-title-cn);
+    --font-em-jp: var(--font-title-jp);
 
     --font-title1: 800 2.5rem/3.75rem var(--font-title-cn);
     --font-title2: 800 2rem/3rem var(--font-title-cn);
@@ -1262,6 +1352,7 @@ html body {
   }
 
   h4 {
+    font-size: 14pt;
     text-align: center;
   }
 

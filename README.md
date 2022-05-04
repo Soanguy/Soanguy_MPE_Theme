@@ -1,4 +1,6 @@
-# 安装
+# <i>MPE_Soanguy</i> 主题使用
+
+## 安装
 
 1. 安装 [VS Code](https://code.visualstudio.com/Download)
 1. 安装 [Prince](https://www.princexml.com/download/)
@@ -38,6 +40,8 @@
 + 2022.05.03
   - 图片可以浮动于文字周围
   - 标题可以自动编号（二级到四级标题）
++ 2022.05.04
+  - 支持 <i>STIX MATH、emoji</i> 字体
 
 ## 字体
 
@@ -71,6 +75,14 @@
 
 > [Markdown Preview Enhanced 插件使用说明](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/)
 
+### 标题
+
+> 五级标题和六级标题并不推荐使用，因此并未对这两级标题设定不同的样式。但是可以试试在**引用**下使用不同级别的标题。例如：
+>
+> ##### 这是一个五级标题
+>
+> ###### 这是一个六级标题
+
 ### 字体调整
 
 使用部分 html 标签可以达到特殊效果。如：修改字体、颜色等。具体见 [其他说明](#其他说明)
@@ -80,6 +92,19 @@
 > + $\color{blue}{RED}$
 > + $\huge{SMALL}$
 > + $\small\color{red}{HUGE}$
+
+!!! question <span style="font-family:var(--font-kai-cn)">我想要使用斜体，可是我使用了`_ _`和`* *`之后，却发现字体并没有发生太大的变化，这是为什么？</span>
+    在这个主题里面，默认下的`_ _`和`* *`会将字体从**中文**字体变换为**日文**字体。例如：
+
+    + 这是默认下的日文字体：あいうえお。
+    + 这是强调下的日文字体：_あいうえお_。
+
+    那么，我该如何使用斜体呢？
+
+    可以通过为文字添加`<i></i>`标签来让文字倾斜。例如：
+
+    + 这是默认下的中文字体：这是没有添加 i 标签的中文。
+    + 这是斜体下的中文字体：<i>这是添加了 i 标签的中文</i>。
 
 ### 添加水印
 
@@ -125,6 +150,90 @@
 1. 调整脚注。找到`.fn {`并修改其中的代码即可。
 1. 为适合打印输出，默认设置所有的一级标题前都会有换页符，即在新的一页上重新开始，且全部居于**左侧**。如果想的话，可以删去 `h1`下的这段代码：`break-before: right`。
 
+### 列表
+
+为列表提供了显示和打印两种样式。
+
++ 无序列表
++ 充分等等
+  + 无序列表的递进
+  + 仍然会无序列表
+    + 充分等等
+
+1. 有序列表
+1. 日日日动词
+   1. 有序列表下的递进
+   1. 顶顶顶方法
+      1. 有序列表下的递进
+      1. 顶顶顶方法
+
+### 代码
+
+```html
+<!-- 这是一段注释 -->
+<html>
+ <head>
+        <titile>this is a html file</titile>
+    </head>
+    <body>
+        <div id="head title">
+            <p>
+                <span class="para highlight">highlight paragraph</span>
+            </p>
+             <p>
+                <span class="para highlight">高亮段落</span>
+            </p>
+            <img alt="content" width="520px">
+        </div>
+    </body>
+```
+
+```css{.line-numbers}
+html{
+    color:white;
+    width:2px;
+}
+```
+
+### 表格
+
+| 左对齐   |   右对齐 | 居中对齐 |
+| :------- | -------: | :------: |
+| 单元格   |   单元格 |  单元格  |
+| 单元格 1 | 单元格 2 | 单元格 3 |
+
+### admontion
+
+!!! info
+
+    测试内容
+
+!!! warning ""
+
+    没有标题的测试内容
+
+!!! warning 标题测试
+
+    有标题的测试内内容
+
+### 其他说明 {#其他说明}
+
+1. 如何添加脚注：使用 `<span class="fn"></span>` 包裹脚注内容即可。
+1. 如何快速分页：使用 `<hr class="pb">`。
+1. 如何大面积使用楷体：`<div class="intro"></div>`。
+1. 添加标签：<kbd>kbd 标签 臣本布衣</kbd>
+1. 修改字体：
+   1. 中文<tt>tt 标签 臣本布衣あいうえお</tt>
+   1. 日文<em><tt>tt 标签 臣本布衣あいうえお</tt></em>
+   1. 中文<samp>samp 标签 臣本布衣</samp>
+   1. 日文<em><samp>samp 标签 臣本布衣</samp></em>
+   1. <ruby>ruby 标签 臣本布衣<ruby>
+1. 其他的具有语义的标签：
+
+    + <ins>ins 臣本布衣，用于公式</ins>
+    + <var>var 臣本布衣，用于警示</var>
+    + <dfn>dfn 臣本布衣，用于例题</dfn>
+
 # 第一章
 
 + [出处](https://www.daodejing.org/1.html)
@@ -153,105 +262,3 @@
 [^⑩]: 谓：称谓。此为“指称”。
 [^⑾]: 玄：深黑色，玄妙深远的含义。
 [^⑿]: 门：之门，一切奥妙变化的总门径，此用来比喻宇宙万物的唯一原**道**的门径。
-
-# 其他
-
-## 标题
-
-### 三级标题
-
-#### 四级标题
-
-#### 四级标题 admin
-
-##### 五级标题
-
-###### 六级标题
-
-> 五级标题和六级标题并不推荐使用，因此并未对这两级标题设定不同的样式。但是可以试试在**引用**下使用不同级别的标题。例如：
->
-> ##### 这是一个五级标题
->
-> ###### 这是一个六级标题
-
-## 列表
-
-+ 无序列表
-+ 充分等等
-  + 无序列表的递进
-  + 仍然会无序列表
-    + 充分等等
-
-1. 有序列表
-1. 日日日动词
-   1. 有序列表下的递进
-   1. 顶顶顶方法
-      1. 有序列表下的递进
-      1. 顶顶顶方法
-
-## 代码
-
-```html
-<!-- 这是一段注释 -->
-<html>
- <head>
-        <titile>this is a html file</titile>
-    </head>
-    <body>
-        <div id="head title">
-            <p>
-                <span class="para highlight">highlight paragraph</span>
-            </p>
-             <p>
-                <span class="para highlight">高亮段落</span>
-            </p>
-            <img alt="content" width="520px">
-        </div>
-    </body>
-```
-
-```css{.line-numbers}
-html{
-    color:white;
-    width:2px;
-}
-```
-
-## 表格
-
-| 左对齐   |   右对齐 | 居中对齐 |
-| :------- | -------: | :------: |
-| 单元格   |   单元格 |  单元格  |
-| 单元格 1 | 单元格 2 | 单元格 3 |
-
-## admontion
-
-!!! info
-
-    测试内容
-
-!!! warning ""
-
-    没有标题的测试内容
-
-!!! warning 标题测试
-
-    有标题的测试内内容
-
-# 其他说明 {#其他说明}
-
-1. 如何添加脚注：使用 `<span class="fn"></span>` 包裹脚注内容即可。
-1. 如何快速分页：使用 `<hr class="pb">`。
-1. 如何大面积使用楷体：`<div class="intro"></div>`。
-1. 添加标签：<kbd>kbd 臣本布衣</kbd>
-1. 修改字体：
-   1. 中文<tt>tt 臣本布衣あいうえお</tt>
-   1. 日文<em><tt>tt 臣本布衣あいうえお</tt></em>
-   1. 中文<samp>samp 臣本布衣</samp>
-   1. 日文<em><samp>samp 臣本布衣</samp></em>
-   1. <ruby>ruby 臣本布衣<ruby>
-1. 其他的具有语义的标签：
-
-    + <ins>ins 臣本布衣，用于公式</ins>
-    + <var>var 臣本布衣，用于警示</var>
-    + <dfn>dfn 臣本布衣，用于例题</dfn>

@@ -1,6 +1,31 @@
+<div class="toc">
+<h2>table of contents</h2>
+
+  + [安装](#安装-install)
+  + [预览](#预览-preview)
+  + [更新](#更新-update)
+  + [字体](#字体-fonts)
+  + [特殊用法](#特殊用法-special-usages)
+    + [标题](#标题-about-title)
+    + [字体调整](#字体调整-about-fonts)
+    + [添加水印](#添加水印-watermark)
+    + [调整图片样式](#调整图片样式-picture-adjust)
+      + [图片环绕文字](#图片环绕文字-float)
+    + [页面调整](#页面调整-page-adjust)
+    + [列表](#列表-about-list)
+    + [代码](#代码-about-code)
+    + [表格](#表格-about-table)
+    + [admontion](#admontion)
+    + [其他说明](#其他说明-others)
+  + [origin text](#origin-text)
+  + [translation](#translation)
+  + [annotation](#annotation)
+
+</div>
+
 # <i>MPE_Soanguy</i> 主题使用
 
-## 安装
+## 安装 {#install}
 
 1. 安装 [VS Code](https://code.visualstudio.com/Download)
 1. 安装 [Prince](https://www.princexml.com/download/)
@@ -9,14 +34,16 @@
    1. 替换 style.less 文件，可以参考这个 [链接](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/customize-css)。
 1. 重启软件
 
-> 推荐安装 [night-owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl) 主题。
+> + 推荐安装 [night-owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl) 主题。
 >
-> 更改 VS Code 的语言和其他可能用的到的插件。
+> + 更改 VS Code 的语言和其他可能用的到的插件。
 >
-> + [中文包](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)
-> + [Markdown 语法检查](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+>   + [中文包](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)
+>   + [Markdown 语法检查](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+>
+> + 关于 PDF 的导出，可以参见 [官网](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/)。
 
-## 预览
+## 预览 {#preview}
 
 <div class="col2">
 
@@ -30,9 +57,9 @@
 
 </div>
 
-> ⚠️请注意：本主题并未针对 图片 的导出做任何优化。
+> ⚠️请注意：本主题并未针对导出 图片 做任何优化。
 
-## 更新
+## 更新 {#update}
 
 + 2022.05.02
   - 调整了**代码**的字体显示不正常的问题。将代码的中文字体更改为**楷体**。
@@ -42,8 +69,11 @@
   - 标题可以自动编号（二级到四级标题）
 + 2022.05.04
   - 支持 <i>STIX MATH、emoji</i> 字体
++ 2022.05.05
+  - 支持目录页
+  - 支持相互引用<span class="fn">关于相互引用的用法可以参见 [PrinceXML](https://www.princexml.com/doc/gen-content/#using-target-counter)</span>
 
-## 字体
+## 字体 {#fonts}
 
 默认使用了如下字体：
 
@@ -71,11 +101,11 @@
 >
 > ⚠️ 上述字体不下载也可以正常显示，此时会调用系统的宋体和黑体来显示。其他的如：楷体、仿宋、隶书、圆体等都会显示为宋体或黑体。
 
-## 特殊用法
+## 特殊用法 {#special-usages}
 
 > [Markdown Preview Enhanced 插件使用说明](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/)
 
-### 标题
+### 标题 {#about-title}
 
 > 五级标题和六级标题并不推荐使用，因此并未对这两级标题设定不同的样式。但是可以试试在**引用**下使用不同级别的标题。例如：
 >
@@ -83,9 +113,9 @@
 >
 > ###### 这是一个六级标题
 
-### 字体调整
+### 字体调整 {#about-fonts}
 
-使用部分 html 标签可以达到特殊效果。如：修改字体、颜色等。具体见 [其他说明](#其他说明)
+使用部分 html 标签可以达到特殊效果。如：修改字体、颜色等。具体见 [其他说明](#others)<span class="fn"><a class="pageref" href="#others"></a></span>
 
 > 当然，也可以使用 Latex 语法来更改字体样式。例如：
 >
@@ -106,7 +136,7 @@
     + 这是默认下的中文字体：这是没有添加 i 标签的中文。
     + 这是斜体下的中文字体：<i>这是添加了 i 标签的中文</i>。
 
-### 添加水印
+### 添加水印 {#watermark}
 
 找到 style.less 文件，修改下方的`商无辛`为自己想要的水印即可。`color`、`font-size`等也可以按照需要修改。
 
@@ -120,13 +150,13 @@
 }
 ```
 
-### 调整图片样式
+### 调整图片样式 {#picture-adjust}
 
 + ![shadow](图片地址，添加 shadow 可以增加阴影)
 + ![center](图片地址，添加 center 可以居中图片)
 + ![50%](图片地址，调整 百分比 可以更改大小。默认的包括：25%，50%，75%，85%，95%)
 
-#### 图片环绕文字
+#### 图片环绕文字 {#float}
 
 如果想要让图片浮动于文字的左右侧，可以添加`left`或者`right`来实现。请注意，在使用浮动时，请同时调整图片大小。另外，也可以通过主动添加多个换行`<br />`来实现某些效果。例如：
 
@@ -138,7 +168,7 @@
 
 这是一段测试文字。道可道也 [^①]，非恒道也 [^②]。名可名也 [^③]，非恒名也。无名 [^④]，万物之始也；有名 [^⑤]，万物之母也 [^⑥]。故恒无欲也 [^⑦]，以观其眇 [^⑧]；恒有欲也，以观其所徼 [^⑨]。两者同出，异名同谓 [^⑩]。玄之又玄 [^⑾]，众眇之门 [^⑿]。
 
-### 页面调整
+### 页面调整 {#page-adjust}
 
 1. 调整页面大小。找到这行代码，按照需要修改即可。
 
@@ -150,7 +180,7 @@
 1. 调整脚注。找到`.fn {`并修改其中的代码即可。
 1. 为适合打印输出，默认设置所有的一级标题前都会有换页符，即在新的一页上重新开始，且全部居于**左侧**。如果想的话，可以删去 `h1`下的这段代码：`break-before: right`。
 
-### 列表
+### 列表 {#about-list}
 
 为列表提供了显示和打印两种样式。
 
@@ -167,7 +197,7 @@
       1. 有序列表下的递进
       1. 顶顶顶方法
 
-### 代码
+### 代码 {#about-code}
 
 ```html
 <!-- 这是一段注释 -->
@@ -195,7 +225,7 @@ html{
 }
 ```
 
-### 表格
+### 表格 {#about-table}
 
 | 左对齐   |   右对齐 | 居中对齐 |
 | :------- | -------: | :------: |
@@ -216,7 +246,7 @@ html{
 
     有标题的测试内内容
 
-### 其他说明 {#其他说明}
+### 其他说明 {#others}
 
 1. 如何添加脚注：使用 `<span class="fn"></span>` 包裹脚注内容即可。
 1. 如何快速分页：使用 `<hr class="pb">`。
@@ -233,20 +263,30 @@ html{
     + <ins>ins 臣本布衣，用于公式</ins>
     + <var>var 臣本布衣，用于警示</var>
     + <dfn>dfn 臣本布衣，用于例题</dfn>
+1. pdf 导出可以选择 puppeter。通过 front-matter 来设定一些样式：
 
-# 第一章
+  ```{.line-numbers}
+  ---
+  puppeteer:
+    landscape: true
+    format: "A4"
+    printBackground: true
+  ---
+  ```
+
+# 第一章 {#chapter-1}
 
 + [出处](https://www.daodejing.org/1.html)
 
-## 原文
+## origin text
 
-> 道可道也 [^①]，非恒道也 [^②]。名可名也 [^③]，非恒名也。无名 [^④]，万物之始也；有名 [^⑤]，万物之母也 [^⑥]。故恒无欲也 [^⑦]，以观其眇 [^⑧]；恒有欲也，以观其所徼 [^⑨]。两者同出，异名同谓 [^⑩]。玄之又玄 [^⑾]，众眇之门 [^⑿]。
+> 道可道 <span class="fn">第一个**道**是名词，指的是宇宙的本原和实质，引申为原理、原则、真理、规律等。第二个**道**是动词。指解说、表述的意思，犹言“说得出”。</span>也 [^①]，非恒<span class="fn">恒：一般的，普通的。</span>道也 [^②]。名可名也 [^③]，非恒名也。无名 [^④]，万物之始也；有名 [^⑤]，万物之母也 [^⑥]。故恒无欲也 [^⑦]，以观其眇 [^⑧]；恒有欲也，以观其所徼 [^⑨]。两者同出，异名同谓 [^⑩]。玄之又玄 [^⑾]，众眇之门 [^⑿]。
 
-## 译文
+## translation
 
 **道**如果可以用言语来表述，那它就是常**道** (**道**是可以用言语来表述的，它并非一般的**道**)；<u>名</u>如果可以用文辞去命名，那它就是常<u>名</u>(<u>名</u>也是可以说明的，它并非普通的<u>名</u>)。`无`可以用来表述天地浑沌未开之际的状况；而==有==，则是宇宙万物产生之本原的命名。因此，要常从`无`中去观察领悟**道**的奥妙；要常从==有==中去观察体会**道**的端倪。无与有这两者，来源相同而名称相异，都可以称之为玄妙、深远。它不是一般的玄妙、深奥，而是玄妙又玄妙、深远又深远，是宇宙天地万物之奥妙的总门（从“有名”的奥妙到达无形的奥妙，**道**是洞悉一切奥妙变化的门径）。
 
-## 注释
+## annotation
 
 注意：使用 markdown 的脚注，所有的脚注都将出现在最后。但这个不是<span class="fn">这是使用`<span class="fn"></span>`产生的。</span>。
 
@@ -257,8 +297,22 @@ html{
 [^⑤]: 有名：指有形。
 [^⑥]: 母：母体，根源。
 [^⑦]: 恒：经常。
-[^⑧]: 眇（miao）：通妙，微妙的意思。
-[^⑨]: 徼（jiao）：边际、边界。引申端倪的意思。
+[^⑧]: <ruby>眇<rt>miǎo</rt></ruby>：通妙，微妙的意思。
+[^⑨]: <ruby>徼<rt>jiǎo</rt></ruby>：边际、边界。引申端倪的意思。
 [^⑩]: 谓：称谓。此为“指称”。
 [^⑾]: 玄：深黑色，玄妙深远的含义。
 [^⑿]: 门：之门，一切奥妙变化的总门径，此用来比喻宇宙万物的唯一原**道**的门径。
+
+<details>
+  <summary>Title of Contents</summary>
+
+contents contents **contents** contents
+
++ contents contents
+
+> contents contents **contents** contents
+>
+> + contents contents
+>   + contents contents
+  
+</details>

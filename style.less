@@ -237,13 +237,28 @@ html body {
 
   /* cross-references */
 
-  a.pageref,a.chapref,a.figref,a.tableref{
-    color:var(--color-text);
+  a.pageref,
+  a.chapref,
+  a.figref,
+  a.tableref {
+    color: var(--color-text);
   }
-  a.pageref::after { content: "【参见第 " target-counter(attr(href), page) " 页】"; }
-  a.chapref::before { content: " Chapter " target-counter(attr(href), chapter) ", "; }
-  a.figref { content: " Figure " target-counter(attr(href), figure); }
-  a.tableref { content: " Table " target-counter(attr(href), figure); }
+
+  a.pageref::after {
+    content: "【参见第 " target-counter(attr(href), page) " 页】";
+  }
+
+  a.chapref::before {
+    content: " Chapter " target-counter(attr(href), chapter) ", ";
+  }
+
+  a.figref {
+    content: " Figure " target-counter(attr(href), figure);
+  }
+
+  a.tableref {
+    content: " Table " target-counter(attr(href), figure);
+  }
 
   strong {
     color: var(--color-em);
@@ -268,11 +283,7 @@ html body {
     font: var(--font-code);
     border-radius: 2px;
     box-shadow: var(--shadow-weak);
-
-    &::before,
-    &::after {
-      content: " ";
-    }
+    padding: var(--padding-text);
   }
 
   kbd {
@@ -518,7 +529,7 @@ html body {
     counter-increment: cnt_h2;
 
     &::before {
-      content: counter(cnt_h2)" ";
+      content: counter(cnt_h2) " ";
     }
   }
 
@@ -527,7 +538,7 @@ html body {
     counter-increment: cnt_h3;
 
     &::before {
-      content: counter(cnt_h2) "-"counter(cnt_h3) " ";
+      content: counter(cnt_h2) "-" counter(cnt_h3) " ";
     }
   }
 
@@ -582,6 +593,10 @@ html body {
   //*************************************************//
   //****************** 代码块样式 ********************//
   //***********************************************//
+  pre,pre code,code{
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
 
   pre {
     background: var(--bg-codeblock);
@@ -758,6 +773,67 @@ html body {
     }
 
     &[alt~="95%"] {
+      height: 95%;
+      width: 95%;
+    }
+
+        &[title~="shadow"] {
+      box-shadow: var(--img-shadow);
+    }
+
+    &[title~="normal"] {
+      margin: 0 !important;
+      box-shadow: none !important;
+    }
+
+    &[title~="center"] {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: auto;
+    }
+
+    &[title~="left"] {
+      float: left;
+      margin: 1rem;
+      margin-right: 1.5rem;
+    }
+
+    &[title~="right"] {
+      float: right;
+      margin: 1rem;
+      margin-left: 1.5rem;
+    }
+
+    &[title~="15%"] {
+      height: 15%;
+      width: 15%;
+    }
+
+    &[title~="25%"] {
+      height: 25%;
+      width: 25%;
+    }
+
+    &[title~="50%"] {
+      height: 50%;
+      width: 50%;
+    }
+
+    &[title~="75%"] {
+      height: 75%;
+      width: 75%;
+    }
+
+    &[title~="85%"] {
+      height: 85%;
+      width: 85%;
+    }
+
+    &[title~="95%"] {
       height: 95%;
       width: 95%;
     }
@@ -990,8 +1066,8 @@ html body {
 
   .toc {
 
-    h2{
-      &::before{
+    h2 {
+      &::before {
         content: none;
       }
     }
@@ -1024,6 +1100,19 @@ html body {
 
     .toc .screen-only.list {
       margin-top: 2em
+    }
+  }
+
+  @media screen and (max-width:1200px){
+    .toc{
+      ol,ul{
+        margin: 1rem auto;
+        column-count: 2;
+        ol,ul{
+          margin: initial;
+          column-count:1;
+        }
+      }
     }
   }
 
@@ -1217,18 +1306,27 @@ html body {
 
   .col2 {
     display: flex;
-  }
 
-  .col2 blockquote {
+    .test{
+      ul{
+        list-style: upper-latin;
+      }
+      li{
+        padding-left: 4px;
+      }
+    }
+    
+    blockquote {
     width: 48%;
     border-left: none;
-  }
-
-  .col2 blockquote blockquote {
-    width: initial;
-    border-left: var(--border-base);
-    border-color: var(--theme-color);
-    border-width: var(--border-width-bold);
+ 
+     blockquote {
+      width: initial;
+      border-left: var(--border-base);
+      border-color: var(--theme-color);
+      border-width: var(--border-width-bold);
+      }
+    }
   }
 
   .old_book {
@@ -1426,7 +1524,7 @@ html body {
   }
 
   @page:right {
-    margin: 20mm 25mm 15mm 30mm;
+    margin: 15mm 40mm 15mm 20mm;
     font-family: var(--font-fangsong);
 
     @top-right {
@@ -1448,7 +1546,7 @@ html body {
   }
 
   @page:left {
-    margin: 20mm 30mm 15mm 25mm;
+    margin: 15mm 20mm 15mm 40mm;
     font-family: var(--font-fangsong);
 
     @top-left {
@@ -1679,7 +1777,7 @@ html body {
     text-indent: 0;
 
     &::footnote-call {
-      content: "["counter(footnote) "]";
+      content: "[" counter(footnote) "]";
       font-size: 9pt;
       vertical-align: super;
       line-height: inherit;
@@ -1687,6 +1785,43 @@ html body {
 
     &::footnote-marker {
       font-weight: normal;
+    }
+  }
+
+  .col2 {
+    display: flex;
+    columns: 2;
+
+    .test:not(:first-child){
+      border-left: 1px solid black;
+      margin-left: 1rem;
+    }
+
+    .test{
+      width: 100%;
+      font-family: var(--font-text-jp);
+
+      ol,ul{
+        margin-left: 0;
+
+        li{
+          font-family: var(--font-text-jp);
+        }
+      }
+
+      ul{
+        list-style: upper-latin;
+
+        li::marker{
+          content: initial;
+          font-family: var(--font-text-cn);
+          list-style-type: upper-latin;
+        }
+      }
+
+      li{
+        padding-left: 4px;
+      }
     }
   }
 

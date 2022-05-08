@@ -1,22 +1,23 @@
 <div class="toc">
 <h2>table of contents</h2>
 
-  + [安装](#安装-install)
-  + [预览](#预览-preview)
-  + [更新](#更新-update)
-  + [字体](#字体-fonts)
-  + [特殊用法](#特殊用法-special-usages)
-    + [标题](#标题-about-title)
-    + [字体调整](#字体调整-about-fonts)
-    + [添加水印](#添加水印-watermark)
-    + [调整图片样式](#调整图片样式-picture-adjust)
-      + [图片环绕文字](#图片环绕文字-float)
-    + [页面调整](#页面调整-page-adjust)
-    + [列表](#列表-about-list)
-    + [代码](#代码-about-code)
-    + [表格](#表格-about-table)
-    + [admontion](#admontion)
-    + [其他说明](#其他说明-others)
+  + [安装](#install)
+  + [预览](#preview)
+  + [更新](#update)
+  + [字体](#fonts)
+  + [特殊用法](#special-usages)
+    - [标题](#about-title)
+    - [字体调整](#about-fonts)
+    - [添加水印](#watermark)
+    - [调整图片样式](#picture-adjust)
+      + [图片环绕文字](#float)
+    - [页面调整](#page-adjust)
+    - [列表](#about-list)
+    - [代码](#about-code)
+    - [表格](#about-table)
+    - [mermaid](#mermaid)
+    - [admontion](#admontion)
+    - [其他说明](#others)
   + [origin text](#origin-text)
   + [translation](#translation)
   + [annotation](#annotation)
@@ -27,21 +28,21 @@
 
 ## 安装 {#install}
 
-1. 安装 [VS Code](https://code.visualstudio.com/Download)
-1. 安装 [Prince](https://www.princexml.com/download/)
-1. 安装 [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced#:~:text=Markdown%20Preview%20Enhanced%20is%20an%20extension%20that%20provides,inspired%20by%20Markdown%20Preview%20Plus%20and%20RStudio%20Markdown.) 插件
+1. 安装 [VS Code][]
+1. 安装 [Prince][]
+1. 安装 [Markdown Preview Enhanced][] 插件
 1. 修改主题
-   1. 替换 style.less 文件，可以参考这个 [链接](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/customize-css)。
-1. 重启软件
+   1. 替换 style.less 文件，可以参考这个 [链接][]。
+1. 重启软件，将 Markdown Preview Enhanced 的 **预览主题** 替换为 <i>none</i>。
 
-> + 推荐安装 [night-owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl) 主题。
+> + 推荐安装 [night-owl][] 主题。
 >
 > + 更改 VS Code 的语言和其他可能用的到的插件。
 >
->   + [中文包](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans)
->   + [Markdown 语法检查](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+>   + [中文包][]
+>   + [Markdown 语法检查][]
 >
-> + 关于 PDF 的导出，可以参见 [官网](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/)。
+> + 关于 PDF 的导出，可以参见 [官网][]。
 
 ## 预览 {#preview}
 
@@ -49,15 +50,40 @@
 
 > ##### 屏显预览
 >
->> ![shadow](./Snipaste_2022-05-01_15-03-49.png)
+>> ![shadow](./assets/Snipaste_2022-05-01_15-03-49.png)
 
 > ##### 打印预览
 >
->> ![shadow](./Snipaste_2022-05-01_15-56-37.png)
+>> ![shadow](./assets/Snipaste_2022-05-01_15-56-37.png)
 
 </div>
 
-> ⚠️请注意：本主题并未针对导出 图片 做任何优化。
+> ⚠️请注意：本主题并未针对导出为 图片 格式做任何优化。
+>
+> ⚠️请注意：本主题主要在 macOS 系统上进行的测试。在 Windows 系统上可能会有些许显示差异。具体差异见 [差异](#contrast)。
+
+## 差异 {#contrast}
+
+<var>1. 为什么我安装主题后，看起来会有点模糊？</var>
+
+Windows 系统的字体渲染和 macOS 系统的字体渲染有些许不同，在 macOS 上看起来很清晰的字体，可能在 Windows 上不会那么的清晰。如果能很清晰的看出有叠影，可以尝试注释掉下方的代码：
+
+```css {.line-numbers}
+  -webkit-font-smoothing: "auto";
+  -webkit-text-stroke-width: calc(calc(40px - 1em) / 170);
+```
+
+<var>2. 为什么我为图片设定了浮动和缩小，但却没有任何反应呢？</var>
+
+目前这个问题的出现应该是 MPE 插件的问题。在 macOS 上为图片设定 `alt` 属性可以正常的被渲染出来。但是在 Windows 上设定的 `alt` 属性似乎都会被省略。可以尝试修改代码中的 `alt` 为 `title`。例如：
+
+```css {.line-numbers}
+&[alt~="shadow"] --> &[title~="shadow"]
+```
+
+同时，请使用下面的语法来控制图片的显示：
+
+`![](./assets/Snipaste_2022-05-01_15-56-37.png "shadow")`
 
 ## 更新 {#update}
 
@@ -71,7 +97,7 @@
   - 支持 <i>STIX MATH、emoji</i> 字体
 + 2022.05.05
   - 支持目录页
-  - 支持相互引用<span class="fn">关于相互引用的用法可以参见 [PrinceXML](https://www.princexml.com/doc/gen-content/#using-target-counter)</span>
+  - 支持相互引用<span class="fn">关于相互引用的用法可以参见 [PrinceXML][]</span>
 
 ## 字体 {#fonts}
 
@@ -95,15 +121,43 @@
   + A-OTF Jomin Std
   + A-OTF Likurei Std
 
-> 可以通过这个链接 [font](https://www.aliyundrive.com/s/YZ7YJkxGgmk) 下载所需字体。大概有 290M。
+> 可以通过这个链接 [font][] 下载所需字体。大概有 290M。
 >
-> 阿里云盘目前并不不支持分享 ttf 格式的思源字体。但可以通过这个链接下载 (otc 格式，Windows 系统可能无法使用。也可自行搜索下载。)：[思源黑体](https://mirrors.tuna.tsinghua.edu.cn/adobe-fonts/source-han-sans/OTC/),[思源宋体](https://mirrors.tuna.tsinghua.edu.cn/adobe-fonts/source-han-serif/OTC/)。
+> 阿里云盘目前并不不支持分享 ttf 格式的思源字体。但可以通过这个链接下载 (otc 格式，Windows 系统可能无法使用。也可自行搜索下载。)：[思源黑体][],[思源宋体][]。
 >
 > ⚠️ 上述字体不下载也可以正常显示，此时会调用系统的宋体和黑体来显示。其他的如：楷体、仿宋、隶书、圆体等都会显示为宋体或黑体。
 
 ## 特殊用法 {#special-usages}
 
-> [Markdown Preview Enhanced 插件使用说明](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/)
+> [Markdown Preview Enhanced 插件使用说明][]
+
+### 插入目录 {#toc-insert}
+
+可以通过插件 [Markdown Preview Enhanced][] 或者 [Markdown TOC][] 来快速的插入目录。
+
+如果想要将目录正常显示在打印页面中，可以将目录包裹在下列代码之中。
+
+```html {.line-numbers}
+<div class="toc">
+<h2>table of contents</h2>
+
+目录所在
+
+</div>
+```
+
++ 目录的预览。主题目前设定的目录在网页（宽度大于 1200px）中和在打印中显示的样式是不同的。当宽度小于 1200px 时默认不对目录进行处理。
+
+<div class="col2">
+
+> ##### 屏显样式
+>
+>> ![shadow](./assets/Snipaste_2022-05-06_16-29-39.png)
+
+> ##### 打印样式
+> 
+> ![shadow](./assets/Snipaste_2022-05-06_16-28-39.png)
+</div>
 
 ### 标题 {#about-title}
 
@@ -126,15 +180,15 @@
 !!! question <span style="font-family:var(--font-kai-cn)">我想要使用斜体，可是我使用了`_ _`和`* *`之后，却发现字体并没有发生太大的变化，这是为什么？</span>
     在这个主题里面，默认下的`_ _`和`* *`会将字体从**中文**字体变换为**日文**字体。例如：
 
-    + 这是默认下的日文字体：あいうえお。
-    + 这是强调下的日文字体：_あいうえお_。
+    - 这是默认下的日文字体：あいうえお。
+    - 这是强调下的日文字体：_あいうえお_。
 
     那么，我该如何使用斜体呢？
 
     可以通过为文字添加`<i></i>`标签来让文字倾斜。例如：
 
-    + 这是默认下的中文字体：这是没有添加 i 标签的中文。
-    + 这是斜体下的中文字体：<i>这是添加了 i 标签的中文</i>。
+    - 这是默认下的中文字体：这是没有添加 i 标签的中文。
+    - 这是斜体下的中文字体：<i>这是添加了 i 标签的中文</i>。
 
 ### 添加水印 {#watermark}
 
@@ -155,16 +209,17 @@
 + ![shadow](图片地址，添加 shadow 可以增加阴影)
 + ![center](图片地址，添加 center 可以居中图片)
 + ![50%](图片地址，调整 百分比 可以更改大小。默认的包括：25%，50%，75%，85%，95%)
++ ![left or right](图片地址，让图片 浮动 于文字的左右侧)
 
 #### 图片环绕文字 {#float}
 
 如果想要让图片浮动于文字的左右侧，可以添加`left`或者`right`来实现。请注意，在使用浮动时，请同时调整图片大小。另外，也可以通过主动添加多个换行`<br />`来实现某些效果。例如：
 
-![shadow 25% left](./Snipaste_2022-05-01_15-56-37.png)
+![shadow 25% left](./assets/Snipaste_2022-05-01_15-56-37.png)
 
 这是一段测试文字。道可道也 [^①]，非恒道也 [^②]。名可名也 [^③]，非恒名也。无名 [^④]，万物之始也；有名 [^⑤]，万物之母也 [^⑥]。故恒无欲也 [^⑦]，以观其眇 [^⑧]；恒有欲也，以观其所徼 [^⑨]。两者同出，异名同谓 [^⑩]。玄之又玄 [^⑾]，众眇之门 [^⑿]。<br /><br />
 
-![shadow 25% right](./Snipaste_2022-05-01_15-56-37.png)
+![shadow 25% right](./assets/Snipaste_2022-05-01_15-56-37.png)
 
 这是一段测试文字。道可道也 [^①]，非恒道也 [^②]。名可名也 [^③]，非恒名也。无名 [^④]，万物之始也；有名 [^⑤]，万物之母也 [^⑥]。故恒无欲也 [^⑦]，以观其眇 [^⑧]；恒有欲也，以观其所徼 [^⑨]。两者同出，异名同谓 [^⑩]。玄之又玄 [^⑾]，众眇之门 [^⑿]。
 
@@ -178,7 +233,7 @@
 
 1. 调整页眉页脚。修改第 1139 行到 1193 行的代码即可。（以`@page:right`和`@page:left`开头）
 1. 调整脚注。找到`.fn {`并修改其中的代码即可。
-1. 为适合打印输出，默认设置所有的一级标题前都会有换页符，即在新的一页上重新开始，且全部居于**左侧**。如果想的话，可以删去 `h1`下的这段代码：`break-before: right`。
+1. 为适合打印输出，默认设置所有的一级标题前都会有换页符，即在新的一页上重新开始，且全部居于**左侧**。如果不需要的话，可以删去 `h1`下的这段代码：`break-before: right`。
 
 ### 列表 {#about-list}
 
@@ -188,7 +243,7 @@
 + 充分等等
   + 无序列表的递进
   + 仍然会无序列表
-    + 充分等等
+    - 充分等等
 
 1. 有序列表
 1. 日日日动词
@@ -232,6 +287,44 @@ html{
 | 单元格   |   单元格 |  单元格  |
 | 单元格 1 | 单元格 2 | 单元格 3 |
 
+### mermaid
+
+Markdown Preview Enhanced 无法将 mermaid 导出为 PDF。作为替代，可以使用 dotted 来制图。
+
+> 请忽视图片的配色，只为演示。
+
+```dot
+digraph demo {
+    label="示例"
+    color="pink"
+    bgcolor="white"
+    fontsize="12pt"
+    rankdir="TB"
+    
+
+    node[fontname="思源宋体",color="#dfdfdf",fontcolor="red"]
+
+    father[label="爸爸", shape="box" , fillcolor=black,style=filled,fontcolor=white]
+    mother[label="妈妈", shape="box", style=dashed]
+    brother[label="哥哥", shape="circle",style=bold]
+    sister[label="姐姐", shape="circle"]
+    node[color="#FF6347"]
+    strangers[label="路人",style=dotted]
+
+    edge[fontname="思源黑体",color="blue",fontcolor="blue"]
+
+    father->mother[label="夫妻", dir="both"]
+    father->brother[label="父子"]
+    father->sister[label="父子"]
+    father->我 [label="父子"]
+
+    mother->{brother,sister, 我}[label="母子"]
+
+    {rank=same; father, mother}
+    {rank=same; brother,sister, 我}
+}
+```
+
 ### admontion
 
 !!! info
@@ -260,9 +353,9 @@ html{
    1. <ruby>ruby 标签 臣本布衣<ruby>
 1. 其他的具有语义的标签：
 
-    + <ins>ins 臣本布衣，用于公式</ins>
-    + <var>var 臣本布衣，用于警示</var>
-    + <dfn>dfn 臣本布衣，用于例题</dfn>
+    - <ins>ins 臣本布衣，用于公式</ins>
+    - <var>var 臣本布衣，用于警示</var>
+    - <dfn>dfn 臣本布衣，用于例题</dfn>
 1. pdf 导出可以选择 puppeter。通过 front-matter 来设定一些样式：
 
   ```{.line-numbers}
@@ -273,6 +366,21 @@ html{
     printBackground: true
   ---
   ```
+
+[VS Code]:https://code.visualstudio.com/Download
+[Prince]:https://www.princexml.com/download/
+[Markdown Preview Enhanced]:https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced
+[链接]:https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/customize-css
+[night-owl]:https://marketplace.visualstudio.com/items?itemName=sdras.night-owl
+[中文包]:https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans
+[Markdown 语法检查]:https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
+[官网]:https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/
+[font]:https://www.aliyundrive.com/s/YZ7YJkxGgmk
+[思源黑体]:https://mirrors.tuna.tsinghua.edu.cn/adobe-fonts/source-han-sans/OTC/
+[思源宋体]:https://mirrors.tuna.tsinghua.edu.cn/adobe-fonts/source-han-serif/OTC/
+[PrinceXML]:https://www.princexml.com/doc/gen-content/#using-target-counter
+[Markdown TOC]:https://marketplace.visualstudio.com/items?itemName=joffreykern.markdown-toc
+[Markdown Preview Enhanced 插件使用说明]:https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/
 
 # 第一章 {#chapter-1}
 

@@ -7,8 +7,28 @@
 
 :root {
 
+
+  //其他颜色:
+  --tholor-1: #f9a647;
+  --tholor-1: #053488;
+  --tholor-1: #edcfab;
+  --tholor-1: #185864;
+  --tholor-1: #e2dbd0;
+  --tholor-1: #303136;
+  --tholor-1: #efeeec;
+  --tholor-1: #ffd301;
+  --tholor-1: #e6bc7b;
+  --tholor-1: #142a31;
+  --tholor-1: #fbfbfc;
+  --tholor-1: #2d709c;
+  --tholor-1: #f5ece6;
+
+
+
+
   // *************
   // ?深色主题色设定 1--深蓝色为主
+  // ? 打印时以淡红色为主
   // *************
 
   --theme-color-em: #d22222; //red
@@ -23,24 +43,46 @@
   --theme-color-4-weak: hsl(226, 27%, 28%);
   --theme-color-5: hsl(42, 59%, 59%); //green 
   --theme-color-5-weak: hsl(48, 36%, 81%);
+  --border-table: 1px solid hsl(0, 100%, 95%);
+
+  // *************
+  // ?深色主题色设定 1--深蓝色为主
+  // ? 打印时以淡红色为主
+  // *************
+
+  // --theme-color-em: #e6bc7b;
+  // --theme-color: #ffd301;
+  // --theme-color-weak: #efeeec;
+  // --theme-color-light: hsl(0, 100%, 98%);
+  // --theme-color-2: hsl(215, 60%, 40%);
+  // --theme-color-2-weak: hsl(238, 32%, 80%);
+  // --theme-color-3: #142a31;
+  // --theme-color-3-weak: hsl(223, 100%, 95%);
+  // --theme-color-4: #053488;
+  // --theme-color-4-weak: hsl(226, 27%, 28%);
+  // --theme-color-5: hsl(42, 59%, 25%);
+  // --theme-color-5-weak: hsl(48, 36%, 81%);
+  // --border-table:1px solid hsl(238, 32%, 80%);
 
   // *************
   // ?浅色主题色设定 1--蓝色为主
+  // ? 打印时以蓝色为主
   // ?启用该主题取消下方注释即可。
   // *************
 
-  // --theme-color-em: hsl(210, 75%, 13%); 
-  // --theme-color: hsl(223, 100%, 33%); 
-  // --theme-color-weak: hsl(210, 75%, 13%);
+  // --theme-color-em: hsl(210, 75%, 15%);
+  // --theme-color: hsl(225, 100%, 35%);
+  // --theme-color-weak: hsl(210, 75%, 15%);
   // --theme-color-light: hsl(0, 100%, 98%);
-  // --theme-color-2: hsl(213, 57%, 41%); 
+  // --theme-color-2: hsl(215, 60%, 40%);
   // --theme-color-2-weak: hsl(238, 32%, 80%);
-  // --theme-color-3: hsl(223, 100%, 99%); 
-  // --theme-color-3-weak: hsl(223, 100%, 95%); 
-  // --theme-color-4: hsl(238, 32%, 80%); 
+  // --theme-color-3: hsl(223, 100%, 99%);
+  // --theme-color-3-weak: hsl(223, 100%, 95%);
+  // --theme-color-4: hsl(250, 30%, 75%);
   // --theme-color-4-weak: hsl(226, 27%, 28%);
-  // --theme-color-5: hsl(42, 59%, 25%);  
+  // --theme-color-5: hsl(42, 59%, 25%);
   // --theme-color-5-weak: hsl(48, 36%, 81%);
+  // --border-table:1px solid hsl(238, 32%, 80%);
 
   // *************
   // ?字体颜色设定
@@ -62,7 +104,7 @@
   --color-mark: var(--theme-color-4);
   --color-link: var(--theme-color);
   --color-link-hover: var(--theme-color-2);
-  --color-code: var(--color-text);
+  --color-code: #fff;
   --color-strong: var(--color-em);
   --color-footnote: var(--color-weak);
   --color-strike: var(--color-light);
@@ -89,7 +131,8 @@
   --bg-title6: none;
 
   --bg-quota: var(--theme-color-4);
-  --bg-code: var(--theme-color-4);
+  --bg-code: hsl(210, 75%, 13%);
+  ;
   --bg-codeblock: var(--theme-color-4);
   --bg-link: none;
   --bg-strong: none;
@@ -164,20 +207,20 @@
   // ?请按需要进行修改
   // *************
 
-  --font-hei-cn: "Avenir Next", var(--font-sans-fallback), "Source Han Sans SC", var(--font-hei-fallback);
+  --font-hei-cn: "Avenir Next", var(--font-sans-fallback), "Source Han Sans", var(--font-hei-fallback);
   --font-hei-jp: "Avenir Next", var(--font-sans-fallback), "Kozuka Gothic Pr6N", var(--font-hei-jp-fallback);
 
-  --font-song-cn: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif SC", var(--font-song-fallback);
+  --font-song-cn: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif", var(--font-song-fallback);
   --font-song-jp: "Latin Modern Roman", var(--font-serif-fallback), "Kozuka Mincho Pr6N", var(--font-song-jp-fallback);
 
-  --fong-song-cn-print: "Latin Modern Roman", var(--font-serif-fallback), "STSongti", "Songti TC", "方正新书宋_GBK", "FZNewShusong-Z10", "Source Han Serif SC", var(--font-song-fallback);
+  --fong-song-cn-print: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif", "方正新书宋_GBK", "FZNewShusong-Z10", "STSongti", "Songti TC", "TW-Sung", var(--font-song-fallback);
   --fong-song-jp-print: var(--font-song-jp);
 
   --fong-title-cn-print: "Latin Modern Roman Dunhill", var(--font-song-cn);
   --fong-title-jp-print: "Latin Modern Roman Dunhill", var(--font-song-jp);
 
-  --font-kai-cn: "Avenir Next", var(--font-curve-fallback), "TW-Kai", "TH-Khaai-PPO", var(--font-kai-fallback);
-  --font-kai-jp: "Avenir Next", var(--font-curve-fallback), "A-OTF Kyoukasho ICA Pro", "YuKyokasho", "YuKyokasho", "TW-Kai", "TH-Khaai-PPO", var(--font-kai-fallback);
+  --font-kai-cn: "Avenir Next", var(--font-curve-fallback), "TW-Kai", "TH-Khaai-PP0", var(--font-kai-fallback);
+  --font-kai-jp: "Avenir Next", var(--font-curve-fallback), "A-OTF Kyoukasho ICA Pro", "YuKyokasho", "YuKyokasho", "TW-Kai", "TH-Khaai-PP0", var(--font-kai-fallback);
 
   --font-mono: "Latin Modern Mono", var(--font-mono-fallback), var(--font-kai-cn), monospace;
 
@@ -213,11 +256,11 @@
   --font-text-cn: var(--font-hei-cn);
   --font-text-jp: var(--font-hei-jp);
 
-  --font-ol-cn: var(--text-font-cn);
-  --font-ol-jp: var(--text-font-jp);
+  --font-ol-cn: var(--font-hei-cn);
+  --font-ol-jp: var(--font-kai-jp);
 
-  --font-ul-cn: var(--text-font-cn);
-  --font-ul-jp: var(--text-font-jp);
+  --font-ul-cn: var(--font-kai-cn);
+  --font-ul-jp: var(--font-kai-jp);
 
   --font-quota-cn: var(--font-kai-cn);
   --font-quota-jp: var(--font-kai-jp);
@@ -263,7 +306,6 @@
     --color-light: #555;
 
     --color-text: var(--color-text);
-    --color-code: var(--theme-color-light);
 
     --bg-body: #fff;
 
@@ -277,6 +319,9 @@
     --margin-text: 0rem;
     --margin-h1: 10rem auto 5rem;
 
+    --font-weight: 300;
+    --font-weight-medium: 400;
+    --font-weight-bold: 800;
     --font-size: 10.5pt;
     --font-kai-size: 11.5pt;
     --line-height: 18pt;
@@ -287,8 +332,8 @@
     --font-text-jp: var(--fong-song-jp-print);
     --font-ol-cn: var(--font-text-cn);
     --font-ol-jp: var(--font-text-jp);
-    --font-ul-cn: var(--font-text-cn);
-    --font-ul-jp: var(--font-text-jp);
+    --font-ul-cn: var(--font-kai-cn);
+    --font-ul-jp: var(--font-kai-jp);
     --font-quota-cn: var(--font-kai-cn);
     --font-quota-jp: var(--font-kai-jp);
     --font-table-cn: var(--font-text-cn);
@@ -303,8 +348,77 @@
     --font-title2: 800 2rem/3rem var(--font-title-cn);
     --font-title3: 600 1.5rem/2.25rem var(--font-hei-cn);
     --font-title4: 600 1.2rem/1.8rem var(--font-kai-cn);
-    --font-title5: 500 1rem/1.5rem var(--font-kai-cn);
-    --font-title6: 500 1rem/1.5rem var(--font-kai-cn);
+    --font-title5: 500 1rem/1.5rem var(--font-fangsong);
+    --font-title6: 500 1rem/1.5rem var(--font-fangsong);
+  }
+}
+
+@media print {
+  @page {
+
+    //通过size来控制打印大小，可选值为任意的尺寸组合或者固定的页面尺寸。例如，size:8in 11in(width*height);size:a4 landscape;size:a4 portrait
+    // for a4
+
+    size: A4;
+    bleed: 3mm;
+    counter-reset: footnote;
+
+    @prince-overlay {
+      color: rgba(0, 0, 0, 0.015);
+      content: "商无辛";
+      font-size: 10pt;
+      font-family: var(--font-hei-cn);
+      vertical-align: top;
+    }
+
+    @footnotes {
+      padding-top: 10pt;
+      border-clip: 10rem;
+      border-top: 0.6pt solid var(--theme-color-4-weak);
+    }
+  }
+
+  @page:right {
+    margin: 15mm 40mm 15mm 20mm;
+    font-family: var(--font-fangsong);
+
+    @top-right {
+      margin: 12pt 0;
+      padding: 0;
+      font-size: 9pt;
+      color: #666;
+      border-bottom: .25pt solid #666;
+      width: 50%;
+      content: string(chapter);
+    }
+
+    @bottom-right {
+      margin: 6pt 0;
+      content: "· "counter(page) " / "counter(pages) " ·";
+      font-family: var(--font-text-cn);
+      font-size: 9pt;
+    }
+  }
+
+  @page:left {
+    margin: 15mm 20mm 15mm 40mm;
+    font-family: var(--font-fangsong);
+
+    @top-left {
+      margin: 12pt 0;
+      border-bottom: .25pt solid #666;
+      content: string(section);
+      font-size: 9pt;
+      width: 50%;
+      color: #666;
+    }
+
+    @bottom-left {
+      margin: 6pt 0;
+      content: "· "counter(page) " / "counter(pages) " ·";
+      font-family: var(--font-text-cn);
+      font-size: 9pt;
+    }
   }
 }
 
@@ -314,6 +428,10 @@
 * {
   -webkit-font-smoothing: "auto";
   -webkit-text-stroke-width: calc(calc(40px - 1em) / 170);
+
+  @media print {
+    -webkit-text-stroke: 0px;
+  }
 }
 
 // !清楚图片后的元素浮动
@@ -325,7 +443,7 @@ p+p {
   clear: none;
 }
 
-::selection{
+::selection {
   background-color: var(--theme-color-em);
   color: #fff;
 }
@@ -338,6 +456,7 @@ html body {
   font-family: var(--font-text-cn);
   font-size: var(--font-size);
   font-weight: var(--font-weight);
+  font-variation-settings: 'wght'var(--font-weight);
   line-height: var(--line-height);
 }
 
@@ -346,71 +465,15 @@ html body {
   padding: 2rem;
 }
 
-.toc,
-.md-sidebar-toc {
+@media print {
 
-  padding: 32px 0 48px 32px !important;
-
-  h2 {
-    font-family: var(--font-toc-title);
-
-    &::before {
-      content: none;
-    }
-  }
-
-  ul,
-  ol {
-    list-style-type: upper-roman !important;
-
-    ul,
-    ol {
-      list-style-type: lower-roman !important;
-
-      ul,
-      ol {
-        list-style-type: disc !important;
-      }
-    }
-  }
-
-  a {
-    display: inline-block;
-    color: var(--color-link);
-    margin: 0.2em 0;
-    font-family: var(--font-toc);
-
-    &:hover {
-      color: var(--color-link-hover);
-    }
-  }
-
-  .toc .screen-only.list {
-    margin-top: 2em
-  }
-}
-
-.toc {
-
-  @media screen and (max-width:1200px) {
-
-    ol,
-    ul {
-      margin: 1rem auto;
-      column-count: 2;
-
-      ol,
-      ul {
-        margin: initial;
-        column-count: 1;
-      }
-    }
-  }
-
-  @media screen and (min-width:1200px) {
-
-    display: none;
-
+  html,
+  html body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-text-cn);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
   }
 }
 
@@ -428,7 +491,6 @@ html body {
   em,
   u,
   strike,
-  mark,
   del {
     padding: var(--padding-text);
   }
@@ -437,6 +499,10 @@ html body {
     background-color: var(--bg-link);
     color: var(--color-link);
     text-decoration: none;
+
+    @media print {
+      color: var(--text-color);
+    }
 
     &:hover {
       color: var(--color-link-hover);
@@ -477,6 +543,7 @@ html body {
     color: var(--color-em);
     font-family: var(--font-sem-cn);
     font-weight: var(--font-weight-medium);
+    font-variation-settings: 'wght'var(--font-weight-medium);
 
     em {
       font-family: var(--font-sem-jp);
@@ -504,9 +571,11 @@ html body {
     border-bottom: var(--border-color-3);
   }
 
-  del {
+  del,s,strike {
     color: var(--color-strike);
     background: var(--bg-strike);
+    color: white!important;
+    border-bottom: 1px solid black;
   }
 
   mark {
@@ -535,12 +604,17 @@ html body {
   }
 
   em {
-    font-family: var(--font-text-jp);
+    font-family: var(--font-quota-jp);
     font-style: normal;
+
+    @media print {
+      font-family: var(--font-text-jp);
+    }
 
     strong {
       font-family: var(--font-sem-jp);
       font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
     }
 
     i {
@@ -578,6 +652,7 @@ html body {
     &::before {
       font-family: var(--font-song-cn);
       font-weight: 900;
+      font-variation-settings: 'wght'900;
       color: var(--theme-color);
       margin-right: .5rem;
     }
@@ -626,6 +701,11 @@ html body {
   h6 {
     text-transform: capitalize;
 
+    @media print {
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
     em {
       font: var(--font-title-jp);
     }
@@ -646,6 +726,12 @@ html body {
       top: 1rem;
       width: 50%;
     }
+
+    @media print {
+      text-align: right;
+      break-before: right;
+      string-set: chapter content();
+    }
   }
 
   h2 {
@@ -655,6 +741,20 @@ html body {
     margin: var(--margin-h2);
     text-align: center;
     text-transform: capitalize;
+
+    @media print {
+      font: var(--font-title2);
+      string-set: section content();
+    }
+  }
+
+  h1,
+  h2 {
+    em {
+      @media print {
+        font-family: var(--font-song-jp) !important;
+      }
+    }
   }
 
 
@@ -668,6 +768,23 @@ html body {
     &:hover::before {
       content: "H3";
     }
+
+    em {
+      @media print {
+        font-family: var(--font-hei-jp) !important;
+      }
+    }
+  }
+
+  h1+p,
+  h2+p,
+  h3+p,
+  h4+p,
+  h5+p,
+  h6+p {
+    @media print {
+      page-break-before: avoid;
+    }
   }
 
   h4,
@@ -675,6 +792,12 @@ html body {
   h6 {
     position: relative;
     padding-left: 1rem;
+
+    em {
+      @media print {
+        font-family: var(--font-kai-jp) !important;
+      }
+    }
   }
 
   h4 {
@@ -682,6 +805,10 @@ html body {
     color: var(--color-title4);
     font: var(--font-title4);
     margin: var(--margin-h4);
+
+    @media print {
+      text-align: center;
+    }
 
     &:hover::before {
       content: "H4";
@@ -723,6 +850,7 @@ html body {
     border-radius: 5px;
     color: var(--theme-color);
     font-weight: var(--font-weight);
+    font-variation-settings: 'wght'var(--font-weight);
   }
 
   // ?为标题添加自动编号
@@ -778,14 +906,18 @@ html body {
   }
 
   p,
-  ol,
-  ul {
+  p+ol,
+  p+ul {
     margin: var(--margin-text);
     line-height: var(--line-height);
   }
 
   p {
     text-indent: 2rem;
+
+    @media print {
+      margin: var(--margin-text);
+    }
 
     //bugfix return textindent
     img {
@@ -794,7 +926,7 @@ html body {
   }
 
   // 代码块样式
-  
+
   pre,
   pre code,
   code {
@@ -814,6 +946,10 @@ html body {
     box-shadow: var(--shadow-weak);
     color: var(--color-text);
     text-shadow: none;
+
+    @media print {
+      line-height: 12pt !important;
+    }
 
     &.line-numbers {
       padding-left: 3.8rem;
@@ -839,6 +975,12 @@ html body {
     &.font-hei * {
       font-family: var(--font-hei-cn);
     }
+
+    code {
+      background-color: transparent;
+      color: var(--color-text);
+      box-shadow: none;
+    }
   }
 
   // latex
@@ -848,9 +990,19 @@ html body {
 
   /* list setting */
 
+  p+ol,
+  p+ul {
+    margin-left: 1rem;
+  }
+
+
+  blockquote>ol,
+  blockquote>ul {
+    margin: 0;
+  }
+
   ul,
   ol {
-    margin-left: 1rem;
 
     img {
       padding: 0;
@@ -877,6 +1029,11 @@ html body {
 
   ul {
     list-style: disc;
+    font-family: var(--font-ul-cn);
+
+    @media print {
+      font-weight: var(--font-weight-medium);
+    }
 
     ul {
       list-style: disclosure-closed;
@@ -887,10 +1044,20 @@ html body {
     }
 
     li {
-      font-family: var(--font-ul-cn);
 
       em {
         font-family: var(--font-ul-jp);
+      }
+    }
+
+    ol {
+      font-family: var(--font-ol-cn);
+
+      li {
+
+        em {
+          font-family: var(--font-ol-jp);
+        }
       }
     }
   }
@@ -898,6 +1065,7 @@ html body {
 
   ol {
     list-style: decimal;
+    font-family: var(--font-ol-cn);
 
     ol {
       list-style: upper-roman;
@@ -908,10 +1076,19 @@ html body {
     }
 
     li {
-      font-family: var(--font-ol-cn);
 
       em {
         font-family: var(--font-ol-jp);
+      }
+    }
+
+    ul {
+      font-family: var(--font-ul-cn);
+
+      li {
+        em {
+          font-family: var(--font-ul-jp);
+        }
       }
     }
   }
@@ -1058,16 +1235,28 @@ html body {
       border-bottom: none;
     }
 
+    strong {
+      font-family: var(--font-table-cn);
+      font-weight: var(--font-weight-bold);
+      font-variation-settings: 'wght'var(--font-weight-bold);
+    }
+
     th,
     td {
       padding: 4px 8px;
       word-break: break-all;
       border: none;
-      border-bottom: var(--border-color-1);
+      border-bottom: var(--border-table);
+
+      @media print {
+        border: none;
+        border-bottom: var(--border-table);
+        border-right: var(--border-table) !important;
+      }
     }
 
     thead tr {
-      border-top: var(--border-color-1);
+      border-top: var(--border-table);
     }
 
     tr,
@@ -1081,6 +1270,7 @@ html body {
     th {
       font-family: var(--font-thead-cn);
       font-weight: var(--font-weight-bold);
+      font-variation-settings: 'wght'var(--font-weight-bold);
       text-align: center;
       background: var(--bg-thead);
       color: var(--color-thead);
@@ -1114,6 +1304,12 @@ html body {
       //   border-bottom: 1px solid var(--theme-color-opt);
       // }
     }
+  }
+
+  figure figcaption {
+    font-family: var(--font-fangsong);
+    text-align: center;
+    font-size: small;
   }
 
   hr {
@@ -1172,8 +1368,20 @@ html body {
     padding: 1rem;
 
     strong {
-      font: var(--font-quote);
-      font-size: var(--kai-size);
+      font-family: "Yozai", var(--font-song-cn);
+      font-weight: var(--font-weight-bold);
+      font-variation-settings: 'wght'var(--font-weight-medium);
+    }
+
+    em {
+      font-family: var(--font-kai-jp);
+    }
+
+    em strong,
+    strong em {
+      font-family: var(--font-kai-jp);
+      font-weight: var(--font-weight-bold);
+      font-variation-settings: 'wght'var(--font-weight-bold);
     }
 
     h1,
@@ -1209,7 +1417,8 @@ html body {
     h6 {
       font-family: var(--font-mono);
       font-size: x-large;
-      font-weight: 400;
+      font-weight: var(--font-weight);
+      font-variation-settings: 'wght'var(--font-weight);
 
       &:before {
         display: inline-block;
@@ -1232,21 +1441,19 @@ html body {
 
     ol,
     ul {
-      margin-left: 2rem;
+      li {
+        font-family: var(--font-quota-cn);
+
+        em {
+          font-family: var(--font-quota-jp);
+        }
+      }
 
       ol,
       ul {
         margin-left: 1rem;
         padding-left: 1.2rem;
       }
-
-      li {
-        font-family: var(--font-quota-cn);
-      }
-    }
-
-    em {
-      font-family: var(--font-quota-jp) !important;
     }
   }
 
@@ -1258,9 +1465,14 @@ html body {
     border-radius: 5px;
     box-shadow: var(--shadow-base);
 
+    @media print {
+      display: none;
+    }
+
     summary {
       font: var(--font-title5);
-      font-weight: 600;
+      font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
     }
 
     blockquote {
@@ -1269,7 +1481,448 @@ html body {
       border-radius: 8px;
     }
   }
+}
 
+// 特别设定
+
+@media print {
+  h1::after {
+    display: inline-block;
+    top: 2rem;
+    right: -50%;
+  }
+
+  ul {
+    li {
+      &::marker {
+        content: "‣";
+        font-family: var(--font-hei-cn);
+        font-size: small;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+//b5 
+/*
+@media print {
+
+  :root {
+    --font-title-cn: var(--font-song-cn);
+    --font-title-jp: var(--font-song-jp);
+    --text-font-cn: var(--font-song-cn);
+    --text-font-jp: var(--font-song-jp);
+    --ol-font-cn: var(--font-text-cn);
+    --ol-font-jp: var(--font-text-jp);
+    --ul-font-cn: var(--font-text-cn);
+    --ul-font-jp: var(--font-song-jp);
+    --font-size: 9pt;
+    --font-kai-size: 10pt;
+    --line-height: 15pt;
+    --margin-h1: 1rem auto 1.5rem;
+    --margin-h2: 1rem auto 1.5rem;
+    --font-weight: 400;
+  }
+
+  @page {
+    size: 12cm 15cm;
+    padding: 0;
+    bleed: 3mm;
+  }
+
+  @page:right {
+    margin: 10mm 8mm 10mm 15mm;
+
+    @top-right {
+      color: transparent;
+      border-bottom: none;
+    }
+  }
+
+  @page:left {
+    margin: 10mm 15mm 10mm 8mm;
+
+    @top-left {
+      color: transparent;
+      border-bottom: none;
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-text-cn) !important;
+    font-size: var(--font-size) !important;
+  }
+
+  h1 {
+    text-align: center;
+    margin: var(--margin-h1) !important;
+
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid var(--theme-color);
+      position: relative;
+      top: .5rem;
+      left: 25%;
+      width: 50%;
+    }
+  }
+
+  h2 {
+    padding: 1rem 4px;
+    margin: var(--margin-h2);
+    font: 800 12pt/24pt var(--font-hei-cn)!important;
+    background-color: var(--theme-color)!important;
+    color: #fff!important;
+  }
+
+  ul li,
+  ol li {
+    margin-left: 0rem;
+  }
+
+  blockquote {
+    padding: 0 !important;
+  }
+
+  .fn {
+    font-size: 7pt !important;
+  }
+}
+*/
+
+// **********
+// ?目录及打印目录
+// **********
+
+.toc {
+
+  padding: 32px 0 48px 32px !important;
+
+  @media screen and (min-width:1200px) {
+    display: none;
+  }
+
+  h2 {
+    font-family: var(--font-toc-title);
+
+    &::before {
+      content: none;
+    }
+  }
+
+  ul,
+  ol {
+    list-style-type: upper-roman !important;
+
+    @media screen and (max-width:1200px) {
+      margin: 1rem auto;
+      column-count: 2;
+    }
+
+    ul,
+    ol {
+      list-style-type: lower-roman !important;
+
+      @media screen and (max-width:1200px) {
+        margin: initial;
+        column-count: 1;
+      }
+
+      ul,
+      ol {
+        list-style-type: disc !important;
+      }
+    }
+  }
+
+  a {
+    display: inline-block;
+    color: var(--color-link);
+    margin: 0.2em 0;
+    font-family: var(--font-toc);
+
+    &:hover {
+      color: var(--color-link-hover);
+    }
+  }
+
+  .toc .screen-only.list {
+    margin-top: 2em
+  }
+}
+
+@media print {
+  .toc {
+
+    h2 {
+      padding: 15mm 0 15mm;
+      font: italic 300 2.5rem var(--font-toc-title) !important;
+      letter-spacing: 0.2em;
+      text-transform: capitalize;
+
+      &:after {
+        display: block;
+        content: "";
+        width: 15mm;
+        height: 1.5pt;
+        border-top: 0.1pt solid black;
+        margin: 5mm auto 0;
+      }
+    }
+
+    ul:first-of-type,
+    ol:first-of-type {
+      list-style-type: lower-roman;
+    }
+
+    ol,
+    ul {
+      list-style: lower-roman;
+
+      li {
+        padding: 4px;
+
+        &::marker {
+          content: "∫";
+        }
+
+        li {
+          &::marker {
+            content: "∬";
+          }
+
+          li {
+            &::marker {
+              content: "∯";
+            }
+          }
+        }
+      }
+    }
+
+    a {
+      text-transform: capitalize;
+      border-bottom: none;
+      color: var(--color-text) !important;
+      font-family: var(--font-toc);
+
+      &::after {
+        content: leader('.') target-counter(attr(href), page);
+        text-align: right;
+      }
+    }
+
+    .head {
+      display: table-header-group;
+
+      div {
+        display: table-cell;
+        text-align: right
+      }
+    }
+  }
+}
+
+// markdown footnote
+
+.footnote-ref a,
+blockquote .footnote-ref a {
+  font: var(--font-code) !important;
+}
+
+blockquote *:not(.footnote-ref) {
+  @media print {
+    font-size: var(--kai-size);
+  }
+}
+
+.fn {
+  font-family: var(--font-fangsong) !important;
+  font-size: 0.65rem;
+  border-left: var(--border-base);
+  border-color: var(--theme-color);
+  border-width: var(--border-width-bold);
+  margin-left: 4px;
+  padding-left: 4px;
+
+
+  em {
+    font-family: var(--font-fangsong-jp) !important;
+  }
+}
+
+@media print {
+  .fn {
+    float: footnote;
+    line-height: 14pt;
+    counter-increment: footnote;
+    font-family: var(--font-fangsong);
+    font-size: 9pt !important;
+    padding-left: -4px;
+    border-left: none !important;
+    text-indent: 0;
+
+    &::footnote-call {
+      content: "["counter(footnote) "]";
+      font-size: 6pt;
+      vertical-align: super;
+      line-height: inherit;
+    }
+
+    &::footnote-marker {
+      font-weight: normal;
+    }
+  }
+}
+
+// 错题集
+
+div.choice {
+  padding: 1rem 4px;
+  border-top: var(--window-borderb);
+  border-bottom: var(--window-borderb);
+
+  h1,
+  h2,
+  h3 {
+    display: inline-block;
+    font-family: "DFPRareBook", "AppleMyungjo", "Apple Symbols", serif;
+    font-size: 1.2rem;
+    padding: 6px 8px;
+    margin: 4px auto 1rem;
+    line-height: 1rem;
+    text-align: center;
+    background-color: var(--theme-color);
+    color: whitesmoke;
+    border-radius: 15px;
+    min-width: 3rem;
+  }
+
+  h3 {
+    font-size: 0.8rem;
+    padding: 4px 6px;
+    background-color: var(--theme-color-3);
+  }
+
+  hr {
+    color: #41b349;
+    height: 0;
+    border: 1px dashed;
+    margin: 4px;
+  }
+
+  hr:before,
+  hr:after {
+    content: '';
+    display: none;
+  }
+}
+
+// 古籍设定
+
+.old_book {
+  writing-mode: vertical-rl;
+  height: 50rem;
+
+  * {
+    font-family: "ShinshuSeitenKaisho", "TH-Khaai-PPO", "tw-kai" !important;
+    font-size: 26pt;
+    line-height: 52pt !important;
+  }
+
+  p {
+    margin-top: 5rem;
+  }
+}
+
+// 分列设定
+
+.col2 {
+  display: flex;
+  columns: 2;
+
+  .test {
+    width: 100%;
+
+    @media print {
+      font-family: var(--font-text-jp);
+    }
+
+    ul,
+    ol {
+      margin-left: 0;
+    }
+
+    ul {
+      list-style: upper-latin;
+    }
+
+    li {
+      padding-left: 4px;
+
+      @media print {
+        font-family: var(--font-text-jp);
+      }
+    }
+
+    li::marker {
+      content: initial;
+      font-family: var(--font-text-cn);
+      list-style-type: upper-latin;
+    }
+  }
+
+  .test:not(:first-child) {
+    border-left: var(--border-base);
+    margin-left: 1rem;
+  }
+
+  blockquote {
+    width: 48%;
+    border-left: none;
+
+    blockquote {
+      width: initial;
+      border-left: var(--border-base);
+      border-color: var(--theme-color);
+      border-width: var(--border-width-bold);
+    }
+  }
+}
+
+// 字体更改
+
+.markdown-preview.markdown-preview {
+
+  .jp.song *{
+    font-family: var(--font-song-jp);
+  }
+
+  .jp.hei *{
+    font-family: var(--font-hei-jp);
+  }
+
+  .jp.kai *{
+    font-family: var(--font-kai-jp);
+    font-size: var(--font-kai-size);
+  }
+
+  .cn.kai *{
+    font-family: var(--font-kai-cn);
+    font-size: var(--font-kai-size);
+
+    em {
+      font-family: var(--font-kai-jp);
+    }
+  }
+}
+
+.markdown-preview.markdown-preview {
   .admonition {
     padding: 0;
     padding-left: 1rem;
@@ -1371,50 +2024,22 @@ html body {
     border-color: rgba(158, 158, 158, .8);
   }
 
-  // markdown footnote
+}
 
-  .footnote-ref a,
-  blockquote .footnote-ref a {
-    font: var(--font-code) !important;
-  }
-
-  .fn {
-    font-family: var(--font-fangsong) !important;
-    font-size: 0.65rem;
-    border-left: var(--border-base);
-    border-color: var(--theme-color);
-    border-width: var(--border-width-bold);
-    margin-left: 4px;
-    padding-left: 4px;
-
-    em {
-      font-family: var(--font-fangsong-jp) !important;
-    }
-  }
-
-
-  div.jp.song * {
-    font-family: var(--fong-song-jp-print);
-  }
-
-  div.jp.hei * {
-    font-family: var(--font-hei-jp);
-  }
-
-  div.jp.kai * {
-    font-family: var(--font-kai-jp);
-    font-size: var(--font-kai-size);
-  }
-
-  // 习题集
-
-  div.ptb * {
+// 习题集
+.markdown-preview.markdown-preview {
+  div.ptb {
     font-family: var(--font-text-jp);
+
+    table {
+      table-layout: fixed;
+      font-family: inherit;
+    }
 
     tr,
     th,
     td {
-      border: none;
+      border: none !important;
       padding: 0;
     }
 
@@ -1425,535 +2050,23 @@ html body {
     }
   }
 
-  // 全文更改为楷体
-
-  div.intro * {
-    font-family: var(--font-kai-cn);
-  }
-
-  div.intro em,
-  div.intro em * {
-    font-family: var(--font-kai-jp);
-    font-size: var(--kai-size);
-  }
-
-  .col2 {
-    display: flex;
-
-    .test {
-      ul {
-        list-style: upper-latin;
-      }
-
-      li {
-        padding-left: 4px;
-      }
-    }
-
-    blockquote {
-      width: 48%;
-      border-left: none;
-
-      blockquote {
-        width: initial;
-        border-left: var(--border-base);
-        border-color: var(--theme-color);
-        border-width: var(--border-width-bold);
-      }
-    }
-  }
-
-  .old_book {
-    writing-mode: vertical-rl;
-    height: 50rem;
-
-    * {
-      font-family: "ShinshuSeitenKaisho", "TH-Khaai-PPO", "tw-kai" !important;
-      font-size: 26pt;
-      line-height: 52pt !important;
-    }
-
-    p {
-      margin-top: 5rem;
-    }
-  }
-
-  // 错题集
-
-  div.choice {
-    padding: 1rem 4px;
-    border-top: var(--window-borderb);
-    border-bottom: var(--window-borderb);
-
-    h1,
-    h2,
-    h3 {
-      display: inline-block;
-      font-family: "DFPRareBook", "AppleMyungjo", "Apple Symbols", serif;
-      font-size: 1.2rem;
-      padding: 6px 8px;
-      margin: 4px auto 1rem;
-      line-height: 1rem;
-      text-align: center;
-      background-color: var(--theme-color);
-      color: whitesmoke;
-      border-radius: 15px;
-      min-width: 3rem;
-    }
-
-    h3 {
-      font-size: 0.8rem;
-      padding: 4px 6px;
-      background-color: var(--theme-color-3);
-    }
-
-    hr {
-      color: #41b349;
-      height: 0;
-      border: 1px dashed;
-      margin: 4px;
-    }
-
-    hr:before,
-    hr:after {
-      content: '';
-      display: none;
-    }
-  }
-}
-
-@media print {
-
-  @page {
-
-    //通过size来控制打印大小，可选值为任意的尺寸组合或者固定的页面尺寸。例如，size:8in 11in(width*height);size:a4 landscape;size:a4 portrait
-    // for a4
-
-    size: A4;
-    bleed: 3mm;
-    counter-reset: footnote;
-
-    @prince-overlay {
-      color: rgba(0, 0, 0, 0.015);
-      content: "商无辛";
-      font-size: 10pt;
-      font-family: var(--font-hei-cn);
-      vertical-align: top;
-    }
-
-    @footnotes {
-      padding-top: 10pt;
-      border-clip: 10rem;
-      border-top: 0.6pt solid var(--theme-color-4-weak);
-    }
-  }
-
-  @page:right {
-    margin: 15mm 40mm 15mm 20mm;
-    font-family: var(--font-fangsong);
-
-    @top-right {
-      margin: 12pt 0;
-      padding: 0;
-      font-size: 9pt;
-      color: #666;
-      border-bottom: .25pt solid #666;
-      width: 50%;
-      content: string(chapter);
-    }
-
-    @bottom-right {
-      margin: 6pt 0;
-      content: "· "counter(page) " / "counter(pages) " ·";
-      font-family: optima, "Latin Modern Mono", "AppleMyungjo", "Apple Symbols", serif;
-      font-size: 9pt;
-    }
-  }
-
-  @page:left {
-    margin: 15mm 20mm 15mm 40mm;
-    font-family: var(--font-fangsong);
-
-    @top-left {
-      margin: 12pt 0;
-      border-bottom: .25pt solid #666;
-      content: string(section);
-      font-size: 9pt;
-      width: 50%;
-      color: #666;
-    }
-
-    @bottom-left {
-      margin: 6pt 0;
-      content: "· "counter(page) " / "counter(pages) " ·";
-      font-family: optima;
-      font-size: 9pt;
-    }
-  }
-
-  body * {
-    -webkit-text-stroke: 0px;
-  }
-
-  html,
-  html body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-text-cn);
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-  }
-
-  strong {
-    font-weight: var(--font-weight);
-  }
-
-  em {
+    div.ptbb {
     font-family: var(--font-text-jp);
-  }
 
-  h1 {
-    text-align: right;
-    break-before: right;
-    string-set: chapter content();
-
-    &::after {
-      display: inline-block;
-      top: 2rem;
-      right: -50%;
-    }
-  }
-
-  h2 {
-    font: var(--font-title2);
-    string-set: section content();
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    page-break-after: avoid;
-    page-break-inside: avoid;
-  }
-
-  h4 {
-    font-size: 14pt;
-    text-align: center;
-  }
-
-  h1+p,
-  h2+p,
-  h3+p {
-    page-break-before: avoid;
-  }
-
-  h1,
-  h2 {
-    em {
-      font-family: var(--font-song-jp) !important;
-    }
-  }
-
-  h3 {
-    em {
-      font-family: var(--font-hei-jp) !important;
-    }
-  }
-
-  h4,
-  h5,
-  h6 {
-    em {
-      font-family: var(--font-kai-jp) !important;
-    }
-  }
-
-  p {
-    margin: var(--margin-text);
-  }
-
-  blockquote *:not(.footnote-ref) {
-    font-size: var(--kai-size);
-  }
-
-  // for a4 list
-  ul li,
-  ol li {
-    margin-left: 1rem;
-  }
-
-  ul {
-    li {
-      &::marker {
-        content: "‣";
-        font-family: var(--font-hei-cn);
-        font-size: small;
-        vertical-align: middle;
-      }
-    }
-  }
-
-  a {
-    color: var(--text-color);
-
-    &::after {
-      content: "";
-    }
-  }
-
-  pre {
-    line-height: 12pt !important;
-
-    code {
-      background-color: var(--theme-color-light) !important;
-      color: var(--theme-color-4) !important;
-    }
-  }
-
-  details {
-    display: none;
-  }
-
-  /* TOC */
-
-  .toc {
-
-    h2 {
-      padding: 15mm 0 15mm;
-      font: italic 300 2.5rem var(--font-toc-title) !important;
-      letter-spacing: 0.2em;
-      text-transform: capitalize;
-
-      &:after {
-        display: block;
-        content: "";
-        width: 15mm;
-        height: 1.5pt;
-        border-top: 0.1pt solid black;
-        margin: 5mm auto 0;
-      }
-    }
-
-    ul:first-of-type,
-    ol:first-of-type {
-      list-style-type: lower-roman;
-    }
-
-    ol,
-    ul {
-      list-style: lower-roman;
-
-      li {
-        padding: 4px;
-
-        &::marker {
-          content: "∫";
-        }
-
-        li {
-          &::marker {
-            content: "∬";
-          }
-
-          li {
-            &::marker {
-              content: "∯";
-            }
-          }
-        }
-      }
-    }
-
-    a {
-      text-transform: capitalize;
-      border-bottom: none;
-      color: var(--color-text) !important;
-      font-family: var(--font-toc);
-
-      &::after {
-        content: leader('.') target-counter(attr(href), page);
-        text-align: right;
-      }
-    }
-
-    // span {
-    //   display: table-cell;
-    // }
-
-    // span:after {
-    //   content: leader('.  ');
-    // }
-
-    .head {
-      display: table-header-group;
-
-      div {
-        display: table-cell;
-        text-align: right
-      }
-    }
-  }
-
-  .fn {
-    float: footnote;
-    line-height: 14pt;
-    counter-increment: footnote;
-    font-family: var(--font-fangsong);
-    font-size: 9pt !important;
-    padding-left: -4px;
-    border-left: none !important;
-    text-indent: 0;
-
-    &::footnote-call {
-      content: "["counter(footnote) "]";
-      font-size: 9pt;
-      vertical-align: super;
-      line-height: inherit;
-    }
-
-    &::footnote-marker {
-      font-weight: normal;
-    }
-  }
-
-  .col2 {
-    display: flex;
-    columns: 2;
-
-    .test:not(:first-child) {
-      border-left: var(--border-base);
-      margin-left: 1rem;
-    }
-
-    .test {
-      width: 100%;
+    table *{
       font-family: var(--font-text-jp);
-
-      ol,
-      ul {
-        margin-left: 0;
-
-        li {
-          font-family: var(--font-text-jp);
-        }
-      }
-
-      ul {
-        list-style: upper-latin;
-
-        li::marker {
-          content: initial;
-          font-family: var(--font-text-cn);
-          list-style-type: upper-latin;
-        }
-      }
-
-      li {
-        padding-left: 4px;
-      }
-    }
-  }
-
-  table {
-
-    th,
-    td {
-      border: none;
-      border-bottom: var(--border-color-1);
-      border-right: var(--border-color-1) !important;
     }
   }
 }
 
-
-//b5 
-/*
-@media print {
-
-  :root {
-    --font-title-cn: var(--font-song-cn);
-    --font-title-jp: var(--font-song-jp);
-    --text-font-cn: var(--font-song-cn);
-    --text-font-jp: var(--font-song-jp);
-    --ol-font-cn: var(--font-text-cn);
-    --ol-font-jp: var(--font-text-jp);
-    --ul-font-cn: var(--font-text-cn);
-    --ul-font-jp: var(--font-song-jp);
-    --font-size: 9pt;
-    --font-kai-size: 10pt;
-    --line-height: 15pt;
-    --margin-h1: 1rem auto 1.5rem;
-    --margin-h2: 1rem auto 1.5rem;
-    --font-weight: 400;
-  }
-
-  @page {
-    size: 12cm 15cm;
-    padding: 0;
-    bleed: 3mm;
-  }
-
-  @page:right {
-    margin: 10mm 8mm 10mm 15mm;
-
-    @top-right {
-      color: transparent;
-      border-bottom: none;
-    }
-  }
-
-  @page:left {
-    margin: 10mm 15mm 10mm 8mm;
-
-    @top-left {
-      color: transparent;
-      border-bottom: none;
-    }
-  }
-
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-text-cn) !important;
-    font-size: var(--font-size) !important;
-  }
-
-  h1 {
-    text-align: center;
-    margin: var(--margin-h1) !important;
-
-    &::after {
-      content: "";
-      display: block;
-      border-bottom: 1px solid var(--theme-color);
-      position: relative;
-      top: .5rem;
-      left: 25%;
-      width: 50%;
-    }
-  }
-
-  h2 {
-    padding: 1rem 4px;
-    margin: var(--margin-h2);
-    font: 800 12pt/24pt var(--font-hei-cn)!important;
-    background-color: var(--theme-color)!important;
-    color: #fff!important;
-  }
-
-  ul li,
-  ol li {
-    margin-left: 0rem;
-  }
-
+.comment {
   blockquote {
-    padding: 0 !important;
-  }
 
-  .fn {
-    font-size: 7pt !important;
+    ul,
+    ol {
+      li {
+        font-family: inherit;
+      }
+    }
   }
 }
-*/

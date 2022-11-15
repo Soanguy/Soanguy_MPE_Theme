@@ -5,22 +5,30 @@
 // i：内容和页码引用：<a class="ref" href="#1-1-1"></a>。【替换 href 内容为标题名称】
 // 如何插入目录：使用 <div class="toc"><h2>title</h2>插入你的目录</div>
 
+// 为什么不显示页眉页脚？
+// 需要预先为文章设定所属章节，例如：<div class="unidoc"></div>
+
 // 代碼復用區域
 
+// 和頁面邊距相關的設置，默認設定的是左右頁邊距不同
+
 .page_left_style_base {
-  margin: 20mm;
-  margin: 15mm 20mm 15mm 40mm;
+  margin: 15mm 20mm 10mm 40mm;
   font-family: var(--font-fangsong);
 }
 
 .page_right_style_base {
-  margin: 20mm;
-  margin: 15mm 40mm 15mm 20mm;
+  margin: 15mm 40mm 10mm 20mm;
+  font-family: var(--font-fangsong);
+}
+
+.page_vertical_margin{
+  margin: 12mm!important;
   font-family: var(--font-fangsong);
 }
 
 .page_left_style_yield_numbering {
-  margin: 6pt 0;
+  margin: 0mm 0 5mm;
   content: "· "counter(page, decimal) " / "counter(pages) " ·";
   font-family: var(--font-text-cn);
   font-size: 9pt;
@@ -30,9 +38,23 @@
   .page_left_style_yield_numbering();
 }
 
+.page_vertical_left_numbering {
+  margin: 0 5mm;
+  content: "· "counter(page, decimal) " / "counter(pages) " ·";
+  font-family: var(--font-text-cn);
+  font-size: 9pt;
+  /* Rotate the content */
+  writing-mode: vertical-rl;
+  /* Optionally, you can force the table cell's content not to wrap */
+  white-space: nowrap;
+}
+
+.page_vertical_right_numbering{
+  .page_vertical_left_numbering
+}
+
 .page_left_style_yield_chapter(@string: section) {
-  margin: 12pt 0;
-  padding: 0;
+  margin: 5mm 0 3mm;
   font-size: 9pt;
   color: #666;
   border-bottom: .25pt solid #666;
@@ -42,6 +64,21 @@
 
 .page_right_style_yield_chapter {
   .page_left_style_yield_chapter(@string: chapter);
+}
+
+.page_vertical_left_chapter(@string: section) {
+  margin: 0 5mm;
+  font-size: 9pt;
+  color: #666;
+  content: string(@string);
+  /* Rotate the content */
+  writing-mode: vertical-rl;
+  /* Optionally, you can force the table cell's content not to wrap */
+  white-space: nowrap;
+}
+
+.page_vertical_right_chapter {
+  .page_vertical_left_chapter(@string: chapter);
 }
 
 .page_left_style_pagination {
@@ -65,6 +102,30 @@
 
   @bottom-right {
     .page_right_style_yield_numbering();
+  }
+}
+
+.page_vertical_left_pagination {
+  .page_vertical_margin();
+
+  @left-top {
+    .page_vertical_left_chapter();
+  }
+
+  @left-bottom {
+    .page_vertical_left_numbering();
+  }
+}
+
+.page_vertical_right_pagination {
+  .page_vertical_margin();
+
+  @right-top {
+    .page_vertical_right_chapter();
+  }
+
+  @right-bottom {
+    .page_vertical_right_numbering();
   }
 }
 
@@ -92,7 +153,6 @@
 
 :root {
 
-
   //其他颜色:
   --tholor-1: #f9a647;
   --tholor-1: #053488;
@@ -107,9 +167,6 @@
   --tholor-1: #fbfbfc;
   --tholor-1: #2d709c;
   --tholor-1: #f5ece6;
-
-
-
 
   // *************
   // ?深色主题色设定 1--深蓝色为主
@@ -217,7 +274,6 @@
 
   --bg-quota: var(--theme-color-4);
   --bg-code: hsl(210, 75%, 13%);
-  ;
   --bg-codeblock: var(--theme-color-4);
   --bg-link: none;
   --bg-strong: none;
@@ -295,7 +351,7 @@
   --font-hei-cn: "Avenir Next", var(--font-sans-fallback), "Source Han Sans TC", var(--font-hei-fallback);
   --font-hei-jp: "Avenir Next", var(--font-sans-fallback), "Kozuka Gothic Pr6N", "YuGothic", var(--font-hei-jp-fallback);
 
-  --font-song-cn: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif", var(--font-song-fallback);
+  --font-song-cn: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif TC", var(--font-song-fallback);
   --font-song-jp: "Latin Modern Roman", var(--font-serif-fallback), "Kozuka Mincho Pr6N", "YuMincho", var(--font-song-jp-fallback);
 
   --fong-song-cn-print: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif TC", "TH-Tshyn-P0", "方正新书宋_GBK", "FZNewShusong-Z10", "STSongti", "Songti TC", "TW-Sung", var(--font-song-fallback);
@@ -318,7 +374,7 @@
   --font-pearl-cn: var(--font-emoji-fallback), "JiangChengYuanTi", "台湾圆体", "AppleGothic", "Apple Symbols", sans-serif;
   --font-pearl-jp: var(--font-emoji-fallback), "JiangChengYuanTi", "台湾圆体", "AppleGothic", "Apple Symbols", sans-serif;
 
-  --font-Katex: KaTeX_Main, "Latin Modern Math", "Latin Modern Roman", "STIX Two Math", "STIX Two Text", "STKaiti", "Kaiti TC", "TH-Khaai-PP0", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", "AppleMyungjo", "Apple Symbols", serif;
+  --font-Katex: KaTeX_Main, "Latin Modern Math", "Latin Modern Roman", "STIX Two Math", "STIX Two Text","TH-Khaai-PP0", "STKaiti", "Kaiti TC", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", "AppleMyungjo", "Apple Symbols", serif;
 
   // *************
   // ?显示字体设定
@@ -406,7 +462,7 @@
     --margin-h1: 10rem auto 5rem;
 
     --font-weight: 300;
-    --font-weight-medium: 500;
+    --font-weight-medium: 400;
     --font-weight-bold: 800;
     --font-size: 11pt;
     --font-table-size: 9.5pt;
@@ -469,7 +525,7 @@
     counter-reset: footnote;
 
     @prince-overlay {
-      color: rgba(0, 0, 0, 0.015);
+      color: rgba(0, 0, 0, 0.02);
       content: "商无辛";
       font-size: 10pt;
       font-family: var(--font-hei-cn);
@@ -483,17 +539,17 @@
     }
   }
 
-  @page:right {
-    margin: 20mm;
-    margin: 15mm 40mm 15mm 20mm;
-    font-family: var(--font-fangsong);
-  }
+  // @page:right {
+  //   margin: 20mm;
+  //   margin: 15mm 40mm 15mm 20mm;
+  //   font-family: var(--font-fangsong);
+  // }
 
-  @page:left {
-    margin: 20mm;
-    margin: 15mm 20mm 15mm 40mm;
-    font-family: var(--font-fangsong);
-  }
+  // @page:left {
+  //   margin: 20mm;
+  //   margin: 15mm 20mm 15mm 40mm;
+  //   font-family: var(--font-fangsong);
+  // }
 }
 
 
@@ -534,79 +590,6 @@
 // 此处 A5 纸张样式设计结束
 
 // 此處將創建新的頁面組，從而重啟頁碼排序。
-
-
-// 此處為代碼備份
-// .documents {
-//   page: documents;
-//   break-before: right;
-//   -prince-page-group: start;
-//   counter-reset: page 1;
-// }
-
-// @page documents:right {
-//   margin: 20mm;
-//   margin: 15mm 40mm 15mm 20mm;
-//   font-family: var(--font-fangsong);
-
-//   @top-right {
-//     margin: 12pt 0;
-//     padding: 0;
-//     font-size: 9pt;
-//     color: #666;
-//     border-bottom: .25pt solid #666;
-//     width: 50%;
-//     content: string(chapter);
-//   }
-
-//   @bottom-right {
-//     margin: 6pt 0;
-//     content: "· "counter(page) " / "counter(pages) " ·";
-//     font-family: var(--font-text-cn);
-//     font-size: 9pt;
-//   }
-// }
-
-// @page documents:left {
-//   margin: 20mm;
-//   margin: 15mm 20mm 15mm 40mm;
-//   font-family: var(--font-fangsong);
-
-//   @top-left {
-//     margin: 12pt 0;
-//     border-bottom: .25pt solid #666;
-//     content: string(section);
-//     font-size: 9pt;
-//     width: 50%;
-//     color: #666;
-//   }
-
-//   @bottom-left {
-//     margin: 6pt 0;
-//     content: "· "counter(page) " / "counter(pages) " ·";
-//     font-family: var(--font-text-cn);
-//     font-size: 9pt;
-//   }
-// }
-
-// @page documents:first {
-//   @top-left{
-//     content: normal;
-//   }
-//   @top-right {
-//     content: normal;
-//   }
-
-//   @bottom-left {
-//     content: normal;
-//   }
-//   @bottom-right {
-//     content: normal;
-//   }
-// }
-
-
-// 此處可根據 page 屬性自行創建相關頁面組
 .documents {
   page: documents;
   break-before: right;
@@ -788,6 +771,78 @@
   .page_docs_first();
 }
 
+div.vertical_contents {
+  page: vertical_contents;
+}
+
+@page vertical_contents {
+  -prince-rotate-body: landscape;
+  // -prince-shrink-to-fit: auto;
+}
+
+@page vertical_contents:right {
+  .page_vertical_right_pagination();
+}
+
+@page vertical_contents:left {
+  .page_vertical_left_pagination();
+}
+
+// 清除空白页的页眉，仅保留页码
+
+@page cover:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+
+@page preface:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page tocall:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page documents:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page unidoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page bidoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page tridoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page quadrdoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page qunitdoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page sexdoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page septdoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page octdoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
+@page nondoc:blank {
+  @top-left {content: normal;}
+  @top-right {content: normal;}
+}
 
 // 字体清晰设定
 // !Windows 10 以上系统请注释掉.
@@ -825,23 +880,19 @@ html body {
   font-weight: var(--font-weight);
   font-variation-settings: 'wght'var(--font-weight);
   line-height: var(--line-height);
-}
 
-html body {
-  margin: 2rem auto;
-  padding: 2rem;
-}
-
-@media print {
-
-  html,
-  html body {
+  @media print {
     margin: 0;
     padding: 0;
     font-family: var(--font-text-cn);
     font-size: var(--font-size);
     line-height: var(--line-height);
   }
+}
+
+html body {
+  margin: 2rem auto;
+  padding: 2rem;
 }
 
 .markdown-preview.markdown-preview {
@@ -875,28 +926,35 @@ html body {
       color: var(--color-link-hover);
       border-bottom: var(--border-color-1);
     }
-  }
 
-  // 引用样式
-  a {
+    //以下內容和引用相關，僅在打印時顯示。默認在 html 格式下顯示為黑塊
 
     &.ref,
     &.figref,
     &.tableref {
       font-family: var(--font-footnote);
       color: var(--color-text);
+      background-color: #000;
+      padding: 0px 8px;
+      text-decoration: wavy;
+
+      @media print{
+        background-color: transparent;
+        padding: 0px;
+
+      }
     }
 
     &.ref::after {
-      content: "【参见："target-content(attr(href)) ".第 "target-counter(attr(href), page) " 页】";
+      content: "【参见："target-content(attr(href)) ".p"target-counter(attr(href), page) "】";
     }
 
     &.figref {
-      content: "【参见表："target-content(attr(href)) ".第 "target-counter(attr(href), figure) "页】";
+      content: "【参见表："target-content(attr(href)) ".p"target-counter(attr(href), figure) "】";
     }
 
     &.tableref {
-      content: "【参见表："target-content(attr(href)) ".第 "target-counter(attr(href), figure) "页】";
+      content: "【参见表："target-content(attr(href)) ".p"target-counter(attr(href), figure) "】";
     }
   }
 
@@ -910,6 +968,8 @@ html body {
       font-family: var(--font-sem-jp) !important;
     }
   }
+
+  // 可以顯示為斜體，建議只用於英文
 
   i {
     font-family: var(--font-text-cn);
@@ -1259,6 +1319,8 @@ html body {
     color: var(--theme-color);
   }
 
+  // 塊元素設定
+
   blockquote,
   pre,
   table {
@@ -1277,6 +1339,7 @@ html body {
 
   p {
     text-indent: 2rem;
+    text-align: justify;
 
     @media print {
       margin: var(--margin-text);
@@ -1354,12 +1417,9 @@ html body {
   /* list setting */
 
   p+ol,
-  p+ul,
-  ul,
-  ol {
+  p+ul{
     margin-left: 1rem;
   }
-
 
   blockquote>ol,
   blockquote>ul {
@@ -1368,6 +1428,7 @@ html body {
 
   ul,
   ol {
+    margin-left: 0;
 
     img {
       padding: 0;
@@ -1389,12 +1450,23 @@ html body {
       p {
         text-indent: 0rem;
       }
+
+      blockquote em {
+        font-family: var(--font-kai-jp);
+      }
     }
   }
 
   ul {
     list-style: disc;
     font-family: var(--font-ul-cn);
+
+    // li::marker {
+    //   content: "‣";
+    //   font-family: "Apple Symbols",var(--font-hei-cn);
+    //   font-size: small;
+    //   vertical-align: middle;
+    // }
 
     ul {
       list-style: disclosure-closed;
@@ -1685,6 +1757,62 @@ html body {
     }
   }
 
+  .sfont {
+    font-size: 8pt !important;
+
+    table {
+      font-size: 8pt !important;
+
+      td,
+      tr,
+      th {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+  }
+
+  .lbtable {
+
+    tr,
+    td,
+    th {
+      border: 1px solid #666 !important;
+    }
+  }
+
+  @media print {
+    .nopad+table {
+
+      td,
+      tr,
+      th {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+
+    .sfont+table {
+      font-size: 8pt !important;
+
+      td,
+      tr,
+      th {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+
+    .lbtable+table {
+
+      tr,
+      td,
+      th {
+        border: 1px solid #666 !important;
+      }
+    }
+  }
+
   figure figcaption {
     font-family: var(--font-fangsong);
     text-align: center;
@@ -1869,17 +1997,6 @@ html body {
     display: inline-block;
     top: 2rem;
     right: -50%;
-  }
-
-  ul {
-    li {
-      &::marker {
-        content: "‣";
-        font-family: var(--font-hei-cn);
-        font-size: small;
-        vertical-align: middle;
-      }
-    }
   }
 }
 
@@ -2496,6 +2613,10 @@ div.choice {
     font-size: var(--font-kai-size);
   }
 
+  .cn.song *{
+    font-family: var(--font-song-cn);
+  }
+
   .cn.kai * {
     font-family: var(--font-kai-cn);
     font-size: var(--font-kai-size);
@@ -2625,12 +2746,14 @@ div.choice {
     td {
       border: none !important;
       padding: 0;
+      @media print{
+        font-size: 10.5pt;
+      }
     }
 
     th,
     td {
       padding: 2px;
-      font-size: var(--font-size);
     }
   }
 
@@ -2640,23 +2763,12 @@ div.choice {
 
   div.ptbb+table * {
     font-family: var(--font-text-jp);
+    @media print{
+      font-size: 10.5pt;
+    }
   }
 }
 
-.sfont {
-  font-size: 8pt !important;
-}
-
-.sfont+table {
-  font-size: 8pt !important;
-
-  td,
-  tr,
-  th {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
 
 .comment {
   blockquote {

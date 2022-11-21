@@ -13,12 +13,12 @@
 // 和頁面邊距相關的設置，默認設定的是左右頁邊距不同
 
 .page_left_style_base {
-  margin: 15mm 20mm 10mm 40mm;
+  margin: 15mm 20mm 10mm 35mm;
   font-family: var(--font-fangsong);
 }
 
 .page_right_style_base {
-  margin: 15mm 40mm 10mm 20mm;
+  margin: 15mm 35mm 10mm 20mm;
   font-family: var(--font-fangsong);
 }
 
@@ -880,6 +880,8 @@ html body {
   font-weight: var(--font-weight);
   font-variation-settings: 'wght'var(--font-weight);
   line-height: var(--line-height);
+  text-align: justify;
+  -prince-text-justify: prince-cjk;
 
   @media print {
     margin: 0;
@@ -1340,6 +1342,7 @@ html body {
   p {
     text-indent: 2rem;
     text-align: justify;
+    -prince-text-justify: prince-cjk;
 
     @media print {
       margin: var(--margin-text);

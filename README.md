@@ -39,7 +39,7 @@
 1. 安装 [Prince][]
 1. 安装 [Markdown Preview Enhanced][] 插件
 1. 修改主题
-   1. 替换 style.less 文件，可以参考这个 [链接][]。
+   1. 复制 style.less 文件和 assets 文件夹到 .mume 文件夹下。可以参考这个 [链接][]。
 1. 重启软件，将 Markdown Preview Enhanced 的 **预览主题** 替换为 <i>none</i>。
 
 > + 推荐安装 [night-owl][] 主题。
@@ -82,13 +82,7 @@ Windows 系统的字体渲染和 macOS 系统的字体渲染有些许不同，�
 
 <var>2. 为什么我为图片设定了浮动和缩小，但却没有任何反应呢？</var>
 
-目前这个问题的出现应该是 MPE 插件的问题。在 macOS 上为图片设定 `alt` 属性可以正常的被渲染出来。但是在 Windows 上设定的 `alt` 属性似乎都会被省略。可以尝试修改代码中的 `alt` 为 `title`。例如：
-
-```css {.line-numbers}
-&[alt~="shadow"] --> &[title~="shadow"]
-```
-
-同时，请使用下面的语法来控制图片的显示：
+目前这个问题的出现应该是 MPE 插件的问题。请使用下面的语法来控制图片的显示：
 
 `![](./assets/Snipaste_2022-05-01_15-56-37.png "shadow")`
 
@@ -208,11 +202,11 @@ Safari 浏览器自某个版本之后，就以安全为名，禁止调用本地�
 
     - 这是默认下的日文字体：あいうえお。
     - 这是强调下的日文字体：_あいうえお_。
-
+    
     那么，我该如何使用斜体呢？
-
+    
     可以通过为文字添加`<i></i>`标签来让文字倾斜。例如：
-
+    
     - 这是默认下的中文字体：这是没有添加 i 标签的中文。
     - 这是斜体下的中文字体：<i>这是添加了 i 标签的中文</i>。
 
@@ -448,5 +442,5 @@ contents contents **contents** contents
 >
 > + contents contents
 >   + contents contents
-  
+
 </details>

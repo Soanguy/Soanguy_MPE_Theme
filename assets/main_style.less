@@ -1,0 +1,1168 @@
+// 字体清晰设定
+// !Windows 10 以上系统请注释掉.
+
+* {
+  -webkit-font-smoothing: "auto";
+  -webkit-text-stroke-width: calc(calc(40px - 1em) / 170);
+
+  @media print {
+    -webkit-text-stroke: 0px;
+  }
+}
+
+// !清楚图片后的元素浮动
+* {
+  clear: both;
+}
+
+p+p {
+  clear: none;
+}
+
+::selection {
+  background-color: var(--theme-color-em);
+  color: #fff;
+}
+
+html,
+html body {
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-body);
+  color: var(--color-text);
+  font-family: var(--font-text-cn);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  font-variation-settings: 'wght'var(--font-weight);
+  line-height: var(--line-height);
+  text-align: justify;
+  -prince-text-justify: prince-cjk;
+
+  @media print {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-text-cn);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  }
+}
+
+html body {
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.markdown-preview.markdown-preview {
+
+  code,
+  mark,
+  kbd,
+  samp,
+  tt,
+  var,
+  ins,
+  a,
+  strong,
+  em,
+  u,
+  strike,
+  del {
+    padding: var(--padding-text);
+  }
+
+  a {
+    background-color: var(--bg-link);
+    color: var(--color-link);
+    text-decoration: none;
+
+    @media print {
+      color: var(--text-color);
+    }
+
+    &:hover {
+      color: var(--color-link-hover);
+      border-bottom: var(--border-color-1);
+    }
+
+    //以下內容和引用相關，僅在打印時顯示。默認在 html 格式下顯示為黑塊
+    // 我应该如何插入相互引用：
+    // i：内容和页码引用：<a class="ref" href="#1-1-1"></a>。【替换 href 内容为标题名称】
+    // 如何插入目录：使用 <div class="toc"><h2>title</h2>插入你的目录</div>
+
+    &.ref,
+    &.figref,
+    &.tableref {
+      font-family: var(--font-footnote);
+      color: var(--color-text);
+      background-color: #000;
+      padding: 0px 8px;
+      text-decoration: wavy;
+
+      @media print {
+        background-color: transparent;
+        padding: 0px;
+
+      }
+    }
+
+    &.ref::after {
+      content: "【参见："target-content(attr(href)) ".p"target-counter(attr(href), page) "】";
+    }
+
+    &.figref {
+      content: "【参见图表："target-content(attr(href)) ".p"target-counter(attr(href), figure) "】";
+    }
+
+    &.tableref {
+      content: "【参见表："target-content(attr(href)) ".p"target-counter(attr(href), figure) "】";
+    }
+  }
+
+  strong {
+    color: var(--color-em);
+    font-family: var(--font-sem-cn);
+    font-weight: var(--font-weight-medium);
+    font-variation-settings: 'wght'var(--font-weight-medium);
+
+    em {
+      font-family: var(--font-sem-jp) !important;
+    }
+  }
+
+  // 可以顯示為斜體，建議只用於英文
+
+  i {
+    font-family: var(--font-text-cn);
+  }
+
+  code,
+  kbd {
+    background-color: var(--bg-code);
+    color: var(--color-code);
+    font: var(--font-code);
+    border-radius: 2px;
+    box-shadow: var(--shadow-weak);
+    padding: var(--padding-text);
+    border: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+  }
+
+  u {
+    text-decoration: none;
+    border-bottom: var(--border-color-3);
+  }
+
+  del,
+  s,
+  strike {
+    color: var(--color-strike);
+    background: var(--bg-strike);
+    color: white !important;
+    border-bottom: 1px solid black;
+  }
+
+  mark {
+    background: var(--bg-mark);
+    color: var(--color-mark);
+  }
+
+  ruby {
+    font-family: var(--font-kai-cn);
+    font-size: var(--kai-size);
+    ruby-position: under;
+
+    rt {
+      font-family: var(--font-kai-cn);
+      font-size: 50% !important;
+    }
+  }
+
+  samp {
+    font-family: var(--font-fangsong);
+  }
+
+  tt {
+    font-family: var(--font-lishu);
+    font-size: 1.08rem;
+  }
+
+  em {
+    font-family: var(--font-quota-jp);
+    font-style: normal;
+
+    @media print {
+      font-family: var(--font-text-jp);
+    }
+
+    strong {
+      font-family: var(--font-sem-jp) !important;
+      font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
+    }
+
+    i {
+      font-family: var(--font-text-jp);
+    }
+
+    ruby,
+    rt {
+      font-family: var(--font-kai-cn);
+      font-family: var(--font-kai-jp);
+    }
+
+    samp {
+      font-family: var(--font-fangsong-jp);
+    }
+
+    tt {
+      font-family: var(--font-lishu-jp);
+    }
+  }
+
+  ins,
+  var,
+  dfn {
+    display: block;
+    border-left: var(--border-left);
+    background-color: var(--bg-quota);
+    margin: var(--margin-block);
+    padding: .5rem;
+    text-decoration: none;
+    text-indent: .5rem;
+    font-style: normal;
+    color: var(--color-title1);
+    font-family: var(--font-text-cn);
+
+    &::before {
+      font-family: var(--font-song-cn);
+      font-weight: 900;
+      font-variation-settings: 'wght'900;
+      color: var(--theme-color);
+      margin-right: .5rem;
+    }
+  }
+
+  dfn {
+    &::before {
+      content: "☛例题：";
+    }
+  }
+
+  ins {
+    &::before {
+      content: "✪公式：";
+    }
+  }
+
+  var {
+    &::before {
+      content: "⚠️注意：";
+    }
+  }
+
+  // *************
+  // *************
+  // ?标题样式
+  // *************
+  // *************
+
+  h1 *,
+  h2 *,
+  h3 *,
+  h4 *,
+  h5 *,
+  h6 * {
+    color: var(--color-title) !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: capitalize;
+
+    @media print {
+      page-break-after: avoid;
+      page-break-inside: avoid;
+    }
+
+    em {
+      font: var(--font-title-jp);
+    }
+  }
+
+  h1 {
+    background: var(--bg-title1);
+    color: var(--color-title1);
+    font: var(--font-title1);
+    margin: var(--margin-h1);
+    text-transform: capitalize;
+
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid var(--theme-color);
+      position: relative;
+      top: 1rem;
+      width: 50%;
+    }
+
+    @media print {
+      text-align: right;
+      break-before: right;
+      string-set: chapter content();
+    }
+  }
+
+  h2 {
+    background: var(--bg-title2);
+    color: var(--color-title2);
+    font: var(--font-title2);
+    margin: var(--margin-h2);
+    text-align: center;
+    text-transform: capitalize;
+
+    @media print {
+      font: var(--font-title2);
+      string-set: section content();
+    }
+  }
+
+  h1,
+  h2 {
+    em {
+      @media print {
+        font-family: var(--font-song-jp) !important;
+      }
+    }
+  }
+
+
+  h3 {
+    background: var(--bg-title3);
+    color: var(--color-title3);
+    font: var(--font-title3);
+    margin: var(--margin-h3);
+    position: relative;
+
+    &:hover::before {
+      content: "H3";
+    }
+
+    em {
+      @media print {
+        font-family: var(--font-hei-jp) !important;
+      }
+    }
+  }
+
+  h1+p,
+  h2+p,
+  h3+p,
+  h4+p,
+  h5+p,
+  h6+p {
+    @media print {
+      page-break-before: avoid;
+    }
+  }
+
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    padding-left: 1rem;
+
+    em {
+      @media print {
+        font-family: var(--font-kai-jp) !important;
+      }
+    }
+  }
+
+  h4 {
+    background: var(--bg-title4);
+    color: var(--color-title4);
+    font: var(--font-title4);
+    margin: var(--margin-h4);
+
+    @media print {
+      text-align: center;
+    }
+
+    &:hover::before {
+      content: "H4";
+    }
+  }
+
+  h5 {
+    background: var(--bg-title5);
+    color: var(--color-title5);
+    font: var(--font-title5);
+    margin: var(--margin-h5);
+
+    &:hover::before {
+      content: "H5";
+    }
+  }
+
+  h6 {
+    background: var(--bg-title6);
+    color: var(--color-title6);
+    font: var(--font-title6);
+    margin: var(--margin-h6);
+
+    &:hover::before {
+      content: "H6";
+    }
+  }
+
+  h3:hover::before,
+  h4:hover::before,
+  h5:hover::before,
+  h6:hover::before {
+    position: absolute;
+    left: -2rem;
+    font-size: 0.9rem !important;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    color: var(--theme-color);
+    font-weight: var(--font-weight);
+    font-variation-settings: 'wght'var(--font-weight);
+  }
+
+  // ?为标题添加自动编号
+
+  h1 {
+    counter-reset: cnt_h2 0 cnt_h3 0 cnt_h4 0 cnt_h5 0;
+  }
+
+  h2 {
+    counter-reset: cnt_h3 0 cnt_h4 0 cnt_h5 0;
+    counter-increment: cnt_h2;
+
+    &::before {
+      content: counter(cnt_h2) " ";
+    }
+  }
+
+  h3 {
+    counter-reset: cnt_h4 0 cnt_h5 0;
+    counter-increment: cnt_h3;
+
+    &::before {
+      content: counter(cnt_h2) "-"counter(cnt_h3) " ";
+    }
+  }
+
+  h4 {
+    counter-reset: cnt_h5;
+    counter-increment: cnt_h4;
+
+    &::before {
+      content: counter(cnt_h4, upper-roman);
+    }
+  }
+
+  h2::before,
+  h3::before,
+  h4::before {
+    padding-right: .5rem;
+    font-family: var(--font-title-cn);
+    font-size: larger;
+    font-style: italic;
+    color: var(--theme-color);
+  }
+
+  // 塊元素設定
+
+  blockquote,
+  pre,
+  table {
+    margin: var(--margin-block);
+    padding: var(--padding-block);
+    border-radius: 5px;
+    line-height: var(--line-height);
+  }
+
+  p,
+  p+ol,
+  p+ul {
+    margin: var(--margin-text);
+    line-height: var(--line-height);
+  }
+
+  p {
+    text-indent: 2rem;
+    text-align: justify;
+    -prince-text-justify: prince-cjk;
+
+    @media print {
+      margin: var(--margin-text);
+    }
+
+    //bugfix return textindent
+    img {
+      margin-left: -2rem;
+    }
+  }
+
+  // 代码块样式
+
+  pre,
+  pre code,
+  code {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    text-shadow: none;
+  }
+
+  pre {
+    background: var(--bg-codeblock);
+    border: var(--border-base);
+    border-color: var(--bg-codeblock);
+    word-break: break-word;
+    white-space: pre-wrap;
+    font: var(--font-code);
+    border-radius: 5px;
+    box-shadow: var(--shadow-weak);
+    color: var(--color-text);
+    text-shadow: none;
+
+    @media print {
+      line-height: 12pt !important;
+    }
+
+    &.line-numbers {
+      padding-left: 3.8rem;
+
+      .line-numbers-rows {
+        top: 0.6rem;
+      }
+    }
+
+    &.language-console * {
+      font-family: var(--font-mono-opt);
+    }
+
+    &.font-kai * {
+      font-family: var(--font-kai-cn);
+      font-size: 1.1rem !important;
+    }
+
+    &.font-song * {
+      font-family: var(--font-song-cn);
+    }
+
+    &.font-hei * {
+      font-family: var(--font-hei-cn);
+    }
+
+    code {
+      background-color: transparent;
+      color: var(--color-text);
+      box-shadow: none;
+    }
+  }
+
+  // latex
+  .katex {
+    font: normal 1em var(--font-Katex);
+  }
+
+  /* list setting */
+
+  p+ol,
+  p+ul {
+    margin-left: 1rem;
+  }
+
+  blockquote>ol,
+  blockquote>ul {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    margin-left: 0;
+
+    img {
+      padding: 0;
+      box-shadow: var(--img-shadow);
+    }
+
+    ul,
+    ol {
+      margin-left: .5rem;
+      padding-left: 1rem;
+    }
+
+    li {
+      &::marker {
+        font-variant-numeric: tabular-nums;
+        color: var(--theme-color);
+      }
+
+      p {
+        text-indent: 0rem;
+      }
+
+      blockquote em {
+        font-family: var(--font-kai-jp);
+      }
+    }
+  }
+
+  ul {
+    list-style: disc;
+    font-family: var(--font-ul-cn);
+
+    // li::marker {
+    //   content: "‣";
+    //   font-family: "Apple Symbols",var(--font-hei-cn);
+    //   font-size: small;
+    //   vertical-align: middle;
+    // }
+
+    ul {
+      list-style: disclosure-closed;
+
+      ul {
+        list-style: circle;
+      }
+    }
+
+    li {
+      strong {
+        font-family: var(--font-sem-cn);
+      }
+
+      em {
+        font-family: var(--font-ul-jp);
+      }
+    }
+
+    ol {
+      font-family: var(--font-ol-cn);
+
+      li {
+        em {
+          font-family: var(--font-ol-jp);
+        }
+      }
+    }
+  }
+
+
+  ol {
+    list-style: decimal;
+    font-family: var(--font-ol-cn);
+
+    ol {
+      list-style: upper-roman;
+
+      ol {
+        list-style: lower-roman;
+      }
+    }
+
+    li {
+
+      strong {
+        font-family: var(--font-sem-cn);
+      }
+
+      em {
+        font-family: var(--font-ol-jp);
+      }
+    }
+
+    ul {
+      font-family: var(--font-ul-cn);
+
+      li {
+        em {
+          font-family: var(--font-ul-jp);
+        }
+      }
+    }
+  }
+
+  img {
+    margin: var(--margin-block);
+    padding: 0;
+    border-radius: 5px;
+    object-fit: contain;
+    width: 100%;
+
+    &[alt~="shadow"] {
+      box-shadow: var(--img-shadow);
+    }
+
+    &[alt~="normal"] {
+      margin: 0 !important;
+      box-shadow: none !important;
+    }
+
+    &[alt~="center"] {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: auto;
+    }
+
+    &[alt~="left"] {
+      float: left;
+      margin: 1rem;
+      margin-right: 1.5rem;
+    }
+
+    &[alt~="right"] {
+      float: right;
+      margin: 1rem;
+      margin-left: 1.5rem;
+    }
+
+    &[alt~="15%"] {
+      height: 15%;
+      width: 15%;
+    }
+
+    &[alt~="25%"] {
+      height: 25%;
+      width: 25%;
+    }
+
+    &[alt~="50%"] {
+      height: 50%;
+      width: 50%;
+    }
+
+    &[alt~="65%"] {
+      height: 65%;
+      width: 65%;
+    }
+
+    &[alt~="75%"] {
+      height: 75%;
+      width: 75%;
+    }
+
+    &[alt~="85%"] {
+      height: 85%;
+      width: 85%;
+    }
+
+    &[alt~="95%"] {
+      height: 95%;
+      width: 95%;
+    }
+
+    &[title~="shadow"] {
+      box-shadow: var(--img-shadow);
+    }
+
+    &[title~="normal"] {
+      margin: 0 !important;
+      box-shadow: none !important;
+    }
+
+    &[title~="center"] {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin: auto;
+    }
+
+    &[title~="left"] {
+      float: left;
+      margin: 1rem;
+      margin-right: 1.5rem;
+    }
+
+    &[title~="right"] {
+      float: right;
+      margin: 1rem;
+      margin-left: 1.5rem;
+    }
+
+    &[title~="15%"] {
+      height: 15%;
+      width: 15%;
+    }
+
+    &[title~="25%"] {
+      height: 25%;
+      width: 25%;
+    }
+
+    &[title~="50%"] {
+      height: 50%;
+      width: 50%;
+    }
+
+    &[title~="65%"] {
+      height: 65%;
+      width: 65%;
+    }
+
+    &[title~="75%"] {
+      height: 75%;
+      width: 75%;
+    }
+
+    &[title~="85%"] {
+      height: 85%;
+      width: 85%;
+    }
+
+    &[title~="95%"] {
+      height: 95%;
+      width: 95%;
+    }
+  }
+
+  table {
+    display: table;
+    width: 100%;
+    font-family: var(--font-table-cn);
+    font-size: var(--font-table-size);
+    border-collapse: collapse;
+    word-wrap: break-word;
+
+    caption {
+      border-bottom: none;
+    }
+
+    strong {
+      font-family: var(--font-sem-cn);
+      font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
+    }
+
+    th,
+    td {
+      padding: 4px 8px;
+      word-break: break-all;
+      border: none;
+      border-bottom: var(--border-table);
+    }
+
+    thead tr {
+      border-top: var(--border-table);
+    }
+
+    tr,
+    td {
+      em {
+        font-family: var(--font-table-jp);
+      }
+    }
+
+    //thead
+    th {
+      font-family: var(--font-thead-cn);
+      font-weight: var(--font-weight-bold);
+      font-variation-settings: 'wght'var(--font-weight-bold);
+      text-align: justify;
+      background: var(--bg-thead);
+      color: var(--color-thead);
+
+      &:hover {
+        background: var(--bg-thead-hover);
+        color: var(--color-thead-hover);
+      }
+
+      em {
+        font-family: var(--font-thead-jp);
+      }
+    }
+
+    //table-row
+    tr {
+      background: var(--bg-tbody);
+      color: var(--color-tbody);
+
+      &:hover {
+        background: var(--bg-tbody-hover);
+        color: var(--color-tbody-hover);
+      }
+
+      &:nth-child(2n) {
+        background: var(--bg-tbody-hover-opt);
+        color: var(--color-tbody-hover-opt);
+      }
+
+      // &:last-of-type{
+      //   border-bottom: 1px solid var(--theme-color-opt);
+      // }
+    }
+  }
+
+  .normalfont {
+    font-size: var(--font-size) !important;
+  }
+
+  table.noborder {
+
+    tr,
+    th,
+    td {
+      border: none;
+    }
+  }
+
+  table.nopadding {
+
+    tr,
+    th,
+    td {
+      padding: 0;
+    }
+  }
+
+  .sfont {
+    font-size: 8pt !important;
+
+    table {
+      font-size: 8pt !important;
+
+      td,
+      tr,
+      th {
+        margin: 0 !important;
+        padding: 2px !important;
+      }
+    }
+  }
+
+  .lbtable {
+
+    tr,
+    td,
+    th {
+      border: 1px solid #666 !important;
+    }
+  }
+
+  @media print {
+    .nopad+table {
+
+      td,
+      tr,
+      th {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+
+    .sfont+table {
+      font-size: 8pt !important;
+
+      td,
+      tr,
+      th {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+
+    .lbtable+table {
+
+      tr,
+      td,
+      th {
+        border: 1px solid #666 !important;
+      }
+    }
+  }
+
+  figure figcaption {
+    font-family: var(--font-fangsong);
+    text-align: center;
+    font-size: small;
+  }
+
+  hr {
+    color: #41b349;
+    border: double;
+    border-width: 3px 5px;
+    border-color: var(--theme-color) transparent;
+    height: 1px;
+    overflow: visible;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    background-color: transparent;
+  }
+
+  hr:before,
+  hr:after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-width: 0 3px 3px 0;
+    border-style: double;
+    top: -3px;
+    background: radial-gradient(2px at 1px 1px, currentColor 2px, transparent 0) no-repeat;
+  }
+
+  hr:before {
+    transform: rotate(-45deg);
+    left: -20px;
+  }
+
+  hr:after {
+    transform: rotate(135deg);
+    right: -20px;
+  }
+
+  hr.break_after {
+    border: none;
+    page-break-after: always;
+  }
+
+  hr.break_after::after,
+  hr.break_after::before {
+    display: none;
+  }
+
+  blockquote {
+    background: var(--bg-quota);
+    font: var(--font-quota);
+    color: var(--color-quota);
+    box-shadow: var(--shadow-base);
+    border: none;
+    border-radius: 0;
+    border-left: var(--border-left);
+    padding: 1rem;
+
+    strong {
+      font-family: var(--font-sem-cn);
+      font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
+    }
+
+    em {
+      font-family: var(--font-kai-jp);
+    }
+
+    em strong,
+    strong em {
+      font-family: var(--font-kai-jp);
+      font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      background: var(--bg-title-h6);
+      color: var(--color-title-h6);
+      font-family: var(--font-lishu);
+      font-size: 1.5rem;
+      text-align: center;
+      margin: var(--margin-h6);
+      padding: 0;
+      color: var(--theme-color);
+      border: none;
+    }
+
+    h1 {
+      &::after {
+        border-bottom: none;
+      }
+    }
+
+    h2:hover::before,
+    h3:hover::before,
+    h4:hover::before,
+    h5:hover::before,
+    h6:hover::before {
+      display: none;
+    }
+
+    h6 {
+      font-family: var(--font-mono);
+      font-size: x-large;
+      font-weight: var(--font-weight);
+      font-variation-settings: 'wght'var(--font-weight);
+
+      &:before {
+        display: inline-block;
+        counter-increment: section;
+        content: counter(section);
+        margin: 0 2rem;
+        font-family: var(--font-mono);
+        font-size: xx-large;
+      }
+    }
+
+    blockquote {
+      padding: 0;
+      border: none;
+      padding-left: 1rem;
+      border-left: var(--border-left);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    ol,
+    ul {
+      li {
+        font-family: var(--font-quota-cn);
+
+        em {
+          font-family: var(--font-quota-jp);
+        }
+      }
+
+      ol,
+      ul {
+        margin-left: 1rem;
+        padding-left: 1.2rem;
+      }
+    }
+  }
+
+  details {
+    margin: var(--margin-block);
+    padding: 1rem;
+    background-color: var(--bg-quota);
+    border: 1px solid var(--theme-color-3-weak);
+    border-radius: 5px;
+    box-shadow: var(--shadow-base);
+
+    @media print {
+      display: none;
+    }
+
+    summary {
+      font: var(--font-title5);
+      font-weight: var(--font-weight-medium);
+      font-variation-settings: 'wght'var(--font-weight-medium);
+    }
+
+    blockquote {
+      border: none;
+      background: var(--theme-color-4-weak);
+      border-radius: 8px;
+    }
+  }
+
+
+}

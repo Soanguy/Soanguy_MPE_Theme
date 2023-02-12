@@ -1,11 +1,10 @@
 // 特别设定
 
-@media print {
-  h1::after {
-    display: inline-block;
-    top: 2rem;
-    right: -50%;
-  }
+.border{
+  border:1px solid var(--theme-color);
+  border-radius:5px;
+  padding: 2px 4px;
+  text-align: center;
 }
 
 // markdown footnote
@@ -201,6 +200,10 @@ div.choice {
     font-family: var(--font-song-cn);
   }
 
+  .cn.hei * {
+    font-family: var(--font-hei-cn);
+  }
+
   .cn.kai * {
     font-family: var(--font-kai-cn);
     font-size: var(--font-kai-size);
@@ -353,6 +356,136 @@ div.choice {
       font-size: 10.5pt;
     }
   }
+
+
+  // 选择题选项并列，需要手动设定四个选项的排列方式。
+  // <div class="choices">
+  // <div class="choices_part c4"> 此处设定选项排列方式为四合一
+  // 1. 题干 
+  //    - 选项使用无序列表方式排列
+  // </div><div class="choices_part c2"> 此处设定选项排列方式为二合一
+  // </div><div class="choices_part c1"> 此处设定选项排列方式为一行一项
+  // </div>
+
+  .choices {
+    .choices_part {
+      font-family: var(--font-kai-jp) !important;
+
+      &.c4 {
+        ol {
+          ul {
+            li {
+              width: 25%;
+            }
+          }
+        }
+
+        .c2 {
+          ol {    
+            ul {
+              li {
+                width: 50%;
+              }
+            }
+          }
+        }
+
+        .c1 {
+          ol {
+            ul {
+              li {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      &.c2 {
+        ol {
+          ul {
+            li {
+              width: 50%;
+            }
+          }
+        }
+      }
+
+      &.c1 {
+        ol {
+          ul {
+            li {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      p+ol,
+      p+ul {
+        margin-left: 0;
+      }
+
+      ol {
+        font-family: var(--font-kai-jp) !important;
+        margin-bottom: 0;
+
+        li{
+          list-style: decimal;
+        }
+
+        ul {
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          margin-left: 0rem;
+          padding: 0;
+          font-family: inherit !important;
+
+          li {
+            display: flex;
+            list-style: decimal;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            font-family: inherit;
+
+            &:nth-child(0n+1) {
+              &::before {
+                font-family: inherit;
+                content: "A．";
+              }
+            }
+
+            &:nth-child(0n+2) {
+
+              &::before {
+                font-family: inherit;
+                content: "B．";
+              }
+            }
+
+            &:nth-child(0n+3) {
+              &::before {
+                font-family: inherit;
+                content: "C．";
+              }
+            }
+
+            &:nth-child(0n+4) {
+              &::before {
+                font-family: inherit;
+                content: "D．";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
 }
 
 

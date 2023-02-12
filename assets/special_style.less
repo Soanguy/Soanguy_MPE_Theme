@@ -1,0 +1,208 @@
+#notice_style {
+    --color-theme: hsl(0, 100%, 70%);
+    --color-theme-weak: #d6d6d6;
+    --color-text: #333;
+    --color-title: #111;
+    --color-weak: #777;
+    --bgcolor-body: #fff;
+    --bgcolor-quota: #eee;
+    --bgcolor-table: #eee;
+    --border: 1px solid var(--color-theme);
+    --border-weak: 1px solid var(--color-theme-weak);
+    --serif-font: 'Old Standard TT', 'noto serif cjk', 'source han serif', serif;
+    --sans-font: 'ubuntu', 'noto sans cjk', 'source han sans', sans;
+    --kai-font: 'Old Standard TT', 'th-khaai-tp0', kaiti;
+    --fangsong: 'Old Standard TT', "FZFSK--GBK1-0", '方正仿宋_GBK', 'FZFangSong-Z02';
+    --font-text: var(--fangsong);
+
+    font-family: var(--font-text);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    word-spacing: 1pt;
+    background-color: var(--bgcolor-body);
+    color: var(--color-text);
+    text-align: left;
+    -prince-text-justify: prince-cjk;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .notice_title {
+        color: var(--color-title);
+        font-family: var(--serif-font);
+        font-weight: 800;
+        margin: 1.5rem 0 1rem;
+        text-align: left;
+    }
+
+    .notice_title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin: 5rem 0 2.5rem;
+        color: var(--color-theme);
+    }
+
+    hr {
+        height: 2px;
+        margin: 32px 0;
+        background-color: transparent !important;
+        border-top: 2px solid var(--color-theme);
+        border-bottom: var(--border);
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin: 4rem 0 2rem;
+        counter-reset: h2;
+        break-before: avoid;
+
+        &::before,
+        &::after {
+            display: none;
+        }
+    }
+
+    h2 {
+        counter-reset: h3;
+        counter-increment: h2;
+        font-family: var(--sans-font);
+        font-weight: 400;
+        font-size: 1.7rem;
+
+        &::before {
+            font: inherit;
+            color: inherit;
+            content: counter(h2, cjk-decimal) '、';
+            content: counter(h2, cjk-ideographic) '、';
+        }
+    }
+
+    h3 {
+        counter-reset: h4;
+        counter-increment: h3;
+        font-family: var(--kai-font);
+        font-size: 1.5rem;
+
+        &::before {
+            font: inherit;
+            color: inherit;
+            content: '('counter(h3, cjk-decimal) ')  ';
+            content: '('counter(h3, cjk-ideographic) ')  ';
+        }
+    }
+
+    h4 {
+        counter-reset: h5;
+        counter-increment: h4;
+        margin-left: 2rem;
+        font-family: var(--fangsong);
+        font-size: 1.3rem;
+
+        &::before {
+            font: inherit;
+            color: inherit;
+            content: counter(h4) '. ';
+        }
+    }
+
+    h5 {
+        counter-reset: h6;
+        counter-increment: h5;
+        margin-left: 2rem;
+        font-family: var(--fangsong);
+        font-size: 1.1rem;
+
+        &::before {
+            font: inherit;
+            color: inherit;
+            content: '('counter(h5) ')  ';
+        }
+    }
+
+    p {
+        text-indent: 2rem;
+    }
+
+    table {
+        width: 100%;
+        font-size: 16px;
+
+        tr:nth-child(2n-1) {
+            background-color: var(--bgcolor-table);
+        }
+
+        th,
+        td {
+            border: var(--border-weak);
+            font-family: var(--font-text);
+        }
+    }
+
+    blockquote,
+    ol li,
+    ul li {
+        font-family: var(--font-text);
+    }
+
+    ol,ul{
+        li{
+            &::marker{
+                color: var(--color-text);
+            }
+        }
+    }
+
+    blockquote{
+        background-color: var(--bgcolor-quota);
+        border-left: var(--border);
+        border-left-width: 4px;
+        box-shadow: none;
+    }
+
+    @media print {
+        --foot-margin: 7rem 1rem;
+        --foot-size: 10pt;
+        --foot-border: 1px solid var(--color-theme);
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            counter-reset: page 1;
+        }
+
+        @page {
+            size: a4;
+            padding: 0;
+            margin: 38mm 28mm;
+            border-bottom: var(--foot-border);
+        }
+
+        @page:left {
+            @bottom-left {
+                content: "- "counter(page) " -";
+                padding: var(--foot-margin);
+                font-family: var(--fangsong);
+                font-size: var(--foot-size);
+                border-top: var(--foot-border);
+            }
+        }
+
+        @page:right {
+            @bottom-right {
+                content: "- "counter(page) " -";
+                padding: var(--foot-margin);
+                font-family: var(--fangsong);
+                font-size: var(--foot-size);
+                border-top: var(--foot-border);
+            }
+
+        }
+    }
+
+}

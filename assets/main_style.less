@@ -10,7 +10,7 @@
   }
 }
 
-// !清楚图片后的元素浮动
+// !清除图片后的元素浮动
 * {
   clear: both;
 }
@@ -132,6 +132,7 @@ html body {
 
   i {
     font-family: var(--font-text-cn);
+    font-style: italic;
   }
 
   code,
@@ -160,9 +161,14 @@ html body {
     border-bottom: 1px solid black;
   }
 
+  del {
+    display: none;
+  }
+
   mark {
     background: var(--bg-mark);
     color: var(--color-mark);
+    padding: 1px 2px;
   }
 
   ruby {
@@ -300,18 +306,23 @@ html body {
     font: var(--font-title1);
     margin: var(--margin-h1);
     text-transform: capitalize;
+    text-align: right;
 
     &::after {
       content: "";
       display: block;
       border-bottom: 1px solid var(--theme-color);
       position: relative;
-      top: 1rem;
       width: 50%;
+      // display: inline-block;
+      // top: 2rem;
+      right: -50%;
+      @media print {
+        font-family: var(--fong-title-cn-before);        
+      }
     }
 
     @media print {
-      text-align: right;
       break-before: right;
       string-set: chapter content();
     }
@@ -322,7 +333,7 @@ html body {
     color: var(--color-title2);
     font: var(--font-title2);
     margin: var(--margin-h2);
-    text-align: center;
+    text-align: left;
     text-transform: capitalize;
 
     @media print {
@@ -347,10 +358,6 @@ html body {
     font: var(--font-title3);
     margin: var(--margin-h3);
     position: relative;
-
-    &:hover::before {
-      content: "H3";
-    }
 
     em {
       @media print {
@@ -388,14 +395,6 @@ html body {
     color: var(--color-title4);
     font: var(--font-title4);
     margin: var(--margin-h4);
-
-    @media print {
-      text-align: center;
-    }
-
-    &:hover::before {
-      content: "H4";
-    }
   }
 
   h5 {
@@ -403,10 +402,6 @@ html body {
     color: var(--color-title5);
     font: var(--font-title5);
     margin: var(--margin-h5);
-
-    &:hover::before {
-      content: "H5";
-    }
   }
 
   h6 {
@@ -414,69 +409,6 @@ html body {
     color: var(--color-title6);
     font: var(--font-title6);
     margin: var(--margin-h6);
-
-    &:hover::before {
-      content: "H6";
-    }
-  }
-
-  h3:hover::before,
-  h4:hover::before,
-  h5:hover::before,
-  h6:hover::before {
-    position: absolute;
-    left: -2rem;
-    font-size: 0.9rem !important;
-    text-align: center;
-    vertical-align: middle;
-    margin-right: 0.5rem;
-    border-radius: 5px;
-    color: var(--theme-color);
-    font-weight: var(--font-weight);
-    font-variation-settings: 'wght'var(--font-weight);
-  }
-
-  // ?为标题添加自动编号
-
-  h1 {
-    counter-reset: cnt_h2 0 cnt_h3 0 cnt_h4 0 cnt_h5 0;
-  }
-
-  h2 {
-    counter-reset: cnt_h3 0 cnt_h4 0 cnt_h5 0;
-    counter-increment: cnt_h2;
-
-    &::before {
-      content: counter(cnt_h2) " ";
-    }
-  }
-
-  h3 {
-    counter-reset: cnt_h4 0 cnt_h5 0;
-    counter-increment: cnt_h3;
-
-    &::before {
-      content: counter(cnt_h2) "-"counter(cnt_h3) " ";
-    }
-  }
-
-  h4 {
-    counter-reset: cnt_h5;
-    counter-increment: cnt_h4;
-
-    &::before {
-      content: counter(cnt_h4, upper-roman);
-    }
-  }
-
-  h2::before,
-  h3::before,
-  h4::before {
-    padding-right: .5rem;
-    font-family: var(--font-title-cn);
-    font-size: larger;
-    font-style: italic;
-    color: var(--theme-color);
   }
 
   // 塊元素設定
@@ -731,41 +663,6 @@ html body {
       margin-left: 1.5rem;
     }
 
-    &[alt~="15%"] {
-      height: 15%;
-      width: 15%;
-    }
-
-    &[alt~="25%"] {
-      height: 25%;
-      width: 25%;
-    }
-
-    &[alt~="50%"] {
-      height: 50%;
-      width: 50%;
-    }
-
-    &[alt~="65%"] {
-      height: 65%;
-      width: 65%;
-    }
-
-    &[alt~="75%"] {
-      height: 75%;
-      width: 75%;
-    }
-
-    &[alt~="85%"] {
-      height: 85%;
-      width: 85%;
-    }
-
-    &[alt~="95%"] {
-      height: 95%;
-      width: 95%;
-    }
-
     &[title~="shadow"] {
       box-shadow: var(--img-shadow);
     }
@@ -796,44 +693,24 @@ html body {
       margin: 1rem;
       margin-left: 1.5rem;
     }
-
-    &[title~="15%"] {
-      height: 15%;
-      width: 15%;
-    }
-
-    &[title~="25%"] {
-      height: 25%;
-      width: 25%;
-    }
-
-    &[title~="50%"] {
-      height: 50%;
-      width: 50%;
-    }
-
-    &[title~="65%"] {
-      height: 65%;
-      width: 65%;
-    }
-
-    &[title~="75%"] {
-      height: 75%;
-      width: 75%;
-    }
-
-    &[title~="85%"] {
-      height: 85%;
-      width: 85%;
-    }
-
-    &[title~="95%"] {
-      height: 95%;
-      width: 95%;
-    }
   }
 
-  table {
+  // 快速生成可以调节照片大小的代码
+  each(range(0, 100, 5), {
+      img[alt~="@{value}"] {
+        width:(@value / 100 * 100%);
+        height: (@value / 100 * 100%);
+      }
+    }
+
+  ) each(range(0, 100, 5), {
+      img[title~="@{value}"] {
+        width:(@value / 100 * 100%);
+        height: (@value / 100 * 100%);
+      }
+    }
+
+  ) table {
     display: table;
     width: 100%;
     font-family: var(--font-table-cn);
@@ -1163,6 +1040,12 @@ html body {
       border-radius: 8px;
     }
   }
-
-
 }
+
+// @media print {
+//   h1::after {
+//     display: inline-block;
+//     top: 2rem;
+//     right: -50%;
+//   }
+// }

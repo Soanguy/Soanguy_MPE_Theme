@@ -1,0 +1,242 @@
+// ?为标题添加自动编号
+.markdown-preview.markdown-preview {
+    h1 {
+        counter-reset: cnt_h2 0 cnt_h3 0 cnt_h4 0 cnt_h5 0;
+    }
+
+    h2 {
+        counter-reset: cnt_h3 0 cnt_h4 0 cnt_h5 0;
+        counter-increment: cnt_h2;
+
+        &::before {
+            content: counter(cnt_h2, cjk-decimal) "、";
+            content: counter(cnt_h2, cjk-ideographic) '、';
+        }
+    }
+
+    h3 {
+        counter-reset: cnt_h4 0 cnt_h5 0;
+        counter-increment: cnt_h3;
+
+        &::before {
+            content: "("counter(cnt_h3, cjk-decimal) ")  ";
+            content: "("counter(cnt_h3, cjk-ideographic) ")  ";
+        }
+    }
+
+    h4 {
+        counter-reset: cnt_h5;
+        counter-increment: cnt_h4;
+
+        &::before {
+            content: counter(cnt_h4)'. ';
+        }
+    }
+
+    h5 {
+        counter-reset: cnt_h6;
+        counter-increment: cnt_h5;
+
+        &::before {
+            content: "("counter(cnt_h5)') ';
+        }
+    }
+
+    h2::before,
+    h3::before,
+    h4::before,
+    h5::before {
+        font-family: inherit;
+        color: inherit;
+    }
+
+    .documents {
+
+        h1 {
+            counter-reset: cnt_h2 0 cnt_h3 0 cnt_h4 0 cnt_h5 0;
+        }
+
+        h2 {
+            counter-reset: cnt_h3 0 cnt_h4 0 cnt_h5 0;
+            counter-increment: cnt_h2;
+
+            &::before {
+                content: counter(cnt_h2, cjk-decimal) "、";
+                content: counter(cnt_h2, cjk-ideographic) '、';
+            }
+        }
+
+        h3 {
+            counter-reset: cnt_h4 0 cnt_h5 0;
+            counter-increment: cnt_h3;
+
+            &::before {
+                content: "("counter(cnt_h3, cjk-decimal) ")  ";
+                content: "("counter(cnt_h3, cjk-ideographic) ")  ";
+            }
+        }
+
+        h4 {
+            counter-reset: cnt_h5;
+            counter-increment: cnt_h4;
+
+            &::before {
+                content: counter(cnt_h4)'. ';
+            }
+        }
+
+        h2::before,
+        h3::before,
+        h4::before {
+            font-family: inherit;
+            color: inherit;
+        }
+    }
+
+    // 使用 documents_chapter 来创建默认含有章节编号的页面组
+
+    .documents_chapter {
+        h1 {
+            counter-increment: doc_chapter;
+            counter-reset: cnt_h2 0;
+
+            &::before {
+
+                content: "第"counter(doc_chapter, cjk-decimal) "章";
+                content: "第"counter(doc_chapter, cjk-ideographic) "章";
+                padding-right: .5rem;
+            }
+        }
+
+        h2 {
+            counter-reset: cnt_h3 0;
+            counter-increment: cnt_h2;
+
+            &::before {
+                content: "第"counter(cnt_h2, cjk-decimal) "节";
+                content: "第"counter(cnt_h2, cjk-ideographic) "节";
+                padding-right: .5rem;
+            }
+        }
+
+        h3 {
+            counter-reset: cnt_h4 0;
+            counter-increment: cnt_h3;
+
+            &::before {
+                content: counter(cnt_h3, cjk-decimal) "、";
+                content: counter(cnt_h3, cjk-ideographic) '、';
+
+            }
+        }
+
+        h4 {
+            counter-reset: cnt_h5;
+            counter-increment: cnt_h4;
+
+            &::before {
+                content: "("counter(cnt_h4, cjk-decimal) ")  ";
+                content: "("counter(cnt_h4, cjk-ideographic) ")  ";
+            }
+        }
+
+        h5 {
+            counter-reset: cnt_h6;
+            counter-increment: cnt_h5;
+
+            &::before {
+                content: counter(cnt_h5)'. ';
+            }
+        }
+
+        h2::before,
+        h3::before,
+        h4::before,
+        h5::before {
+            font-family: inherit;
+            color: inherit;
+        }
+    }
+
+    // 使用 documents_chapter_old 来创建默认含有章节编号的页面组
+
+    .documents_chapter_old {
+        h1 {
+            counter-increment: doc_chapter;
+            counter-reset: cnt_h2 0;
+            border-bottom: var(--border-color-1);
+            text-align: right;
+
+            &::before {
+                content: "";
+                display: none;
+            }
+
+            &::after {
+                content: "";
+                display: initial !important;
+                border-bottom: none;
+                position: initial;
+                right: 0;
+                width: max-content;
+                content: "第"counter(doc_chapter, cjk-decimal);
+                content: "第"counter(doc_chapter, cjk-ideographic);
+            }
+        }
+    }
+
+    // 使用 documents_chapter_old_none 来创建默认含有章节编号的页面组    
+    .documents_chapter_old_none {
+        .documents_chapter_old();
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            &::before {
+                content: "";
+                display: none;
+            }
+        }
+    }
+
+    // 使用 documents_volume 来创建默认含有章节编号的页面组
+
+    .documents_volume {
+        .volume {
+            counter-increment: doc_volume;
+            counter-reset: doc_chapter;
+            background: var(--bg-title1);
+            color: var(--color-title1);
+            font: var(--font-title1);
+            margin: var(--margin-h1);
+            text-transform: capitalize;
+            text-align: center;
+
+            &::before {
+                display: block;
+                margin-top: 1rem;
+                content: "第"counter(doc_volume, cjk-decimal) "卷";
+                content: "第"counter(doc_volume, cjk-ideographic) "卷";
+            }
+
+            @media print {
+                break-before: right;
+                string-set: chapter content();
+            }
+        }
+
+        .documents_chapter();
+    }
+
+    .documents_volume_old{
+        .documents_volume();
+        .volume{
+            &::before{
+                content: "卷之"counter(doc_volume, cjk-decimal);
+                content: "卷之"counter(doc_volume, cjk-ideographic); 
+            }
+        }
+    }
+}

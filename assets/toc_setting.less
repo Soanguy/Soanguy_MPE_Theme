@@ -4,17 +4,15 @@
 
 .toc {
 
-  padding: 32px 0 48px 32px !important;
+  padding: 32px 0 48px 0px !important;
   page: tocall;
   counter-reset: page 1;
   break-before: right;
-
-  @media screen and (min-width:1200px) {
-    display: none;
-  }
+  margin: 1rem auto;
 
   h2 {
     font-family: var(--font-toc-title);
+    text-align: center;
 
     &::before {
       content: none !important;
@@ -33,11 +31,7 @@
     ul,
     ol {
       list-style-type: lower-roman !important;
-
-      @media screen and (max-width:1200px) {
-        margin: initial;
-        column-count: 1;
-      }
+      column-count: 1;
 
       ul,
       ol {
@@ -65,7 +59,6 @@
 @media print {
   .toc {
     columns: 2;
-
     h2 {
       padding: 15mm 0 15mm;
       font: italic 300 2.5rem var(--font-toc-title) !important;
@@ -89,14 +82,14 @@
 
     ol,
     ul {
-      list-style: lower-roman;
-
+      margin-left: 0;
       li {
+        margin-left: 0;
         padding: 4px;
         text-align: justify;
 
         &::marker {
-          content: " ";
+          content: "●";
         }
 
         a {
@@ -105,6 +98,7 @@
         }
 
         li {
+          margin-left: 1rem;
 
           a {
             font-family: "Times New Roman", var(--fong-song-cn-print);
@@ -141,160 +135,5 @@
         text-align: right
       }
     }
-
-    ol,
-    ul {
-      li {
-
-        // a[href="#btitum"],
-        // a[href="#btitun"],
-        // a[href="#btit3"],
-        // a[href="#btit4"],
-        // a[href="#btit5"],
-        // a[href="#btit6"],
-        // a[href="#btit7"],
-        // a[href="#btit8"],
-        // a[href="#btit9"],
-        // a[href="#btit10"],
-        a[href*="#btit"] {
-          font-family: "Times New Roman", var(--fong-song-cn-print) !important;
-          font-weight: 600 !important;
-          font-size: 12.5pt !important;
-          margin-left: -3rem;
-          color: var(--theme-color) !important;
-
-          &::before {
-            padding-right: 2rem;
-          }
-        }
-
-        a[href="#btitum"] {
-          &::before {
-            content: "第一章";
-          }
-        }
-
-        a[href="#btitun"] {
-          &::before {
-            content: "第二章";
-          }
-        }
-
-        a[href="#btit3"] {
-          &::before {
-            content: "第三章";
-          }
-        }
-
-        a[href="#btit4"] {
-          &::before {
-            content: "第四章";
-          }
-        }
-
-        a[href="#btit5"] {
-          &::before {
-            content: "第五章";
-          }
-        }
-
-        a[href="#btit6"] {
-          &::before {
-            content: "第六章";
-          }
-        }
-
-        a[href="#btit7"] {
-          &::before {
-            content: "第七章";
-          }
-        }
-
-        a[href="#btit8"] {
-          &::before {
-            content: "第八章";
-          }
-        }
-
-        a[href="#btit9"] {
-          &::before {
-            content: "第九章";
-          }
-        }
-
-        a[href="#btit10"] {
-          &::before {
-            content: "第十章";
-          }
-        }
-
-      }
-    }
-  }
-}
-
-h1[id*="btit"] {
-  &::before {
-    margin-right: 2rem;
-  }
-}
-
-h1#btitum {
-  &::before {
-    content: "第一章";
-  }
-}
-
-h1#btitun {
-  &::before {
-    content: "第二章";
-  }
-}
-
-h1#btit3 {
-  &::before {
-    content: "第三章";
-  }
-}
-
-h1#btit4 {
-  &::before {
-    content: "第四章";
-  }
-}
-
-h1#btit5 {
-  &::before {
-    content: "第五章";
-  }
-}
-
-h1#btit6 {
-  &::before {
-    content: "第六章";
-  }
-}
-
-h1#btit7 {
-  &::before {
-    content: "第七章";
-  }
-}
-
-h1#btit8 {
-  &::before {
-    content: "第八章";
-  }
-}
-
-h1#btit9 {
-  &::before {
-    content: "第九章";
-  }
-}
-
-h1#btit10 {
-  &::before {
-    content: "第十章";
   }
 }

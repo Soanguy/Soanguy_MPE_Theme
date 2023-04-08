@@ -1,156 +1,599 @@
-// 代碼復用區域
+@font-fangsong: "Latin Modern Roman" , Baskerville , Georgia , "Liberation Serif" , "HYFangSongS" , "FZFangsong-Z02" , STFangsong , FangSong , FangSong_GB2312 , "CWTEX\-F" , serif;
 
-// 和頁面邊距相關的設置，默認設定的是左右頁邊距不同
+@font-kai: "Optima", "Latin Modern Roman", Baskerville, Georgia, "Liberation Serif",  "Kaiti TC", "TW-Kai", "TH-Khaai-PP0", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
 
-.page_left_style_base {
-  margin: 15mm 20mm 15mm 15mm;
-  font-family: var(--font-fangsong);
+@font-text-cn: "Latin Modern Roman" , Georgia , "Nimbus Roman No9 L" , "Liberation Serif" , "Times New Roman" , "Source Han Serif K" , "Songti SC" , "Noto Serif CJK SC" , "Source Han Serif SC" , "Source Han Serif CN" , STSong , "AR PL New Sung" , "AR PL SungtiL GB" , NSimSun , SimSun , "TW\-Sung" , "WenQuanYi Bitmap Song" , "AR PL UMing CN" , "AR PL UMing HK" , "AR PL UMing TW" , "AR PL UMing TW MBE" , PMingLiU , MingLiU , serif;
+
+@margin-for-odd: 15mm 20mm;
+@margin-for-even: 15mm 20mm;
+
+@font-for-odd-head: @font-fangsong;
+@font-for-odd-foot: @font-text-cn;
+@font-for-even-head: @font-fangsong;
+@font-for-even-foot: @font-text-cn;
+
+@fontsize-for-odd-head: 9pt;
+@fontsize-for-odd-foot: 9pt;
+@fontsize-for-even-head: 9pt;
+@fontsize-for-even-foot: 9pt;
+
+@margin-for-odd-head: 5mm 0 2mm;
+@margin-for-odd-foot: 0mm 5mm;
+@margin-for-even-head: 5mm 0 2mm;
+@margin-for-even-foot: 0mm 5mm;
+
+@border-for-odd-head-left: .25pt solid var(--theme-color);
+@border-for-odd-head-center: none;
+@border-for-odd-head-right: none;
+@border-for-even-head-left: none;
+@border-for-even-head-center: none;
+@border-for-even-head-right: .25pt solid var(--theme-color);
+
+@border-for-odd-foot-left: none;
+@border-for-odd-foot-center: none;
+@border-for-odd-foot-right: none;
+@border-for-even-foot-left: none;
+@border-for-even-foot-center: none;
+@border-for-even-foot-right: none;
+
+@content-for-odd-head-left: string(section);
+@content-for-odd-head-center: none;
+@content-for-odd-head-right: none;
+@content-for-even-head-left: none;
+@content-for-even-head-center: none;
+@content-for-even-head-right: string(chapter);
+
+@content-for-odd-foot-left: "· "counter(page, decimal) " ·";// "· "counter(page, decimal) " / "counter(pages) " ·";
+@content-for-odd-foot-center: "";
+@content-for-odd-foot-right: "";
+@content-for-even-foot-left: "";
+@content-for-even-foot-center: "";
+@content-for-even-foot-right: "· "counter(page, decimal) " ·";// "· "counter(page, decimal) " / "counter(pages) " ·";
+
+@color-for-odd-head: var(--theme-color);
+@color-for-odd-foot: var(--theme-color);
+@color-for-even-head: var(--theme-color);
+@color-for-even-foot: var(--theme-color);
+
+//vertical page setting
+
+@margin-for-vert-odd: 15mm 20mm;
+@margin-for-vert-even: 15mm 20mm;
+
+@font-for-vert-odd-head: @font-fangsong;
+@font-for-vert-odd-foot: @font-text-cn;
+@font-for-vert-even-head: @font-fangsong;
+@font-for-vert-even-foot: @font-text-cn;
+
+@fontsize-for-vert-odd-head: 9pt;
+@fontsize-for-vert-odd-foot: 9pt;
+@fontsize-for-vert-even-head: 9pt;
+@fontsize-for-vert-even-foot: 9pt;
+
+@margin-for-vert-odd-head: 5mm 0 2mm;
+@margin-for-vert-odd-foot: 0mm 5mm;
+@margin-for-vert-even-head: 5mm 0 2mm;
+@margin-for-vert-even-foot: 0mm 5mm;
+
+@border-for-vert-odd-head-left: none;
+@border-for-vert-odd-head-center: none;
+@border-for-vert-odd-head-right: none;
+@border-for-vert-even-head-left: none;
+@border-for-vert-even-head-center: none;
+@border-for-vert-even-head-right: none;
+
+@border-for-vert-odd-foot-left: none;
+@border-for-vert-odd-foot-center: none;
+@border-for-vert-odd-foot-right: none;
+@border-for-vert-even-foot-left: none;
+@border-for-vert-even-foot-center: none;
+@border-for-vert-even-foot-right: none;
+
+@content-for-vert-odd-head-left: none;
+@content-for-vert-odd-head-center: none;
+@content-for-vert-odd-head-right: none;
+
+@content-for-vert-even-head-left: none;
+@content-for-vert-even-head-center: none;
+@content-for-vert-even-head-right: none;
+
+@content-for-vert-odd-foot-left: "· "counter(page, decimal) " ·";// "· "counter(page, decimal) " / "counter(pages) " ·";
+@content-for-vert-odd-foot-center: "";
+@content-for-vert-odd-foot-right: "";
+
+@content-for-vert-even-foot-left: "";
+@content-for-vert-even-foot-center: "";
+@content-for-vert-even-foot-right: "· "counter(page, decimal) " ·";// "· "counter(page, decimal) " / "counter(pages) " ·";
+
+@color-for-vert-odd-head: var(--theme-color);
+@color-for-vert-odd-foot: var(--theme-color);
+@color-for-vert-even-head: var(--theme-color);
+@color-for-vert-even-foot: var(--theme-color);
+
+.page_odd {
+    margin: @margin-for-odd;
+
+    @top-left {
+        margin: @margin-for-odd-head;
+        border-bottom: @border-for-odd-head-left;
+        width: 50%;
+        content: @content-for-odd-head-left;
+        color: @color-for-odd-head;
+        font-family: @font-for-odd-head;
+        font-size: @fontsize-for-odd-head;
+    }
+
+    @top-center {
+        margin: @margin-for-odd-head;
+        border-bottom: @border-for-odd-head-center;
+        width: 50%;
+        content: @content-for-odd-head-center;
+        color: @color-for-odd-head;
+        font-family: @font-for-odd-head;
+        font-size: @fontsize-for-odd-head;
+    }
+
+    @top-right {
+        margin: @margin-for-odd-head;
+        border-bottom: @border-for-odd-head-right;
+        width: 50%;
+        content: @content-for-odd-head-right;
+        color: @color-for-odd-head;
+        font-family: @font-for-odd-head;
+        font-size: @fontsize-for-odd-head;
+    }
+
+    @bottom-left {
+        margin: @margin-for-odd-foot;
+        border-bottom: @border-for-odd-foot-left;
+        width: 50%;
+        content: @content-for-odd-foot-left;
+        color: @color-for-odd-foot;
+        font-family: @font-for-odd-foot;
+        font-size: @fontsize-for-odd-foot;
+    }
+
+    @bottom-center {
+        margin: @margin-for-odd-foot;
+        border-bottom: @border-for-odd-foot-center;
+        width: 50%;
+        content: @content-for-odd-foot-center;
+        color: @color-for-odd-foot;
+        font-family: @font-for-odd-foot;
+        font-size: @fontsize-for-odd-foot;
+    }
+
+    @bottom-right {
+        margin: @margin-for-odd-foot;
+        border-bottom: @border-for-odd-foot-right;
+        width: 50%;
+        content: @content-for-odd-foot-right;
+        color: @color-for-odd-foot;
+        font-family: @font-for-odd-foot;
+        font-size: @fontsize-for-odd-foot;
+    }
 }
 
-.page_right_style_base {
-  margin: 15mm 15mm 15mm 20mm;
-  font-family: var(--font-fangsong);
+.page_even {
+    margin: @margin-for-even;
+
+    @top-left {
+        margin: @margin-for-even-head;
+        border-bottom: @border-for-even-head-left;
+        width: 50%;
+        content: @content-for-even-head-left;
+        color: @color-for-even-head;
+        font-family: @font-for-even-head;
+        font-size: @fontsize-for-even-head;
+    }
+
+    @top-center {
+        margin: @margin-for-even-head;
+        border-bottom: @border-for-even-head-center;
+        width: 50%;
+        content: @content-for-even-head-center;
+        color: @color-for-even-head;
+        font-family: @font-for-even-head;
+        font-size: @fontsize-for-even-head;
+    }
+
+    @top-right {
+        margin: @margin-for-even-head;
+        border-bottom: @border-for-even-head-right;
+        width: 50%;
+        content: @content-for-even-head-right;
+        color: @color-for-even-head;
+        font-family: @font-for-even-head;
+        font-size: @fontsize-for-even-head;
+    }
+
+    @bottom-left {
+        margin: @margin-for-even-foot;
+        border-bottom: @border-for-even-foot-left;
+        width: 50%;
+        content: @content-for-even-foot-left;
+        color: @color-for-even-foot;
+        font-family: @font-for-even-foot;
+        font-size: @fontsize-for-even-foot;
+    }
+
+    @bottom-center {
+        margin: @margin-for-even-foot;
+        border-bottom: @border-for-even-foot-center;
+        width: 50%;
+        content: @content-for-even-foot-center;
+        color: @color-for-even-foot;
+        font-family: @font-for-even-foot;
+        font-size: @fontsize-for-even-foot;
+    }
+
+    @bottom-right {
+        margin: @margin-for-even-foot;
+        border-bottom: @border-for-even-foot-right;
+        width: 50%;
+        content: @content-for-even-foot-right;
+        color: @color-for-even-foot;
+        font-family: @font-for-even-foot;
+        font-size: @fontsize-for-even-foot;
+    }
 }
 
-.page_vertical_margin {
-  margin: 10mm !important;
-  font-family: var(--font-fangsong);
+.page_vert_odd {
+    margin: @margin-for-vert-odd;
+
+    @top-left {
+        margin: @margin-for-vert-odd-head;
+        border-bottom: @border-for-vert-odd-head-left;
+        width: 50%;
+        content: @content-for-vert-odd-head-left;
+        color: @color-for-vert-odd-head;
+        font-family: @font-for-vert-odd-head;
+        font-size: @fontsize-for-vert-odd-head;
+    }
+
+    @top-center {
+        margin: @margin-for-vert-odd-head;
+        border-bottom: @border-for-vert-odd-head-center;
+        width: 50%;
+        content: @content-for-vert-odd-head-center;
+        color: @color-for-vert-odd-head;
+        font-family: @font-for-vert-odd-head;
+        font-size: @fontsize-for-vert-odd-head;
+    }
+
+    @top-right {
+        margin: @margin-for-vert-odd-head;
+        border-bottom: @border-for-vert-odd-head-right;
+        width: 50%;
+        content: @content-for-vert-odd-head-right;
+        color: @color-for-vert-odd-head;
+        font-family: @font-for-vert-odd-head;
+        font-size: @fontsize-for-vert-odd-head;
+    }
+
+    @bottom-left {
+        margin: @margin-for-vert-odd-foot;
+        border-bottom: @border-for-vert-odd-foot-left;
+        width: 50%;
+        content: @content-for-vert-odd-foot-left;
+        color: @color-for-vert-odd-foot;
+        font-family: @font-for-vert-odd-foot;
+        font-size: @fontsize-for-vert-odd-foot;
+    }
+
+    @bottom-center {
+        margin: @margin-for-vert-odd-foot;
+        border-bottom: @border-for-vert-odd-foot-center;
+        width: 50%;
+        content: @content-for-vert-odd-foot-center;
+        color: @color-for-vert-odd-foot;
+        font-family: @font-for-vert-odd-foot;
+        font-size: @fontsize-for-vert-odd-foot;
+    }
+
+    @bottom-right {
+        margin: @margin-for-vert-odd-foot;
+        border-bottom: @border-for-vert-odd-foot-right;
+        width: 50%;
+        content: @content-for-vert-odd-foot-right;
+        color: @color-for-vert-odd-foot;
+        font-family: @font-for-vert-odd-foot;
+        font-size: @fontsize-for-vert-odd-foot;
+    }
 }
 
-.page_left_style_yield_numbering {
-  margin: 0mm 5mm;
-  content: "· "counter(page, decimal) " / "counter(pages) " ·";
-  font-family: var(--font-text-cn);
-  font-size: 9pt;
-}
+.page_vert_even {
+    margin: @margin-for-vert-even;
 
-.page_right_style_yield_numbering {
-  .page_left_style_yield_numbering();
-}
+    @top-left {
+        margin: @margin-for-vert-even-head;
+        border-bottom: @border-for-vert-even-head-left;
+        width: 50%;
+        content: @content-for-vert-even-head-left;
+        color: @color-for-vert-even-head;
+        font-family: @font-for-vert-even-head;
+        font-size: @fontsize-for-vert-even-head;
+    }
 
-.page_vertical_left_numbering {
-  margin: 0 3mm;
-  content: "· "counter(page, decimal) " / "counter(pages) " ·";
-  font-family: var(--font-text-cn);
-  font-size: 9pt;
-  /* Rotate the content */
-  writing-mode: vertical-rl;
-  /* Optionally, you can force the table cell's content not to wrap */
-  white-space: nowrap;
-}
+    @top-center {
+        margin: @margin-for-vert-even-head;
+        border-bottom: @border-for-vert-even-head-center;
+        width: 50%;
+        content: @content-for-vert-even-head-center;
+        color: @color-for-vert-even-head;
+        font-family: @font-for-vert-even-head;
+        font-size: @fontsize-for-vert-even-head;
+    }
 
-.page_vertical_right_numbering {
-  .page_vertical_left_numbering();
-}
+    @top-right {
+        margin: @margin-for-vert-even-head;
+        border-bottom: @border-for-vert-even-head-right;
+        width: 50%;
+        content: @content-for-vert-even-head-right;
+        color: @color-for-vert-even-head;
+        font-family: @font-for-vert-even-head;
+        font-size: @fontsize-for-vert-even-head;
+    }
 
-.page_left_style_yield_chapter(@string: section) {
-  margin: 5mm 0 2mm;
-  font-size: 9pt;
-  color: #666;
-  border-bottom: .25pt solid #666;
-  width: 50%;
-  content: string(@string);
-}
+    @bottom-left {
+        margin: @margin-for-vert-even-foot;
+        border-bottom: @border-for-vert-even-foot-left;
+        width: 50%;
+        content: @content-for-vert-even-foot-left;
+        color: @color-for-vert-even-foot;
+        font-family: @font-for-vert-even-foot;
+        font-size: @fontsize-for-vert-even-foot;
+    }
 
-.page_right_style_yield_chapter {
-  .page_left_style_yield_chapter(@string: chapter);
-}
+    @bottom-center {
+        margin: @margin-for-vert-even-foot;
+        border-bottom: @border-for-vert-even-foot-center;
+        width: 50%;
+        content: @content-for-vert-even-foot-center;
+        color: @color-for-vert-even-foot;
+        font-family: @font-for-vert-even-foot;
+        font-size: @fontsize-for-vert-even-foot;
+    }
 
-.page_vertical_left_chapter(@string: section) {
-  margin: 2mm;
-  font-size: 9pt;
-  color: #666;
-  content: string(@string);
-  /* Rotate the content */
-  writing-mode: vertical-rl;
-  /* Optionally, you can force the table cell's content not to wrap */
-  white-space: nowrap;
-}
-
-.page_vertical_right_chapter {
-  .page_vertical_left_chapter(@string: chapter);
-}
-
-.page_left_style_pagination {
-  .page_left_style_base();
-
-  @top-left {
-    .page_left_style_yield_chapter();
-  }
-
-  @bottom-left {
-    .page_left_style_yield_numbering();
-  }
-}
-
-.page_right_style_pagination {
-  .page_right_style_base();
-
-  @top-right {
-    .page_right_style_yield_chapter();
-  }
-
-  @bottom-right {
-    .page_right_style_yield_numbering();
-  }
-}
-
-//取消竖排页面的页眉页脚，并重新修改样式
-
-.page_vertical_left_pagination {
-  .page_vertical_margin();
-
-  @top-left {
-    content: normal;
-  }
-
-  @bottom-left {
-    content: normal;
-  }
-
-  @left-top {
-    .page_vertical_left_chapter();
-  }
-
-  @left-bottom {
-    .page_vertical_left_numbering();
-  }
-}
-
-.page_vertical_right_pagination {
-  .page_vertical_margin();
-
-  @top-right {
-    content: normal;
-  }
-
-  @bottom-right {
-    content: normal;
-  }
-
-  @right-top {
-    .page_vertical_right_chapter();
-  }
-
-  @right-bottom {
-    .page_vertical_right_numbering();
-  }
+    @bottom-right {
+        margin: @margin-for-vert-even-foot;
+        border-bottom: @border-for-vert-even-foot-right;
+        width: 50%;
+        content: @content-for-vert-even-foot-right;
+        color: @color-for-vert-even-foot;
+        font-family: @font-for-vert-even-foot;
+        font-size: @fontsize-for-vert-even-foot;
+    }
 }
 
 .page_docs_first {
-  @top-left {
-    content: normal;
-  }
+    @top-left {
+        content: normal;
+    }
 
-  @top-right {
-    content: normal;
-  }
+    @top-right {
+        content: normal;
+    }
 
-  @bottom-left {
-    content: normal;
-  }
+    @bottom-left {
+        content: normal;
+    }
 
-  @bottom-right {
-    content: normal;
-  }
+    @bottom-right {
+        content: normal;
+    }
+}
+
+@media print {
+    @page:left {
+        .page_odd();
+    }
+
+    @page:right {
+        .page_even();
+    }
+}
+
+// tocall 用來生成 目錄，默認重啟頁碼，尚未设定
+// preface 用來生成 前言，默認重啟頁碼，尚未设定
+// documents 用來生成所有的正文，默認重啟頁碼
+
+@page tocall {
+    margin: 2cm;
+    padding: 0;
+}
+
+@page tocall:left {
+    @top-left {
+        content: normal;
+    }
+    @top-right {
+        content: normal;
+    }
+    @bottom-left {
+        content: counter(page, lower-roman);
+        font-family: @font-fangsong;
+    }
+}
+
+@page tocall:right {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+    @bottom-right {
+        content: counter(page, lower-roman);
+        font-family: @font-fangsong;
+    }
+}
+
+.preface {
+    page: preface;
+    counter-reset: page 1;
+}
+
+@page preface:right {
+    .page_even();
+}
+
+@page preface:left {
+    .page_odd();
+}
+
+// 在不需要使用多个样式的章节时，可以默认使用 docments 页面组
+
+.documents {
+    page: documents;
+    break-before: right;
+    -prince-page-group: start;
+    counter-reset: page 1;
+}
+
+// 使用 documents_chapter 来创建默认含有章节编号的页面组
+.documents_chapter,
+.documents_chapter_old,
+.documents_chapter_old_none,
+.documents_volume,
+.documents_volume_old {
+    page: documents;
+    break-before: right;
+    -prince-page-group: start;
+    counter-reset: page 1;
+}
+
+@page documents:right {
+    .page_even();
+}
+
+@page documents:left {
+    .page_odd();
+}
+
+.documents_volume {
+    page: documents_volume;
+}
+
+@page documents_volume:first {
+    .page_docs_first();
+}
+
+// 旋转 90° 的页面组
+
+div.vertical_contents {
+    page: vertical_contents;
+}
+
+@page vertical_contents {
+    -prince-rotate-body: landscape;
+    -prince-shrink-to-fit: auto;
+    -prince-page-group: start;
+}
+
+@page vertical_contents:left {
+    .page_vert_odd();
+}
+
+@page vertical_contents:right {
+    .page_vert_even();
+}
+
+// 清除空白页的页眉，仅保留页码
+
+@page preface:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page tocall:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page documents:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page documents_chapter:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page documents_chapter_old:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page documents_chapter_old_none:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page .documents_volume:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page documents_volume_old:blank {
+    @top-left {
+        content: normal;
+    }
+
+    @top-right {
+        content: normal;
+    }
+}
+
+@page sidenote:right {
+    // .page_even();
+
+    @rightnote {
+        width: 30%;
+    }
+}
+
+@page sidenote:left {
+    // .page_odd();
+
+    @leftnote {
+        width: 30%;
+    }
 }

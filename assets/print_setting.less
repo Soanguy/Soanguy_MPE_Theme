@@ -10,226 +10,82 @@
 
 @media print {
 
-  :root {
-    --color-text: #111;
-    --color-em: #000;
-    --color-weak: #333;
-    --color-light: #555;
+    :root {
+        --color-text: #000;
+        --color-em: #000;
 
-    --color-text: var(--color-text);
-    --color-title1: var(--color-em);
+        --color-text: var(--color-text);
+        --color-title1: var(--color-em);
+        --text-shadow: none;
+        --text-shadow-strong: none;
 
-    --bg-body: #fff;
+        --bg-body: #fff;
 
-    --bg-quota: rgb(255, 250, 250);
-    --bg-codeblock: var(--theme-color-light);
+        --bg-quota: var(--theme-color-light);
+        --bg-codeblock: var(--theme-color-light);
 
-    --shadow-weak: none;
-    --shadow-base: none;
+        --shadow-weak: none;
+        --shadow-base: none;
 
-    --margin-block: 1rem auto;
-    --margin-text: 0rem;
-    --margin-h1: 10rem auto 5rem;
+        --margin-block: 1rem auto;
+        --margin-text: 0rem;
+        --margin-h1: 10rem auto 5rem;
 
-    --font-weight: 300;
-    --font-weight-medium: 400;
-    --font-weight-bold: 800;
-    --font-size: 11pt;
-    --font-table-size: 9.5pt;
-    --font-kai-size: 11.5pt;
-    --line-height: 18pt;
+        .markdown-preview.markdown-preview {
+            --font-weight: 300;
+            --font-weight-medium: 400;
+            --font-weight-bold: 800;
+            --font-size: 11pt;
+            --font-table-size: 9.5pt;
+            --font-kai-size: 11.5pt;
+            --line-height: 18pt;
 
-    --font-emoji-fallback: "segoe ui symbol";
-    --font-title-cn: var(--fong-song-cn-print);
-    --font-title-jp: var(--fong-song-jp-print);
-    --font-text-cn: var(--fong-song-cn-print);
-    --font-text-jp: var(--fong-song-jp-print);
-    --font-ol-cn: var(--font-text-cn);
-    --font-ol-jp: var(--font-text-jp);
-    --font-ul-cn: var(--font-kai-cn);
-    --font-ul-jp: var(--font-kai-jp);
-    --font-quota-cn: var(--font-kai-cn);
-    --font-quota-jp: var(--font-kai-jp);
-    --font-table-cn: var(--font-text-cn);
-    --font-table-jp: var(--font-text-jp);
-    --font-footnote: var(--font-fangsong);
-    --font-footnote-jp: var(--font-fangsong-jp);
-    --font-sem-cn: var(--font-hei-cn);
-    --font-sem-jp: var(--font-hei-jp);
-    --font-em-jp: var(--font-title-jp);
+            --font-title-cn: var(--fong-song-cn-print);
+            --font-title-jp: var(--fong-song-jp-print);
 
-    --font-title1: 800 2.5rem/3.75rem var(--font-title-cn);
-    --font-title2: 800 16pt/1.75rem var(--font-title-cn);
-    --font-title3: 600 16pt/1.5rem var(--font-hei-cn);
-    --font-title4: 600 14pt/1.5rem var(--font-kai-cn);
-    --font-title5: 500 14pt/1.25rem var(--font-fangsong);
-    --font-title6: 500 12pt/1.25rem var(--font-fangsong);
+            --font-text-cn: var(--fong-song-cn-print);
+            --font-text-jp: var(--fong-song-jp-print);
+            --font-table-cn: var(--font-text-cn);
+            --font-table-jp: var(--font-text-jp);
 
-    --font-quota: 400 11.5pt/1.5rem var(--font-quota-cn);
-  }
+            --font-sem-cn: var(--font-hei-cn);
+            --font-sem-jp: var(--font-hei-jp);
+            --font-em-jp: var(--font-text-jp);
 
-  @page {
-    //通过size来控制打印大小，可选值为任意的尺寸组合或者固定的页面尺寸。例如，size:8in 11in(width*height);size:a4 landscape;size:a4 portrait
+            --font-title1: 800 20pt/2.50rem var(--font-title-cn);
+            --font-title2: 800 16pt/1.75rem var(--font-title-cn);
+            --font-title3: 600 16pt/1.50rem var(--font-hei-cn);
+            --font-title4: 600 14pt/1.50rem var(--font-kai-cn);
+            --font-title5: 500 14pt/1.25rem var(--font-fangsong);
+            --font-title6: 500 12pt/1.25rem var(--font-fangsong);
 
-    // for a4
-    // 此處 page 控制所有頁面的樣式
-    size: A4;
-    bleed: 3mm;
-    counter-reset: footnote;
-
-    // 水印设定
-    @prince-overlay {
-      color: rgba(0, 0, 0, 0.02);
-      content: "商无辛";
-      font-size: 10pt;
-      font-family: var(--font-hei-cn);
-      vertical-align: top;
+            --font-quota: 400 11.5pt/18pt var(--font-quota-cn);
+        }
     }
 
-    // 脚注设定
-    @footnotes {
-      padding-top: 10pt;
-      border-clip: 10rem;
-      border-top: 0.6pt solid var(--theme-color-4-weak);
-      margin: .5rem 1rem;
+    @page {
+        //通过size来控制打印大小，可选值为任意的尺寸组合或者固定的页面尺寸。例如，size:8in 11in(width*height);size:a4 landscape;size:a4 portrait
+
+        // for a4
+        // 此處 page 控制所有頁面的樣式
+        size: A4;
+        counter-reset: footnote;
+
+        // 水印设定
+        @prince-overlay {
+            color: rgba(0, 0, 0, 0.02);
+            content: "商无辛";
+            font-size: 10pt;
+            font-family: var(--font-hei-cn);
+            vertical-align: top;
+        }
+
+        // 脚注设定
+        @footnotes {
+            padding-top: 10pt;
+            border-clip: 10rem;
+            border-top: 0.6pt solid var(--theme-color-4-weak);
+            margin: .5rem 1rem;
+        }
     }
-  }
-
-  // 左右页面页眉页脚设定
-  @page:right {
-    .page_right_style_pagination();
-  }
-
-  @page:left {
-    .page_left_style_pagination();
-  }
-
 }
-
-
-//此处开始为 A5 纸张样式设计
-/*
-  .page_left_style_base {
-    margin: 20mm;
-    font-family: var(--font-fangsong);
-  }
-  
-  .page_right_style_base {
-    margin: 20mm;
-    font-family: var(--font-fangsong);
-  }
-  
-  @media print{
-    :root{
-      --font-size: 10pt;
-      --font-table-size: 8.5pt;
-      --font-kai-size: 10.5pt;
-      --line-height: 15pt;
-      --font-title1: 800 2.5rem/3.75rem var(--font-title-cn);
-      --font-title2: 800 16pt/1.75rem var(--font-title-cn);
-      --font-title3: 600 16pt/1.5rem var(--font-hei-cn);
-      --font-title4: 600 14pt/1.5rem var(--font-kai-cn);
-      --font-title5: 500 14pt/1.25rem var(--font-fangsong);
-      --font-title6: 500 12pt/1.25rem var(--font-fangsong);
-  
-      --font-quota: 400 11pt/1.5rem var(--font-quota-cn);
-    }
-    @page{
-      size: 148mm 210mm;
-      bleed: 3mm;
-      margin: 20mm;
-    }
-  }
-  */
-// 此处 A5 纸张样式设计结束
-
-//b5 
-/*
-@media print {
-
-  :root {
-    --font-title-cn: var(--font-song-cn);
-    --font-title-jp: var(--font-song-jp);
-    --text-font-cn: var(--font-song-cn);
-    --text-font-jp: var(--font-song-jp);
-    --ol-font-cn: var(--font-text-cn);
-    --ol-font-jp: var(--font-text-jp);
-    --ul-font-cn: var(--font-text-cn);
-    --ul-font-jp: var(--font-song-jp);
-    --font-size: 9pt;
-    --font-kai-size: 10pt;
-    --line-height: 15pt;
-    --margin-h1: 1rem auto 1.5rem;
-    --margin-h2: 1rem auto 1.5rem;
-    --font-weight: 400;
-  }
-
-  @page {
-    size: 12cm 15cm;
-    padding: 0;
-    bleed: 3mm;
-  }
-
-  @page:right {
-    margin: 10mm 8mm 10mm 15mm;
-
-    @top-right {
-      color: transparent;
-      border-bottom: none;
-    }
-  }
-
-  @page:left {
-    margin: 10mm 15mm 10mm 8mm;
-
-    @top-left {
-      color: transparent;
-      border-bottom: none;
-    }
-  }
-
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-text-cn) !important;
-    font-size: var(--font-size) !important;
-  }
-
-  h1 {
-    text-align: center;
-    margin: var(--margin-h1) !important;
-
-    &::after {
-      content: "";
-      display: block;
-      border-bottom: 1px solid var(--theme-color);
-      position: relative;
-      top: .5rem;
-      left: 25%;
-      width: 50%;
-    }
-  }
-
-  h2 {
-    padding: 1rem 4px;
-    margin: var(--margin-h2);
-    font: 800 12pt/24pt var(--font-hei-cn)!important;
-    background-color: var(--theme-color)!important;
-    color: #fff!important;
-  }
-
-  ul li,
-  ol li {
-    margin-left: 0rem;
-  }
-
-  blockquote {
-    padding: 0 !important;
-  }
-
-  .fn {
-    font-size: 7pt !important;
-  }
-}
-*/

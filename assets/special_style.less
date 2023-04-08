@@ -1,29 +1,29 @@
 #notice_style {
     --color-theme: hsl(0, 100%, 70%);
+    --theme-color: var(--color-theme-weak);
     --color-theme-weak: #d6d6d6;
-    --color-text: #333;
-    --color-title: #111;
+    --color-text: hsl(0, 0%, 5%);
+    --color-title: hsl(0, 0%, 0%);
     --color-weak: #777;
     --bgcolor-body: #fff;
-    --bgcolor-quota: #eee;
+    --bgcolor-quota: hsl(0, 0%, 95%);
     --bgcolor-table: #eee;
     --border: 1px solid var(--color-theme);
     --border-weak: 1px solid var(--color-theme-weak);
-    --serif-font: 'Old Standard TT', 'noto serif cjk', 'source han serif', serif;
-    --sans-font: 'ubuntu', 'noto sans cjk', 'source han sans', sans;
-    --kai-font: 'Old Standard TT', 'th-khaai-tp0', kaiti;
-    --fangsong: 'Old Standard TT', "FZFSK--GBK1-0", '方正仿宋_GBK', 'FZFangSong-Z02';
+    --serif-font: 'Old Standard TT', 'noto serif cjk', 'source han serif k', serif;
+    --sans-font: 'ubuntu', 'noto sans cjk', 'source han sans k', sans;
+    --kai-font: 'Old Standard TT', 'th-khaai-tp0', kaiti, 'source han serif k', serif;
+    --fangsong: 'Old Standard TT', "FZFSK--GBK1-0", '方正仿宋_GBK', 'FZFangSong-Z02', 'source han serif k', serif;
     --font-text: var(--fangsong);
 
     font-family: var(--font-text);
-    font-size: 16px;
+    font-size: 11pt;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 18pt;
     word-spacing: 1pt;
     background-color: var(--bgcolor-body);
     color: var(--color-text);
     text-align: left;
-    -prince-text-justify: prince-cjk;
 
     h1,
     h2,
@@ -35,8 +35,9 @@
         color: var(--color-title);
         font-family: var(--serif-font);
         font-weight: 800;
-        margin: 1.5rem 0 1rem;
+        margin: 1rem 0 .5rem;
         text-align: left;
+        line-height: 1.5;
     }
 
     .notice_title {
@@ -57,13 +58,21 @@
     h1 {
         text-align: center;
         font-size: 2rem;
-        margin: 4rem 0 2rem;
+        margin: 1.5rem 0 .75rem;
         counter-reset: h2;
         break-before: avoid;
 
-        &::before,
-        &::after {
-            display: none;
+        &#attachment {
+            font-size: 1.5rem;
+            text-align: left;
+            counter-increment: attach;
+
+            &::before {
+                content: "附件"counter(attach, cjk-ideographic);
+                display: inline-block;
+                position: relative;
+                padding-right: 1rem;
+            }
         }
     }
 
@@ -126,13 +135,23 @@
 
     p {
         text-indent: 2rem;
+        margin: 0;
+        -prince-text-justify: prince-cjk;
+    }
+
+    em {
+        font-style: normal;
+    }
+
+    code {
+        font-family: var(--sans-font);
     }
 
     table {
-        width: 100%;
-        font-size: 16px;
+        font-size: 10.5pt;
 
-        tr:nth-child(2n-1) {
+        thead tr,
+        tr:nth-child(2n) {
             background-color: var(--bgcolor-table);
         }
 
@@ -140,6 +159,35 @@
         td {
             border: var(--border-weak);
             font-family: var(--font-text);
+        }
+
+        td {
+            vertical-align: top;
+            width: fit-content;
+            padding: 2px;
+        }
+    }
+
+    div.info_last {
+        float-placement: bottom;
+
+        table {
+            display: table;
+
+            th,
+            td,
+            tr {
+                padding: 2px;
+                border: none;
+                background-color: transparent;
+                font-family: var(--sans-font);
+                font-weight: bold;
+                text-align: left;
+            }
+
+            thead tr {
+                border-bottom: var(--border);
+            }
         }
     }
 
@@ -149,60 +197,95 @@
         font-family: var(--font-text);
     }
 
-    ol,ul{
-        li{
-            &::marker{
+    ol,
+    ul {
+        margin-left: .5rem;
+
+        li {
+            &::marker {
                 color: var(--color-text);
             }
+
+            p:first-child {
+                text-indent: 0;
+            }
+        }
+
+        ol,
+        ul {
+            margin-left: .5rem;
+            padding-left: .5rem;
         }
     }
 
-    blockquote{
+    blockquote {
         background-color: var(--bgcolor-quota);
+        color: var(--color-text);
         border-left: var(--border);
         border-left-width: 4px;
         box-shadow: none;
+        padding: .5rem 1rem;
     }
 
-    @media print {
-        --foot-margin: 7rem 1rem;
-        --foot-size: 10pt;
-        --foot-border: 1px solid var(--color-theme);
+    table,
+    blockquote {
+        margin: .5rem auto 1rem;
+    }
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            counter-reset: page 1;
-        }
-
-        @page {
-            size: a4;
-            padding: 0;
-            margin: 38mm 28mm;
-            border-bottom: var(--foot-border);
-        }
-
-        @page:left {
-            @bottom-left {
-                content: "- "counter(page) " -";
-                padding: var(--foot-margin);
-                font-family: var(--fangsong);
-                font-size: var(--foot-size);
-                border-top: var(--foot-border);
+    // 快速生成可以调节照片大小的代码
+    each(range(0, 100, 5), {
+            img[alt~="@{value}"] {
+                width:(@value / 100 * 100%);
+                height: (@value / 100 * 100%);
             }
         }
 
-        @page:right {
-            @bottom-right {
-                content: "- "counter(page) " -";
-                padding: var(--foot-margin);
-                font-family: var(--fangsong);
-                font-size: var(--foot-size);
-                border-top: var(--foot-border);
+    ) each(range(0, 100, 5), {
+            img[title~="@{value}"] {
+                width:(@value / 100 * 100%);
+                height: (@value / 100 * 100%);
             }
+        }
 
+    )
+}
+
+@media print {
+    --foot-margin: 7rem 1rem;
+    --foot-border: 1px solid var(--color-theme);
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        counter-reset: page 1;
+    }
+
+    @page {
+        size: a4;
+        padding: 0;
+        margin: 38mm 28mm 30mm;
+        border-bottom: var(--foot-border);
+    }
+
+    @page:left {
+        @bottom-left {
+            content: "- "counter(page) " -";
+            padding: var(--foot-margin);
+            font-family: var(--fangsong);
+            font-size: var(--foot-size);
+            border-top: var(--foot-border);
         }
     }
 
+    @page:right {
+        @bottom-right {
+            content: "- "counter(page) " -";
+            padding: var(--foot-margin);
+            font-family: var(--fangsong);
+            font-size: var(--foot-size);
+            border-top: var(--foot-border);
+        }
+
+    }
 }

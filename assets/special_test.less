@@ -1,0 +1,217 @@
+// A4 试卷样式
+@font-kai: "Times New Roman", "Optima", "Latin Modern Roman", Baskerville, Georgia, "Liberation Serif", "Kaiti TC", "TW-Kai", "TH-Khaai-PP0", "Kaiti SC", STKaiti, "AR PL UKai CN", "AR PL UKai HK", "AR PL UKai TW", "AR PL UKai TW MBE", "AR PL KaitiM GB", KaiTi, KaiTi_GB2312, DFKai-SB, "TW\-Kai", serif;
+
+@media print {
+    :root {
+        .markdown-preview.markdown-preview {
+            --font-hei-cn: "Avenir Next", var(--font-sans-fallback), "Source Han Sans K", var(--font-hei-fallback);
+            --font-hei-jp: "Avenir Next", var(--font-sans-fallback), "Kozuka Gothic Pr6N", "YuGothic", var(--font-hei-jp-fallback);
+
+            --font-song-cn: "Times New Roman", var(--font-serif-fallback), "Source Han Serif", var(--font-song-fallback);
+            --font-song-jp: "Times New Roman", var(--font-serif-fallback), "Kozuka Mincho Pr6N", "YuMincho", var(--font-song-jp-fallback);
+
+            --fong-song-cn-print: "Times New Roman", var(--font-serif-fallback), "Source Han Serif", "TH-Tshyn-P0", "方正新书宋_GBK", "FZNewShusong-Z10", "STSongti", "Songti TC", "TW-Sung", var(--font-song-fallback);
+            --fong-song-jp-print: var(--font-song-jp);
+
+            --fong-title-cn-before: "Times New Roman", var(--font-song-cn);
+            --fong-title-jp-before: "Times New Roman", var(--font-song-jp);
+
+            --font-kai-cn: "Times New Roman", var(--font-curve-fallback), "TH-Khaai-PP0", "TW-Kai", var(--font-kai-fallback);
+            --font-kai-jp: "Times New Roman", var(--font-curve-fallback), "A-OTF Kyoukasho ICA Pro", "YuKyokasho", "YuKyokasho", "TW-Kai", "TH-Khaai-PP0", var(--font-kai-fallback);
+
+            --font-mono: "Times New Roman", var(--font-mono-fallback), var(--font-kai-cn), monospace;
+
+            --font-fangsong: "Times New Roman", var(--font-curve-fallback), "HYFangSongS", "FZFangsong-Z02", var(--font-fangsong-fallback);
+            --font-fangsong-jp: "Times New Roman", var(--font-curve-fallback), "A-OTF Jomin Std", "HYFangSongS", "FZFangsong-Z02", var(--font-fangsong-fallback);
+            --font-choices: var(--font-kai-jp);
+
+            --font-sem-cn: var(--font-hei-cn);
+            --font-sem-jp: var(--font-hei-jp);
+
+            --theme-color: var(--color-em);
+            --color-code: var(----color-text);
+
+            --font-info: var(--font-fangsong);
+            --font-choices: var(--font-song-jp);
+            --font-mono: var(--font-fangsong);
+            --font-size: 11pt;
+            --line-height: 20pt;
+
+            --font-title1: 800 18pt/18pt var(--font-song-cn);
+            --font-title2: 600 16pt/18pt var(--font-title-cn);
+            --font-title3: 600 14pt/18pt var(--font-hei-cn);
+            --font-title4: 500 12pt/18pt var(--font-kai-cn);
+            --font-title5: 400 12pt/18pt var(--font-fangsong);
+            --font-title6: 400 11pt/18pt var(--font-fangsong);
+        }
+
+        --margin-h1: 8pt auto;
+        --margin-h2: 8pt auto;
+        --margin-h3: 8pt auto;
+        --margin-h4: 8pt auto;
+        --margin-h5: 8pt auto;
+        --margin-h6: 8pt auto;
+        --theme-color: #111;
+    }
+
+    @page:right {
+        margin: 10mm;
+
+        @top-right {
+            content: "";
+            border-color: transparent;
+        }
+
+        @top-left {
+            content: "";
+            border-color: transparent;
+        }
+
+        @bottom-right {
+            content: "";
+            border-color: transparent;
+        }
+
+        @bottom-left {
+            content: "";
+            border-color: transparent;
+        }
+
+        @bottom-center {
+            content: "日语试卷（第"counter(page, decimal) "页 共"counter(pages) "页）";
+            font-family: @font-kai;
+            font-size: 9pt;
+        }
+    }
+
+    @page:left {
+        margin: 10mm;
+
+        @top-right {
+            content: "";
+            border-color: transparent;
+        }
+
+        @top-left {
+            content: "";
+            border-color: transparent;
+        }
+
+        @bottom-right {
+            content: "";
+            border-color: transparent;
+        }
+
+        @bottom-left {
+            content: "";
+            border-color: transparent;
+        }
+
+        @bottom-center {
+            content: "日语试卷（第"counter(page, decimal) "页 共"counter(pages) "页）";
+            font-family: @font-kai;
+            font-size: 9pt;
+        }
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        text-indent: 0;
+    }
+}
+
+
+.markdown-preview.markdown-preview .test_paper {
+
+    h1 {
+        text-align: center !important;
+        break-before: avoid;
+
+        &::before,
+        &::after {
+            content: "";
+            border-color: transparent !important;
+        }
+    }
+
+    h2,
+    h3,
+    h4,
+    h5 {
+        &::before {
+            content: " ";
+        }
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    code {
+        background-color: transparent;
+        font-size: 10.5pt !important;
+    }
+
+    .pre_info * {
+        font-family: var(--font-info) !important;
+    }
+
+    .test_paper_reading {
+        font-family: var(--font-song-jp);
+
+        p {
+            text-indent: 1rem;
+        }
+
+        p+ol {
+            margin-top: 1rem !important;
+        }
+
+        em {
+            font-family: var(--font-song-cn-print);
+        }
+
+        strong {
+            text-decoration: underline;
+        }
+
+        .choices li p{
+            text-indent: 0rem;
+        }
+    }
+
+    .test_paper_writing * {
+        font-family: var(--font-fangsong);
+
+        em {
+            font-family: var(--fong-song-jp-print);
+        }
+    }
+
+    .test_answer,
+    .test_materials {
+        h1 {
+            break-before: right;
+        }
+
+        table {
+            width: auto;
+            margin: 1rem;
+
+            th,
+            td {
+                width: fit-content;
+                border-color: transparent;
+            }
+        }
+    }
+
+    .test_materials {
+        h2 {
+            text-align: center;
+        }
+    }
+
+}

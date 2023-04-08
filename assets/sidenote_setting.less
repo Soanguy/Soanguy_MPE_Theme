@@ -1,38 +1,26 @@
-@page sidenote:right {
-  .page_right_style_pagination();
-
-  @rightnote {
-    width: 12rem;
-  }
-}
-
-@page sidenote:left {
-  .page_left_style_pagination();
-
-  @leftnote {
-    width: 12rem;
-  }
-}
-
 .sidenote {
   page: sidenote;
   -prince-page-group: start;
 }
 
 // 边注相关
-note {
+note,aside,.sn {
   -prince-float-reference: outsidenote;
   -prince-float-placement: align-bottom;
+  margin-top: 1rem;
   text-decoration: wavy;
   text-decoration-color: var(--theme-color);
   font-family: var(--font-quota-cn);
+  font-size: 90%!important;
   padding: 1rem;
   text-align: left;
   text-indent: 0;
 
   @media print {
     padding-top: .5rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: .5rem;
+    margin-outside: -25mm;
+    margin-inside: 5mm;
     border: var(--border-color-1);
     border-top: var(--border-left);
     border-radius: 5px;
@@ -47,6 +35,14 @@ note {
       padding: 1px 2px;
       border-radius: 5px;
       text-indent: 0;
+      margin: 0 2px;
     }
   }
+}
+
+.sn{
+     &::before {
+        content: "";
+        display: none;
+     }
 }

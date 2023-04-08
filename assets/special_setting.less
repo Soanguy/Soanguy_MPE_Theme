@@ -1,502 +1,663 @@
 // 特别设定
 
-.border{
-  border:1px solid var(--theme-color);
-  border-radius:5px;
-  padding: 2px 4px;
-  text-align: center;
+p.svg {
+    display: flex;
+    justify-content: center;
+}
+
+svg {
+    g text {
+        fill: var(--color-text);
+        font-family: var(--font-text) !important;
+        font-family: var(--font-kai-cn) !important;
+    }
+
+    g.cnnode {// 更改node字体语言为中文
+        text {
+            fill: var(--color-text);
+            font-family: var(--font-text) !important;
+            font-family: var(--font-kai-cn) !important;
+        }
+
+        g.node {
+            text {
+                fill: var(--color-text);
+                font-family: var(--font-text) !important;
+                font-family: var(--font-kai-cn) !important;
+            }
+        }
+    }
+
+    g.janode {// 更改node字体语言为日文
+        text {
+            fill: var(--color-text);
+            font-family: var(--font-text) !important;
+            font-family: var(--font-kai-cn) !important;
+        }
+
+        g.node {
+            text {
+                fill: var(--color-text);
+                font-family: var(--font-text) !important;
+                font-family: var(--font-kai-jp) !important;
+            }
+        }
+    }
+
+    g.cnedge {// 更改edge字体语言为中文
+        text {
+            fill: var(--color-text);
+            font-family: var(--font-text) !important;
+            font-family: var(--font-kai-cn) !important;
+        }
+
+        g.edge {
+            text {
+                fill: var(--color-text);
+                font-family: var(--font-text) !important;
+                font-family: var(--font-kai-cn) !important;
+            }
+        }
+    }
+
+    g.jaedge {// 更改edge字体语言为日文
+        text {
+            fill: var(--color-text);
+            font-family: var(--font-text) !important;
+            font-family: var(--font-kai-cn) !important;
+        }
+
+        g.edge {
+            text {
+                fill: var(--color-text);
+                font-family: var(--font-text) !important;
+                font-family: var(--font-kai-jp) !important;
+            }
+        }
+    }
+}
+
+@media print {
+    svg {
+        background-color: transparent !important;
+    }
+}
+
+svg g text::selection {
+    background-color: var(--color-text);
+    fill: var(--bg-body);
+    color: var(--bg-body);
+}
+
+
+dfn {
+    &::before {
+        content: "☛例题：";
+    }
+}
+
+ins {
+    &::before {
+        content: "✪公式：";
+    }
+}
+
+var {
+    &::before {
+        content: "⚠️注意：";
+    }
+}
+
+.bold_nth_1 table tr td:nth-child(1) {
+    font-weight: bold;
+}
+
+table {
+    &.noborder {
+
+        tr,
+        th,
+        td {
+            border: none;
+        }
+    }
+
+    &.nopadding {
+
+        tr,
+        th,
+        td {
+            padding: 0;
+        }
+    }
+
+    &.lbtable {
+
+        tr,
+        td,
+        th {
+            border: var(--border-table) !important;
+        }
+    }
+
+    .sfont,
+    &.sfont {
+
+        td,
+        tr,
+        th {
+            font-size: 8pt !important;
+            margin: 0 !important;
+            padding: 2px !important;
+        }
+    }
+}
+
+
+@media print {
+    .noborder+table {
+
+        tr,
+        th,
+        td {
+            border: none;
+        }
+    }
+
+    .nopad+table {
+
+        td,
+        tr,
+        th {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+
+    .sfont+table {
+        font-size: 8pt !important;
+
+        td,
+        tr,
+        th {
+            margin: 0 !important;
+            padding: 1px !important;
+        }
+    }
+
+    .lbtable+table {
+
+        tr,
+        td,
+        th {
+            border: var(--border-table) !important;
+        }
+    }
+}
+
+hr.break_after {
+    visibility: hidden;
+    page-break-after: always;
+}
+
+.normalfont * {
+    font-size: var(--font-size) !important;
+}
+
+.border {
+    border: 1px solid var(--theme-color);
+    border-radius: 5px;
+    padding: 2px 4px;
+    text-align: center;
+}
+
+.left {
+    text-align: left;
 }
 
 // markdown footnote
 
 .footnote-ref a,
 blockquote .footnote-ref a {
-  font: var(--font-code) !important;
+    font: var(--font-code) !important;
 }
 
 blockquote *:not(.footnote-ref) {
-  @media print {
-    font-size: var(--kai-size);
-  }
+    @media print {
+        font-size: var(--kai-size);
+    }
 }
 
 .fn {
-  font-family: var(--font-fangsong) !important;
-  font-size: 0.65rem;
-  border-left: var(--border-base);
-  border-color: var(--theme-color);
-  border-width: var(--border-width-bold);
-  margin-left: 4px;
-  padding-left: 4px;
+    font-family: var(--font-fangsong) !important;
+    font-size: 0.65rem;
+    font-weight: normal;
+    border-left: var(--border-base);
+    border-color: var(--theme-color);
+    border-width: var(--border-width-bold);
+    margin-left: 4px;
+    padding-left: 4px;
 
-  em {
-    font-family: var(--font-fangsong-jp) !important;
-  }
+    em {
+        font-family: var(--font-fangsong-jp) !important;
+    }
 }
 
 @media print {
-  .fn {
-    float: footnote;
-    line-height: 14pt;
-    counter-increment: footnote;
-    font-family: var(--font-fangsong);
-    font-size: 9pt !important;
-    padding-left: -4px;
-    border-left: none !important;
-    text-indent: 0;
-    footnote-style-position: inside;
+    .fn {
+        float: footnote;
+        line-height: 14pt;
+        counter-increment: footnote;
+        font-family: var(--font-fangsong);
+        font-size: 9pt !important;
+        padding-left: -4px;
+        border-left: none !important;
+        text-indent: 0;
+        footnote-style-position: inside;
 
-    &::footnote-call {
-      content: "["counter(footnote) "]";
-      font-size: 6pt;
-      vertical-align: super;
-      line-height: inherit;
-    }
+        &::footnote-call {
+            content: "["counter(footnote) "]";
+            font-size: 6pt;
+            vertical-align: super;
+            line-height: inherit;
+        }
 
-    &::footnote-marker {
-      font-weight: normal;
+        &::footnote-marker {
+            font-weight: normal;
+        }
     }
-  }
 }
 
 // 错题集
 
-div.choice {
-  padding: 1rem 4px;
-  border-top: var(--window-borderb);
-  border-bottom: var(--window-borderb);
+.choice {
+    padding: 1rem 4px;
+    border-top: var(--window-borderb);
+    border-bottom: var(--window-borderb);
 
-  h1,
-  h2,
-  h3 {
-    display: inline-block;
-    font-family: "DFPRareBook", "AppleMyungjo", "Apple Symbols", serif;
-    font-size: 1.2rem;
-    padding: 6px 8px;
-    margin: 4px auto 1rem;
-    line-height: 1rem;
-    text-align: center;
-    background-color: var(--theme-color);
-    color: whitesmoke;
-    border-radius: 15px;
-    min-width: 3rem;
-  }
+    h1,
+    h2,
+    h3 {
+        display: inline-block;
+        font-family: "DFPRareBook", "AppleMyungjo", "Apple Symbols", serif;
+        font-size: 1.2rem;
+        padding: 6px 8px;
+        margin: 4px auto 1rem;
+        line-height: 1rem;
+        text-align: center;
+        background-color: var(--theme-color);
+        color: whitesmoke;
+        border-radius: 15px;
+        min-width: 3rem;
+    }
 
-  h3 {
-    font-size: 0.8rem;
-    padding: 4px 6px;
-    background-color: var(--theme-color-3);
-  }
+    h3 {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+        background-color: var(--theme-color-3);
+    }
 
-  hr {
-    color: #41b349;
-    height: 0;
-    border: 1px dashed;
-    margin: 4px;
-  }
+    hr {
+        color: #41b349;
+        height: 0;
+        border: 1px dashed;
+        margin: 4px;
+    }
 
-  hr:before,
-  hr:after {
-    content: '';
-    display: none;
-  }
+    hr:before,
+    hr:after {
+        content: '';
+        display: none;
+    }
 }
 
 // 古籍设定
 
 .old_book {
-  writing-mode: vertical-rl;
-  height: 50rem;
+    writing-mode: vertical-rl;
+    height: 50rem;
 
-  * {
-    font-family: "ShinshuSeitenKaisho", "TH-Khaai-PPO", "tw-kai" !important;
-    font-size: 26pt;
-    line-height: 52pt !important;
-  }
+    * {
+        font-family: "ShinshuSeitenKaisho", "TH-Khaai-PPO", "tw-kai" !important;
+        font-size: 26pt;
+        line-height: 52pt !important;
+    }
 
-  p {
-    margin-top: 5rem;
-  }
+    p {
+        margin-top: 5rem;
+    }
 }
 
 // 分列设定
 
 .col2 {
-  columns: 2;
+    columns: 2;
 
-  .test {
-    width: 100%;
+    .test {
+        width: 100%;
 
-    @media print {
-      font-family: var(--font-text-jp);
+        @media print {
+            font-family: var(--font-text-jp);
+        }
+
+        ul,
+        ol {
+            margin-left: 0;
+        }
+
+        ul {
+            list-style: upper-latin;
+        }
+
+        li {
+            padding-left: 4px;
+
+            @media print {
+                font-family: var(--font-text-jp);
+            }
+        }
+
+        li::marker {
+            content: initial;
+            font-family: var(--font-text-cn);
+            list-style-type: upper-latin;
+        }
     }
 
-    ul,
-    ol {
-      margin-left: 0;
+    .test:not(:first-child) {
+        border-left: var(--border-base);
+        margin-left: 1rem;
     }
-
-    ul {
-      list-style: upper-latin;
-    }
-
-    li {
-      padding-left: 4px;
-
-      @media print {
-        font-family: var(--font-text-jp);
-      }
-    }
-
-    li::marker {
-      content: initial;
-      font-family: var(--font-text-cn);
-      list-style-type: upper-latin;
-    }
-  }
-
-  .test:not(:first-child) {
-    border-left: var(--border-base);
-    margin-left: 1rem;
-  }
-
-  blockquote {
-    width: 48%;
-    border-left: none;
 
     blockquote {
-      width: initial;
-      border-left: var(--border-base);
-      border-color: var(--theme-color);
-      border-width: var(--border-width-bold);
+        width: 48%;
+        border-left: none;
+
+        blockquote {
+            width: initial;
+            border-left: var(--border-base);
+            border-color: var(--theme-color);
+            border-width: var(--border-width-bold);
+        }
     }
-  }
 }
 
 // 字体更改
 
 .markdown-preview.markdown-preview {
-
-  .jp.song * {
-    font-family: var(--font-song-jp);
-
-    strong {
-      font-family: var(--font-sem-cn);
-      font-weight: var(--font-weight-medium);
-      font-variation-settings: 'wght'var(--font-weight-medium);
-    }
-  }
-
-  .jp.hei * {
-    font-family: var(--font-hei-jp);
-  }
-
-  .jp.kai * {
-    font-family: var(--font-kai-jp);
-    font-size: var(--font-kai-size);
-  }
-
-  .cn.song * {
-    font-family: var(--font-song-cn);
-  }
-
-  .cn.hei * {
-    font-family: var(--font-hei-cn);
-  }
-
-  .cn.kai * {
-    font-family: var(--font-kai-cn);
-    font-size: var(--font-kai-size);
-
-    em {
-      font-family: var(--font-kai-jp);
-    }
-  }
-}
-
-.markdown-preview.markdown-preview {
-  .admonition {
-    padding: 0;
-    padding-left: 1rem;
-    box-shadow: none;
-    border-left: none;
-    border-top: 2px solid var(--theme-color);
-    border-bottom: 2px solid var(--theme-color);
-    border-radius: 0px;
-    font-family: var(--font-fangsong);
-
-    p {
-      &.admonition-title {
-        margin: 0 !important;
-        margin-left: -1rem !important;
-        padding: .5rem 1rem .5rem 3.6rem;
-        text-indent: 0;
-        // border-bottom: none;
-      }
+    .jp {
+        p {
+            text-indent: 1rem;
+        }
     }
 
-    em {
-      font-family: var(--font-fangsong-jp);
+    .jp.song * {
+        font-family: var(--font-song-jp);
     }
 
-    blockquote {
-      border: none;
-      border-radius: 0px;
-      border-left: var(--border-left);
+    .jp.hei * {
+        font-family: var(--font-hei-jp);
     }
 
-    li {
-      font-family: var(--font-fangsong);
-
-      em {
-        font-family: var(--font-fangsong-jp);
-      }
+    .jp.kai * {
+        font-family: var(--font-kai-jp);
+        font-size: var(--font-kai-size);
     }
-  }
 
-  .danger,
-  .error,
-  .bug {
-    border-color: var(--theme-color);
-  }
+    .cn.song * {
+        font-family: var(--font-song-cn);
+    }
 
-  .question,
-  .help,
-  .faq {
-    border-color: var(--theme-color-opt);
-  }
+    .cn.hei * {
+        font-family: var(--font-hei-cn);
+    }
 
-  .info,
-  .todo {
-    border-color: rgba(0, 184, 212, .8);
-  }
-
-  .summary,
-  .abstract,
-  .tldr {
-    border-color: rgba(0, 176, 255, .8);
-  }
-
-  .hint,
-  .tip {
-    border-color: rgba(0, 191, 165, .8);
-  }
-
-  .success,
-  .check,
-  .done {
-    border-color: rgba(0, 200, 83, .2);
-  }
-
-  .question,
-  .help,
-  .faq {
-    border-color: rgba(100, 221, 23, .8);
-  }
-
-  .warning,
-  .attention,
-  .caution {
-    border-color: rgba(255, 145, 0, .8);
-  }
-
-  .failure,
-  .fail,
-  .missing {
-    border-color: rgba(255, 82, 82, .8);
-  }
-
-  .example,
-  .snippet {
-    border-color: rgba(0, 184, 212, .8);
-  }
-
-  .quote,
-  .cite {
-    border-color: rgba(158, 158, 158, .8);
-  }
-
+    .cn.kai * {
+        font-family: var(--font-kai-cn);
+        font-size: var(--font-kai-size);
+    }
 }
 
 // 习题集
 .markdown-preview.markdown-preview {
-  div.ptb {
-    font-family: var(--font-text-jp);
+    div.ptb {
+        font-family: var(--font-text-jp);
 
-    table {
-      table-layout: fixed;
-      font-family: inherit;
-    }
-
-    tr,
-    th,
-    td {
-      border: none !important;
-      padding: 0;
-
-      @media print {
-        font-size: 10.5pt;
-      }
-    }
-
-    th,
-    td {
-      padding: 2px;
-    }
-  }
-
-  div.ptbb {
-    font-family: var(--font-text-jp);
-  }
-
-  div.ptbb+table * {
-    font-family: var(--font-text-jp);
-
-    @media print {
-      font-size: 10.5pt;
-    }
-  }
-
-
-  // 选择题选项并列，需要手动设定四个选项的排列方式。
-  // <div class="choices">
-  // <div class="choices_part c4"> 此处设定选项排列方式为四合一
-  // 1. 题干 
-  //    - 选项使用无序列表方式排列
-  // </div><div class="choices_part c2"> 此处设定选项排列方式为二合一
-  // </div><div class="choices_part c1"> 此处设定选项排列方式为一行一项
-  // </div>
-
-  .choices {
-    .choices_part {
-      font-family: var(--font-kai-jp) !important;
-
-      &.c4 {
-        ol {
-          ul {
-            li {
-              width: 25%;
-            }
-          }
-        }
-
-        .c2 {
-          ol {    
-            ul {
-              li {
-                width: 50%;
-              }
-            }
-          }
-        }
-
-        .c1 {
-          ol {
-            ul {
-              li {
-                width: 100%;
-              }
-            }
-          }
-        }
-      }
-
-      &.c2 {
-        ol {
-          ul {
-            li {
-              width: 50%;
-            }
-          }
-        }
-      }
-
-      &.c1 {
-        ol {
-          ul {
-            li {
-              width: 100%;
-            }
-          }
-        }
-      }
-
-      p+ol,
-      p+ul {
-        margin-left: 0;
-      }
-
-      ol {
-        font-family: var(--font-kai-jp) !important;
-        margin-bottom: 0;
-
-        li{
-          list-style: decimal;
-        }
-
-        ul {
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          margin-left: 0rem;
-          padding: 0;
-          font-family: inherit !important;
-
-          li {
-            display: flex;
-            list-style: decimal;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: flex-start;
-            align-items: center;
+        table {
+            table-layout: fixed;
             font-family: inherit;
-
-            &:nth-child(0n+1) {
-              &::before {
-                font-family: inherit;
-                content: "A．";
-              }
-            }
-
-            &:nth-child(0n+2) {
-
-              &::before {
-                font-family: inherit;
-                content: "B．";
-              }
-            }
-
-            &:nth-child(0n+3) {
-              &::before {
-                font-family: inherit;
-                content: "C．";
-              }
-            }
-
-            &:nth-child(0n+4) {
-              &::before {
-                font-family: inherit;
-                content: "D．";
-              }
-            }
-          }
         }
-      }
+
+        tr,
+        th,
+        td {
+            border: none !important;
+            padding: 0;
+
+            @media print {
+                font-size: 10.5pt;
+            }
+        }
+
+        th,
+        td {
+            padding: 2px;
+        }
     }
-  }
+
+    div.ptbb {
+        font-family: var(--font-text-jp);
+    }
+
+    div.ptbb+table * {
+        font-family: var(--font-text-jp);
+
+        @media print {
+            font-size: 10.5pt;
+        }
+    }
+
+
+    // 选择题选项并列，需要手动设定四个选项的排列方式。
+    // <div class="choices">
+    // <div class="choices_part c4"> 此处设定选项排列方式为四合一
+    // 1. 题干 
+    //    - 选项使用无序列表方式排列
+    // </div><div class="choices_part c2"> 此处设定选项排列方式为二合一
+    // </div><div class="choices_part c1"> 此处设定选项排列方式为一行一项
+    // </div>
+
+    .choices {
+        .choices_part {
+            font-family: var(--font-choices) !important;
+
+            &.c4 {
+                ol {
+                    ul {
+                        li {
+                            width: 25%;
+                        }
+                    }
+                }
+
+                .c3 {
+                    ol {
+                        ul {
+                            li {
+                                width: 33.33%;
+                            }
+                        }
+                    }
+                }
+
+                .c2 {
+                    ol {
+                        ul {
+                            li {
+                                width: 50%;
+                            }
+                        }
+                    }
+                }
+
+                .c1 {
+                    ol {
+                        ul {
+                            li {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.c3 {
+                ol {
+                    ul {
+                        li {
+                            width: 33.33%;
+                        }
+                    }
+                }
+
+                .c1 {
+                    ol {
+                        ul {
+                            li {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            &.c2 {
+                ol {
+                    ul {
+                        li {
+                            width: 50%;
+                        }
+                    }
+                }
+
+                .c3 {
+                    ol {
+                        ul {
+                            li {
+                                width: 33.33%;
+                            }
+                        }
+                    }
+                }
+
+                .c4 {
+                    ol {
+                        ul {
+                            li {
+                                width: 25%;
+                            }
+                        }
+                    }
+                }
+
+                .c1 {
+                    ol {
+                        ul {
+                            li {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.c1 {
+                ol {
+                    ul {
+                        li {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            p+ol,
+            p+ul {
+                margin-left: 0;
+            }
+
+            ol {
+                font-family: var(--font-choices) !important;
+                margin-bottom: 0;
+
+                li {
+                    list-style: decimal;
+                }
+
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    margin-left: 0rem;
+                    padding: 0;
+                    font-family: inherit !important;
+
+                    li {
+                        display: flex;
+                        list-style: decimal;
+                        flex-direction: row;
+                        flex-wrap: nowrap;
+                        justify-content: flex-start;
+                        align-items: center;
+                        font-family: inherit;
+
+                        &:nth-child(0n+1) {
+                            &::before {
+                                font-family: inherit;
+                                content: "A．";
+                            }
+                        }
+
+                        &:nth-child(0n+2) {
+
+                            &::before {
+                                font-family: inherit;
+                                content: "B．";
+                            }
+                        }
+
+                        &:nth-child(0n+3) {
+                            &::before {
+                                font-family: inherit;
+                                content: "C．";
+                            }
+                        }
+
+                        &:nth-child(0n+4) {
+                            &::before {
+                                font-family: inherit;
+                                content: "D．";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
 }
 
 
 .comment {
-  blockquote {
+    blockquote {
 
-    ul,
-    ol {
-      li {
-        font-family: inherit;
-      }
+        ul,
+        ol {
+            li {
+                font-family: inherit;
+            }
+        }
     }
-  }
 }

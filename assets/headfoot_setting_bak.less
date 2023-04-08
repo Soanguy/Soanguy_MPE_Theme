@@ -1,0 +1,138 @@
+// // 代碼復用區域
+
+// // 和頁面邊距相關的設置，默認設定的是左右頁邊距不同
+
+// .page_left_style_base {
+//     margin: 15mm 20mm 15mm 15mm;
+//     font-family: var(--font-fangsong);
+// }
+
+// .page_right_style_base {
+//     margin: 15mm 15mm 15mm 20mm;
+//     font-family: var(--font-fangsong);
+// }
+
+// .page_vertical_margin {
+//     margin: 10mm !important;
+//     font-family: var(--font-fangsong);
+// }
+
+// .page_left_style_yield_numbering {
+//     margin: 0mm 5mm;
+//     content: "· "counter(page, decimal) " / "counter(pages) " ·";
+//     font-family: var(--font-text-cn);
+//     font-size: 9pt;
+// }
+
+// .page_right_style_yield_numbering {
+//     .page_left_style_yield_numbering();
+// }
+
+// .page_vertical_left_numbering {
+//     margin: 0 3mm;
+//     content: "· "counter(page, decimal) " / "counter(pages) " ·";
+//     font-family: var(--font-text-cn);
+//     font-size: 9pt;
+//     /* Rotate the content */
+//     writing-mode: vertical-rl;
+//     /* Optionally, you can force the table cell's content not to wrap */
+//     white-space: nowrap;
+// }
+
+// .page_vertical_right_numbering {
+//     .page_vertical_left_numbering();
+// }
+
+// .page_left_style_yield_chapter(@string: section) {
+//     margin: 5mm 0 2mm;
+//     font-size: 9pt;
+//     color: #666;
+//     border-bottom: .25pt solid #666;
+//     width: 50%;
+//     content: string(@string);
+// }
+
+// .page_right_style_yield_chapter {
+//     .page_left_style_yield_chapter(@string: chapter);
+// }
+
+// .page_vertical_left_chapter(@string: section) {
+//     margin: 2mm;
+//     font-size: 9pt;
+//     color: #666;
+//     content: string(@string);
+//     /* Rotate the content */
+//     writing-mode: vertical-rl;
+//     /* Optionally, you can force the table cell's content not to wrap */
+//     white-space: nowrap;
+// }
+
+// .page_vertical_right_chapter {
+//     .page_vertical_left_chapter(@string: chapter);
+// }
+
+// .page_left_style_pagination {
+//     .page_left_style_base();
+
+//     @top-left {
+//         .page_left_style_yield_chapter();
+//     }
+
+//     @bottom-left {
+//         .page_left_style_yield_numbering();
+//     }
+// }
+
+// .page_right_style_pagination {
+//     .page_right_style_base();
+
+//     @top-right {
+//         .page_right_style_yield_chapter();
+//     }
+
+//     @bottom-right {
+//         .page_right_style_yield_numbering();
+//     }
+// }
+
+// //取消竖排页面的页眉页脚，并重新修改样式
+
+// .page_vertical_left_pagination {
+//     .page_vertical_margin();
+
+//     @top-left {
+//         content: normal;
+//     }
+
+//     @bottom-left {
+//         content: normal;
+//     }
+
+//     @left-top {
+//         .page_vertical_left_chapter();
+//     }
+
+//     @left-bottom {
+//         .page_vertical_left_numbering();
+//     }
+// }
+
+// .page_vertical_right_pagination {
+//     .page_vertical_margin();
+
+//     @top-right {
+//         content: normal;
+//     }
+
+//     @bottom-right {
+//         content: normal;
+//     }
+
+//     @right-top {
+//         .page_vertical_right_chapter();
+//     }
+
+//     @right-bottom {
+//         .page_vertical_right_numbering();
+//     }
+// }

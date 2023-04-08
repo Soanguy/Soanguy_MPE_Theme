@@ -1,0 +1,181 @@
+#mainbody_jp {
+    --indent: 1rem;
+
+    --font-hei-cn: "Avenir Next", var(--font-sans-fallback), "Kozuka Gothic Pr6N", var(--font-hei-jp-fallback);
+    --font-hei-jp: "Avenir Next", var(--font-sans-fallback), "Source Han Sans K", var(--font-hei-fallback);
+
+    --font-song-cn: "Latin Modern Roman", var(--font-serif-fallback), "Kozuka Mincho Pr6N", var(--font-song-jp-fallback);
+    --font-song-jp: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif K", var(--font-song-fallback);
+
+    --fong-song-cn-print: var(--font-song-cn);
+    --fong-song-jp-print: "Latin Modern Roman", var(--font-serif-fallback), "Source Han Serif K", var(--font-song-fallback);
+
+    --font-kai-cn: "Optima", "Latin Modern Roman", var(--font-curve-fallback), "A-OTF Kyoukasho ICA Pro", "YuKyokasho", "YuKyokasho", "TW-Kai", "TH-Khaai-PP0", var(--font-kai-fallback);
+    --font-kai-jp: "Optima", "Latin Modern Roman", var(--font-curve-fallback), "Kaiti TC", "TW-Kai", "TH-Khaai-PP0", var(--font-kai-fallback);
+
+    --font-fangsong: "Latin Modern Roman", var(--font-curve-fallback), "A-OTF Jomin Std", "HYFangSongS", "FZFangsong-Z02", var(--font-fangsong-fallback);
+    --font-fangsong-jp: "Latin Modern Roman", var(--font-curve-fallback), "HYFangSongS", "FZFangsong-Z02", var(--font-fangsong-fallback);
+
+    --font-lishu: "Latin Modern Roman Slanted", var(--font-curve-fallback), "A-OTF Likurei Std", "FZLiBian-S02", "AppleMyungjo", "Apple Symbols", serif;
+    --font-lishu-jp: "Latin Modern Roman Slanted", var(--font-curve-fallback), "Libian TC", "FZLiBian-S02", LiSu, STLiti, "AppleMyungjo", "Apple Symbols", serif;
+
+    --font-pearl-cn: var(--font-emoji-fallback), "JiangChengYuanTi", "台湾圆体", "AppleGothic", "Apple Symbols", sans-serif;
+    --font-pearl-jp: var(--font-emoji-fallback), "JiangChengYuanTi", "台湾圆体", "AppleGothic", "Apple Symbols", sans-serif;
+}
+
+
+.markdown-preview.markdown-preview.emtoja {
+
+    h1,
+    h2 {
+        em {
+            font-family: var(--font-song-jp) !important;
+        }
+    }
+
+    h3 {
+        em {
+            font-family: var(--font-hei-jp) !important;
+        }
+    }
+
+    h4,
+    h5,
+    h6 {
+        em {
+            font-family: var(--font-kai-jp) !important;
+        }
+    }
+
+    blockquote {
+        border-radius: 5;
+        border-left: none;
+
+        em {
+            font-family: var(--font-kai-jp);
+        }
+
+        em strong,
+        strong em {
+            font-family: var(--font-kai-jp);
+            font-weight: var(--font-weight-medium);
+            font-variation-settings: 'wght'var(--font-weight-medium);
+        }
+    }
+
+    ul {
+        li em {
+            font-family: var(--font-ul-jp);
+        }
+
+        ol li {
+            em {
+                font-family: var(--font-ol-jp);
+            }
+        }
+    }
+
+    ol {
+        li em {
+            font-family: var(--font-ol-jp);
+        }
+
+        ul li {
+            em {
+                font-family: var(--font-ul-jp);
+            }
+        }
+    }
+
+
+    strong {
+        em {
+            font-family: var(--font-sem-jp) !important;
+        }
+    }
+
+    em {
+        font-style: normal;
+        font-family: var(--font-text-jp);
+
+        strong {
+            font-family: var(--font-sem-jp) !important;
+            font-weight: var(--font-weight-medium);
+            font-variation-settings: 'wght'var(--font-weight-medium);
+        }
+
+        i {
+            font-family: var(--font-text-jp);
+        }
+
+        ruby,
+        rt {
+            font-family: var(--font-kai-cn);
+            font-family: var(--font-kai-jp);
+        }
+
+        samp {
+            font-family: var(--font-fangsong-jp);
+        }
+
+        tt {
+            font-family: var(--font-lishu-jp);
+        }
+    }
+
+    .jp {
+        p {
+            text-indent: 1rem;
+        }
+    }
+
+    .jp.song * {
+        font-family: var(--font-song-jp);
+
+        em {
+            font-family: var(--font-song-cn);
+        }
+    }
+
+    .jp.hei * {
+        font-family: var(--font-hei-jp);
+
+        em {
+            font-family: var(--font-hei-cn);
+        }
+    }
+
+    .jp.kai * {
+        font-family: var(--font-kai-jp);
+        font-size: var(--font-kai-size);
+
+        em {
+            font-family: var(--font-kai-cn);
+        }
+    }
+
+    .cn.song * {
+        font-family: var(--font-song-cn);
+
+        em {
+            font-family: var(--font-song-jp);
+        }
+    }
+
+    .cn.hei * {
+        font-family: var(--font-hei-cn);
+
+        em {
+            font-family: var(--font-hei-jp);
+        }
+    }
+
+    .cn.kai * {
+        font-family: var(--font-kai-cn);
+        font-size: var(--font-kai-size);
+
+        em {
+            font-family: var(--font-kai-jp);
+        }
+    }
+}

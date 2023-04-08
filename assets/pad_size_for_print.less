@@ -1,0 +1,117 @@
+
+
+//b5 
+/*
+@media print {
+
+  :root {
+    --font-title-cn: var(--font-song-cn);
+    --font-title-jp: var(--font-song-jp);
+    --text-font-cn: var(--font-song-cn);
+    --text-font-jp: var(--font-song-jp);
+    --ol-font-cn: var(--font-text-cn);
+    --ol-font-jp: var(--font-text-jp);
+    --ul-font-cn: var(--font-text-cn);
+    --ul-font-jp: var(--font-song-jp);
+    --font-size: 9pt;
+    --font-kai-size: 10pt;
+    --line-height: 15pt;
+    --margin-h1: 1rem auto 1.5rem;
+    --margin-h2: 1rem auto 1.5rem;
+    --font-weight: 400;
+  }
+
+  @page {
+    size: 12cm 15cm;
+    padding: 0;
+    bleed: 3mm;
+  }
+
+  @page:right {
+    margin: 10mm 8mm 10mm 15mm;
+
+    @top-right {
+      color: transparent;
+      border-bottom: none;
+    }
+  }
+
+  @page:left {
+    margin: 10mm 15mm 10mm 8mm;
+
+    @top-left {
+      color: transparent;
+      border-bottom: none;
+    }
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-text-cn) !important;
+    font-size: var(--font-size) !important;
+  }
+
+  h1 {
+    text-align: center;
+    margin: var(--margin-h1) !important;
+
+    &::after {
+      content: "";
+      display: block;
+      border-bottom: 1px solid var(--theme-color);
+      position: relative;
+      top: .5rem;
+      left: 25%;
+      width: 50%;
+    }
+  }
+
+  h2 {
+    padding: 1rem 4px;
+    margin: var(--margin-h2);
+    font: 800 12pt/24pt var(--font-hei-cn)!important;
+    background-color: var(--theme-color)!important;
+    color: #fff!important;
+  }
+
+  ul li,
+  ol li {
+    margin-left: 0rem;
+  }
+
+  blockquote {
+    padding: 0 !important;
+  }
+
+  .fn {
+    font-size: 7pt !important;
+  }
+}
+*/
+
+// fot pad
+
+@margin-for-odd-head: 0 2.5mm !important;
+@margin-for-even-head: 0 2.5mm !important;
+@border-for-odd-head-left: 0pt solid transparent !important;
+@border-for-even-head-right: 0pt solid transparent !important;
+
+@media print {
+    @page {
+        size: 8in 6in;
+        margin: 8mm !important;
+        padding: 0 !important;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        break-before: page !important;
+    }
+}

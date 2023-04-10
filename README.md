@@ -1,7 +1,7 @@
 ---
 class: "emtoja"
 ---
-<div class="toc"><h2>table of contents</h2>
+<div class="toc_nodot"><h2>table of contents</h2>
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=4 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -50,7 +50,7 @@ class: "emtoja"
 - [测试分页](#46)
 
 <!-- /code_chunk_output -->
-</div>
+</div><div class="documents_chapter">
 
 # <i>MPE_Soanguy</i> 主题使用 {#1}
 
@@ -796,5 +796,7 @@ CriticMarkup 缺省是禁用的，你可以通过插件设置来启动它。
 | :------- | -------: | :------: |
 | 单元格   |   单元格 |  单元格  |
 | 单元格 1 | 单元格 2 | 单元格 3 |
+
+</div>
 
 </div>
